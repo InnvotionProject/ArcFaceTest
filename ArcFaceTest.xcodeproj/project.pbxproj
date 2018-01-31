@@ -693,7 +693,7 @@
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_recognition/lib",
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_tracking/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = InnovationProject.ArcFaceTest;
+				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFaceTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ArcFaceTest/ArcFaceTest-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -718,7 +718,7 @@
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_recognition/lib",
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_tracking/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = InnovationProject.ArcFaceTest;
+				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFaceTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ArcFaceTest/ArcFaceTest-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
