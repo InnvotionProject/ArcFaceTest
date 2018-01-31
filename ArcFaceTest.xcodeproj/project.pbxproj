@@ -681,7 +681,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5VNNC4KHA4;
+				DEVELOPMENT_TEAM = FH55SZ3XYA;
 				ENABLE_BITCODE = NO;
 				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
 				INFOPLIST_FILE = ArcFaceTest/Info.plist;
@@ -693,7 +693,7 @@
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_recognition/lib",
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_tracking/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = RailgunHamster.ArcFaceTest;
+				PRODUCT_BUNDLE_IDENTIFIER = InnovationProject.ArcFaceTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ArcFaceTest/ArcFaceTest-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -706,7 +706,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5VNNC4KHA4;
+				DEVELOPMENT_TEAM = FH55SZ3XYA;
 				ENABLE_BITCODE = NO;
 				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
 				INFOPLIST_FILE = ArcFaceTest/Info.plist;
@@ -718,7 +718,7 @@
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_recognition/lib",
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_tracking/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = RailgunHamster.ArcFaceTest;
+				PRODUCT_BUNDLE_IDENTIFIER = InnovationProject.ArcFaceTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ArcFaceTest/ArcFaceTest-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
