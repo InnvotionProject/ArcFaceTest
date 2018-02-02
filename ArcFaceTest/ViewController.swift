@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     var arrayAllFaceRectView = NSMutableArray()
     var _offscreenIn : LPASVLOFFSCREEN?
     
+    var didSetUp = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -85,6 +87,10 @@ extension ViewController: AFCameraControllerDelegate, AFVideoProcessorDelegate {
     }
     
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!) {
+        guard self.didSetUp else {
+            return
+        }
+        
         guard UIApplication.shared.applicationState == .active else {
             return // OPENGL ES commands could not be excuted in background
         }
@@ -183,6 +189,8 @@ extension ViewController {
         // video processor
         self.videoProcessor.delegate = self
         self.videoProcessor.initProcessor()
+        
+        self.didSetUp = true
     }
     
     fileprivate func offscreenFromSampleBuffer(_ sampleBuffer: CMSampleBuffer) -> LPASVLOFFSCREEN? {
