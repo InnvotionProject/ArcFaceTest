@@ -11,7 +11,7 @@ import UIKit
 let IMAGE_WIDTH : CGFloat = 720
 let IMAGE_HEIGHT : CGFloat = 1280
 
-class ViewController: UIViewController {
+class CameraViewController: UIViewController {
     @IBOutlet weak var glView: GLView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var FDswitch: UISwitch!
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: AFCameraControllerDelegate, AFVideoProcessorDelegate {
+extension CameraViewController: AFCameraControllerDelegate, AFVideoProcessorDelegate {
     func processRecognized(_ personName: String!) {
         OperationQueue.main.addOperation {
             self.name.text = personName
@@ -159,7 +159,7 @@ extension ViewController: AFCameraControllerDelegate, AFVideoProcessorDelegate {
 }
 
 // private methods
-extension ViewController {
+extension CameraViewController {
     fileprivate func setup() {
         let orientation = UIApplication.shared.statusBarOrientation
         guard let vorientation = AVCaptureVideoOrientation(rawValue: orientation.rawValue) else {

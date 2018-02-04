@@ -29,8 +29,7 @@
         <!--人脸识别-->
         <scene sceneID="RII-FO-y5e">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IB0-9P-mWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="UOP-gc-8E4" sceneMemberID="viewController">
+                <viewController id="UOP-gc-8E4" customClass="FaceRecognitionViewController" customModule="ArcFaceTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qed-bt-nuJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,6 +48,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="人脸识别" id="VEi-u6-cnS"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IB0-9P-mWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="119" y="-366"/>
         </scene>
@@ -64,16 +64,18 @@
                     <connections>
                         <segue destination="k1m-1a-Uta" kind="relationship" relationship="viewControllers" id="I3o-rm-LC6"/>
                         <segue destination="p4B-bB-Wzl" kind="relationship" relationship="viewControllers" id="rxg-aD-J3f"/>
+                        <segue destination="2aP-mw-yLK" kind="relationship" relationship="viewControllers" id="H9o-sU-u7F"/>
+                        <segue destination="UKF-kU-oNo" kind="relationship" relationship="viewControllers" id="Pfb-JH-X0A"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0sJ-XA-1vc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1462" y="-33"/>
         </scene>
-        <!--View Controller-->
+        <!--Camera View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ArcFaceTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CameraViewController" customModule="ArcFaceTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,6 +110,9 @@
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" red="1" green="0.56945369749999997" blue="0.829042638" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="Ifq-tx-QeH" kind="unwind" unwindAction="unwindToFaceRecognitionWithSender:" id="wb9-2A-Px2"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -147,6 +152,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="Ifq-tx-QeH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="904.79999999999995" y="-366.56671664167919"/>
         </scene>
@@ -191,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYc-qz-KvL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1715.2" y="-95.352323838080963"/>
+            <point key="canvasLocation" x="1464" y="-577"/>
         </scene>
         <!--人脸识别-->
         <scene sceneID="6VS-Zc-0gc">
@@ -230,6 +236,76 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5O-3P-WIh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-507.19999999999999" y="299.55022488755623"/>
+        </scene>
+        <!--我的数据-->
+        <scene sceneID="Rpw-6B-K2Z">
+            <objects>
+                <viewController id="ILs-z8-Bt1" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eZe-Qv-j3R">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="bl4-mo-mGl"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="我的数据" id="Jxi-bv-rNc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7E6-2p-owW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="161" y="1015"/>
+        </scene>
+        <!--我的数据-->
+        <scene sceneID="tOE-9O-xJr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2aP-mw-yLK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我的数据" id="S7d-ha-UMs"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wKa-Kp-ff6">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ILs-z8-Bt1" kind="relationship" relationship="rootViewController" id="jVa-X3-Wlq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JDT-e8-Usv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-507.19999999999999" y="1015.592203898051"/>
+        </scene>
+        <!--我-->
+        <scene sceneID="QSL-Rx-HV7">
+            <objects>
+                <viewController id="Bez-Lv-cdh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XgR-8M-r6o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="grX-nZ-i8Q"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="我" id="hRu-RO-zNR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GlF-er-Vrw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="185" y="1731"/>
+        </scene>
+        <!--我-->
+        <scene sceneID="DDm-A5-wEJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UKF-kU-oNo" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我" id="geG-B2-oIJ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fUI-il-YFn">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Bez-Lv-cdh" kind="relationship" relationship="rootViewController" id="w4p-2A-bVK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g8d-nr-62o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-510.39999999999998" y="1731.6341829085459"/>
         </scene>
     </scenes>
 </document>

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		007B0D51201C7A8700E53324 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B0D50201C7A8700E53324 /* AppDelegate.swift */; };
-		007B0D53201C7A8700E53324 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B0D52201C7A8700E53324 /* ViewController.swift */; };
+		007B0D53201C7A8700E53324 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B0D52201C7A8700E53324 /* CameraViewController.swift */; };
 		007B0D56201C7A8700E53324 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 007B0D54201C7A8700E53324 /* Main.storyboard */; };
 		007B0D58201C7A8700E53324 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 007B0D57201C7A8700E53324 /* Assets.xcassets */; };
 		007B0D5B201C7A8700E53324 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 007B0D59201C7A8700E53324 /* LaunchScreen.storyboard */; };
@@ -31,6 +31,7 @@
 		007B0DD2201C89FD00E53324 /* libarcsoft_fsdk_face_tracking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DCB201C89FC00E53324 /* libarcsoft_fsdk_face_tracking.a */; };
 		007B0DE2201C8C3000E53324 /* FSDKFR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 007B0DE0201C8C3000E53324 /* FSDKFR.xcdatamodeld */; };
 		007B0DE5201C8CB600E53324 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DE4201C8CB600E53324 /* libstdc++.6.tbd */; };
+		733774A42027091000FBD53E /* FaceRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733774A32027091000FBD53E /* FaceRecognitionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +54,7 @@
 /* Begin PBXFileReference section */
 		007B0D4D201C7A8700E53324 /* ArcFaceTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArcFaceTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		007B0D50201C7A8700E53324 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		007B0D52201C7A8700E53324 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		007B0D52201C7A8700E53324 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		007B0D55201C7A8700E53324 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		007B0D57201C7A8700E53324 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		007B0D5A201C7A8700E53324 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -106,6 +107,7 @@
 		007B0DDB201C8A9B00E53324 /* AFRCDVersion+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFRCDVersion+CoreDataProperties.h"; sourceTree = "<group>"; };
 		007B0DE1201C8C3000E53324 /* FSDKFR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FSDKFR.xcdatamodel; sourceTree = "<group>"; };
 		007B0DE4201C8CB600E53324 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+		733774A32027091000FBD53E /* FaceRecognitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceRecognitionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,8 +170,9 @@
 				007B0D80201C81BB00E53324 /* ArcFaceTest-Bridging-Header.h */,
 				007B0D82201C826F00E53324 /* Objc */,
 				007B0D50201C7A8700E53324 /* AppDelegate.swift */,
-				007B0D52201C7A8700E53324 /* ViewController.swift */,
+				007B0D52201C7A8700E53324 /* CameraViewController.swift */,
 				007B0D54201C7A8700E53324 /* Main.storyboard */,
+				733774A32027091000FBD53E /* FaceRecognitionViewController.swift */,
 				007B0D57201C7A8700E53324 /* Assets.xcassets */,
 				007B0D59201C7A8700E53324 /* LaunchScreen.storyboard */,
 				007B0D5C201C7A8700E53324 /* Info.plist */,
@@ -509,7 +512,8 @@
 				007B0D9C201C88D900E53324 /* AFVideoProcessor.mm in Sources */,
 				007B0D9D201C88D900E53324 /* AFCameraController.m in Sources */,
 				007B0DE2201C8C3000E53324 /* FSDKFR.xcdatamodeld in Sources */,
-				007B0D53201C7A8700E53324 /* ViewController.swift in Sources */,
+				733774A42027091000FBD53E /* FaceRecognitionViewController.swift in Sources */,
+				007B0D53201C7A8700E53324 /* CameraViewController.swift in Sources */,
 				007B0D9A201C88D900E53324 /* AFRPerson.m in Sources */,
 				007B0DAF201C895900E53324 /* GLView.mm in Sources */,
 				007B0DB0201C895900E53324 /* GLProgram.m in Sources */,
