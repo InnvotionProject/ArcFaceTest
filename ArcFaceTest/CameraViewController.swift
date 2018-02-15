@@ -14,8 +14,6 @@ let IMAGE_HEIGHT : CGFloat = 1280
 class CameraViewController: UIViewController {
     @IBOutlet weak var glView: GLView!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var FDswitch: UISwitch!
-    @IBOutlet weak var register: UIButton!
     
     var cameraController = AFCameraController()
     var videoProcessor = AFVideoProcessor()
@@ -36,6 +34,11 @@ class CameraViewController: UIViewController {
     }
 
     // button register clicked
+    /*
+        注册的事件都在这下面
+        主要是调用videoProcessor.registerDetectedPerson(text) -> bool
+     */
+    /*
     @IBAction func registerClickd(_ sender: UIButton) {
         let alert = UIAlertController(title: "Register", message: "", preferredStyle: .alert)
         let ok = UIAlertAction(title: "ok", style: .default) { action in
@@ -72,11 +75,7 @@ class CameraViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
-    
-    // FD detect switch switched
-    @IBAction func switchFD(_ sender: UISwitch) {
-        self.videoProcessor.detectFaceUseFD = self.FDswitch.isOn
-    }
+     */
 }
 
 extension CameraViewController: AFCameraControllerDelegate, AFVideoProcessorDelegate {
@@ -179,7 +178,8 @@ extension CameraViewController {
         self.glView.frame = CGRect(x: (sizeb.width - fwidth) / 2, y: (sizeb.height - fheight) / 2, width: fwidth, height: fheight)
         self.glView.setInputSize(sizet, orientation: vorientation)
         
-        self.FDswitch.setOn(false, animated: false)
+        // init fd switch
+        // self.FDswitch.setOn(false, animated: false)
         
         // start camera
         self.cameraController.delegate = self
