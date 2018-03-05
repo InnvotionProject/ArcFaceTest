@@ -10,7 +10,12 @@ import UIKit
 
 class ProfileTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var profileImageView: UIImageView! {
+        didSet {
+            profileImageView.layer.cornerRadius = profileImageView.bounds.width / 2
+            profileImageView.clipsToBounds = true
+        }
+    }
     @IBOutlet weak var nameLabel: UILabel!
     
     override func awakeFromNib() {
