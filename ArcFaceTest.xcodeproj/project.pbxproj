@@ -162,7 +162,6 @@
 		007B0D44201C7A8700E53324 = {
 			isa = PBXGroup;
 			children = (
-				284B7054204EE32A006A8E60 /* MeTableViewController.swift */,
 				007B0D4F201C7A8700E53324 /* ArcFaceTest */,
 				007B0D64201C7A8700E53324 /* ArcFaceTestTests */,
 				007B0D6F201C7A8700E53324 /* ArcFaceTestUITests */,
@@ -199,6 +198,7 @@
 				735A1675203B375800D8DD4B /* MyStatisticsTableViewController.swift */,
 				7318728A204E5EDC00BD59FE /* ProfileTableViewController.swift */,
 				735A1677203B385A00D8DD4B /* ProfileTableViewCell.swift */,
+				284B7054204EE32A006A8E60 /* MeTableViewController.swift */,
 				007B0D5C201C7A8700E53324 /* Info.plist */,
 			);
 			path = ArcFaceTest;
