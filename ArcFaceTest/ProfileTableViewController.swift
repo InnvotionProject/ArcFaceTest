@@ -1,16 +1,23 @@
 //
-//  MyStatisticsTableViewController.swift
+//  ProfileTableViewController.swift
 //  ArcFaceTest
 //
-//  Created by 李博文 on 20/02/2018.
+//  Created by 李博文 on 06/03/2018.
 //  Copyright © 2018 王宇鑫. All rights reserved.
 //
 
 import UIKit
 
-class MyStatisticsTableViewController: UITableViewController {
-    
+class ProfileTableViewController: UITableViewController {
 
+    //MARK: model
+      //TODO： 存放待显示数据
+    //MARK: outlets
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var genderLabel: UILabel!
+    @IBOutlet weak var remarkLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +27,14 @@ class MyStatisticsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // TODO： 加载数据
+        profileImage.image = #imageLiteral(resourceName: "Portrait")
+        nameLabel.text = "李博文"
+        genderLabel.text = "男"
+        remarkLabel.text = ""
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -27,31 +42,26 @@ class MyStatisticsTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+/*
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return 0
     }
-
-    
+*/
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PersonInfo", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
-        if let profileCell = cell as? ProfileTableViewCell {
-            //TODO： load data from database
-            profileCell.profileImageView.image = #imageLiteral(resourceName: "Portrait")
-            profileCell.nameLabel.text = "李博文"
-        }
 
         return cell
     }
-    
+    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -88,22 +98,14 @@ class MyStatisticsTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        super.prepare(for: segue, sender: sender)
-        if segue.identifier == "showDetail" {
-            if let profileTMVC = segue.destination as? ProfileTableViewController {
-                /*
-                利用data，将model传入目标viewcontroller内
-                */
-            }
-        }
     }
-    
+    */
 
 }
