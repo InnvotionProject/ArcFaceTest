@@ -31,6 +31,7 @@
 		007B0DD2201C89FD00E53324 /* libarcsoft_fsdk_face_tracking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DCB201C89FC00E53324 /* libarcsoft_fsdk_face_tracking.a */; };
 		007B0DE2201C8C3000E53324 /* FSDKFR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 007B0DE0201C8C3000E53324 /* FSDKFR.xcdatamodeld */; };
 		007B0DE5201C8CB600E53324 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DE4201C8CB600E53324 /* libstdc++.6.tbd */; };
+		284B7055204EE32A006A8E60 /* MeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B7054204EE32A006A8E60 /* MeTableViewController.swift */; };
 		7318728B204E5EDC00BD59FE /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7318728A204E5EDC00BD59FE /* ProfileTableViewController.swift */; };
 		733774A42027091000FBD53E /* FaceRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733774A32027091000FBD53E /* FaceRecognitionViewController.swift */; };
 		735A1676203B375800D8DD4B /* MyStatisticsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735A1675203B375800D8DD4B /* MyStatisticsTableViewController.swift */; };
@@ -114,6 +115,7 @@
 		007B0DDB201C8A9B00E53324 /* AFRCDVersion+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFRCDVersion+CoreDataProperties.h"; sourceTree = "<group>"; };
 		007B0DE1201C8C3000E53324 /* FSDKFR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FSDKFR.xcdatamodel; sourceTree = "<group>"; };
 		007B0DE4201C8CB600E53324 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+		284B7054204EE32A006A8E60 /* MeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTableViewController.swift; sourceTree = "<group>"; };
 		7318728A204E5EDC00BD59FE /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		733774A32027091000FBD53E /* FaceRecognitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceRecognitionViewController.swift; sourceTree = "<group>"; };
 		735A1675203B375800D8DD4B /* MyStatisticsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStatisticsTableViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		007B0D44201C7A8700E53324 = {
 			isa = PBXGroup;
 			children = (
+				284B7054204EE32A006A8E60 /* MeTableViewController.swift */,
 				007B0D4F201C7A8700E53324 /* ArcFaceTest */,
 				007B0D64201C7A8700E53324 /* ArcFaceTestTests */,
 				007B0D6F201C7A8700E53324 /* ArcFaceTestUITests */,
@@ -547,6 +550,7 @@
 				007B0D51201C7A8700E53324 /* AppDelegate.swift in Sources */,
 				735A1676203B375800D8DD4B /* MyStatisticsTableViewController.swift in Sources */,
 				007B0D9B201C88D900E53324 /* AFRManager.m in Sources */,
+				284B7055204EE32A006A8E60 /* MeTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
