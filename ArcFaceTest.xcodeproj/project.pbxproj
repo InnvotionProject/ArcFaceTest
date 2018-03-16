@@ -33,6 +33,7 @@
 		007B0DE5201C8CB600E53324 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DE4201C8CB600E53324 /* libstdc++.6.tbd */; };
 		280E454920580DB000D30C32 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 280E454820580DB000D30C32 /* Me.storyboard */; };
 		284B7055204EE32A006A8E60 /* MeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B7054204EE32A006A8E60 /* MeTableViewController.swift */; };
+		527401BC205BA6BA00695B8E /* CheckingIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527401BB205BA6BA00695B8E /* CheckingIn.storyboard */; };
 		7318728B204E5EDC00BD59FE /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7318728A204E5EDC00BD59FE /* ProfileTableViewController.swift */; };
 		733774A42027091000FBD53E /* FaceRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733774A32027091000FBD53E /* FaceRecognitionViewController.swift */; };
 		735A1676203B375800D8DD4B /* MyStatisticsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735A1675203B375800D8DD4B /* MyStatisticsTableViewController.swift */; };
@@ -117,6 +118,7 @@
 		007B0DE4201C8CB600E53324 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		280E454820580DB000D30C32 /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
 		284B7054204EE32A006A8E60 /* MeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTableViewController.swift; sourceTree = "<group>"; };
+		527401BB205BA6BA00695B8E /* CheckingIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CheckingIn.storyboard; path = "../../../../Desktop/ArcFaceTest-master-4/ArcFaceTest/CheckingIn.storyboard"; sourceTree = "<group>"; };
 		7318728A204E5EDC00BD59FE /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		733774A32027091000FBD53E /* FaceRecognitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceRecognitionViewController.swift; sourceTree = "<group>"; };
 		735A1675203B375800D8DD4B /* MyStatisticsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStatisticsTableViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 		007B0D4F201C7A8700E53324 /* ArcFaceTest */ = {
 			isa = PBXGroup;
 			children = (
+				527401BB205BA6BA00695B8E /* CheckingIn.storyboard */,
 				007B0D54201C7A8700E53324 /* Main.storyboard */,
 				7382F43020274C8100084440 /* MyStatistics.storyboard */,
 				7382F42C20274C5800084440 /* CheckingIn.storyboard */,
@@ -511,6 +514,7 @@
 				007B0D58201C7A8700E53324 /* Assets.xcassets in Resources */,
 				280E454920580DB000D30C32 /* Me.storyboard in Resources */,
 				007B0D56201C7A8700E53324 /* Main.storyboard in Resources */,
+				527401BC205BA6BA00695B8E /* CheckingIn.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -725,7 +729,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FH55SZ3XYA;
+				DEVELOPMENT_TEAM = 72BRF3WV35;
 				ENABLE_BITCODE = NO;
 				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
 				INFOPLIST_FILE = ArcFaceTest/Info.plist;
@@ -738,7 +742,7 @@
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_recognition/lib",
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_tracking/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFaceTest;
+				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ArcFaceTest/ArcFaceTest-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -751,7 +755,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FH55SZ3XYA;
+				DEVELOPMENT_TEAM = 72BRF3WV35;
 				ENABLE_BITCODE = NO;
 				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
 				INFOPLIST_FILE = ArcFaceTest/Info.plist;
@@ -764,7 +768,7 @@
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_recognition/lib",
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_tracking/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFaceTest;
+				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ArcFaceTest/ArcFaceTest-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
