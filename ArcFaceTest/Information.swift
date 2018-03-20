@@ -22,22 +22,28 @@ class Information {
         return __context(name: Information.Attendance_model)
     }()
     
-    private func fetchRequest(entityName : String, predicate : NSPredicate) -> NSFetchRequest<NSFetchRequestResult> {
-        let fr = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-        fr.predicate = predicate
-        return fr
-    }
-    
-    public func add(personID: Int32, id: String, password: String, remark: String) -> Bool {
-        guard let entity = NSEntityDescription.entity(forEntityName: Information.AdditionalPerson_model, in: additionalPersonContext) else {
-            return false
-        }
+    public func add(personID: Int32, id: String, password: String, remark: String, attendance: String?) -> Bool {
+        let info = AdditionalPerson(context: additionalPersonContext)
+        info.personID = personID
+        info.id = id
+        info.passward = password
+        info.remark = remark
         
-        let info = NSManagedObject(entity: entity, insertInto: additionalPersonContext)
-        info.setValue(personID, forKey: Information.additional_personID)
-        info.setValue(id, forKey: Information.additional_id)
-        info.setValue(password, forKey: Information.additional_password)
-        info.setValue(remark, forKey: Information.additional_remark)
+        // link
+        if let attendanceName = attendance {
+            do {
+                let attendances = try __searchAttendanceInfo(name: attendanceName)
+                if attendances.count != 1 {
+                    return false
+                } else {
+                    let atd = attendances[0]
+                    info.included = atd
+                    atd.addToInclude(info)
+                }
+            } catch {
+                return false
+            }
+        }
         
         do {
             try additionalPersonSave()
@@ -49,14 +55,10 @@ class Information {
     }
     
     public func add(name: String, detail: String, startTime: Date) -> Bool {
-        guard let entity = NSEntityDescription.entity(forEntityName: Information.Attendance_model, in: attendanceContext) else {
-            return false
-        }
-        
-        let info = NSManagedObject(entity: entity, insertInto: attendanceContext)
-        info.setValue(name, forKey: Information.attendance_name)
-        info.setValue(detail, forKey: Information.attendance_detail)
-        info.setValue(startTime, forKey: Information.attendance_startTime)
+        let info = Attendance(context: attendanceContext)
+        info.name = name
+        info.detail = detail
+        info.startTime = startTime
         
         do {
             try attendanceSave()
@@ -69,8 +71,9 @@ class Information {
     
     public func remove(personID: Int32) -> Bool {
         do {
-            try __searchAdditionalInfo(personID: personID).forEach({ mo in
-                additionalPersonContext.delete(mo)
+            try __searchAdditionalInfo(personID: personID).forEach({ additional in
+                additional.included?.removeFromInclude(additional)
+                additionalPersonContext.delete(additional)
             })
             try additionalPersonSave()
             return true
@@ -81,8 +84,9 @@ class Information {
     
     public func remove(id: String) -> Bool {
         do {
-            try __searchAdditionalInfo(id: id).forEach({ mo in
-                additionalPersonContext.delete(mo)
+            try __searchAdditionalInfo(id: id).forEach({ additional in
+                additional.included?.removeFromInclude(additional)
+                additionalPersonContext.delete(additional)
             })
             try additionalPersonSave()
             return true
@@ -93,8 +97,11 @@ class Information {
     
     public func remove(name: String) -> Bool {
         do {
-            try __searchAttendanceInfo(name: name).forEach({ mo in
-                attendanceContext.delete(mo)
+            try __searchAttendanceInfo(name: name).forEach({ attendance in
+                attendance.include?.forEach { p in
+                    (p as? AdditionalPerson)?.included = nil
+                }
+                attendanceContext.delete(attendance)
             })
             try attendanceSave()
             return true
@@ -105,8 +112,11 @@ class Information {
     
     public func remove(startTime: Date) -> Bool {
         do {
-            try __searchAttendanceInfo(startTime: startTime).forEach({ mo in
-                attendanceContext.delete(mo)
+            try __searchAttendanceInfo(startTime: startTime).forEach({ attendance in
+                attendance.include?.forEach { p in
+                    (p as? AdditionalPerson)?.included = nil
+                }
+                attendanceContext.delete(attendance)
             })
             try attendanceSave()
             return true
@@ -115,54 +125,60 @@ class Information {
         }
     }
     
-    public func searchAdditionalInfo(personID: Int32) -> [(personID: Int32, id: String, password: String, remark: String)]? {
+    public func searchAdditionalInfo(personID: Int32) -> [(personID: Int32, id: String, password: String, remark: String, attendance: String)]? {
         do {
             return try __searchAdditionalInfo(personID: personID).map{
-                mo -> (personID : Int32, id : String, password : String, remark : String) in
-                let id = mo.value(forKey: Information.additional_id) as? String
-                let password = mo.value(forKey: Information.additional_password) as? String
-                let remark = mo.value(forKey: Information.additional_remark) as? String
-                return (personID : personID, id : id ?? "", password : password ?? "", remark : remark ?? "")
+                mo -> (personID : Int32, id : String, password : String, remark : String, attendance: String) in
+                return (personID : personID, id : mo.id ?? "", password : mo.passward ?? "", remark : mo.remark ?? "", attendance: mo.included?.name ?? "")
             }
         } catch {
             return nil
         }
     }
     
-    public func searchAdditionalInfo(id: String) -> [(personID: Int32, id: String, password: String, remark: String)]? {
+    public func searchAdditionalInfo(id: String) -> [(personID: Int32, id: String, password: String, remark: String, attendance: String)]? {
         do {
             return try __searchAdditionalInfo(id: id).map {
-                mo -> (personID : Int32, id : String, password : String, remark : String) in
-                let personID = mo.value(forKey: Information.additional_personID) as? Int32
-                let password = mo.value(forKey: Information.additional_password) as? String
-                let remark = mo.value(forKey: Information.additional_remark) as? String
-                return (personID : personID ?? -1, id : id, password : password ?? "", remark : remark ?? "")
+                mo -> (personID : Int32, id : String, password : String, remark : String, attendance: String) in
+                return (personID : mo.personID, id : id, password : mo.passward ?? "", remark : mo.remark ?? "", attendance: mo.included?.name ?? "")
             }
         } catch {
             return nil
         }
     }
     
-    public func searchAttendanceInfo(name: String) -> [(name: String, detail: String, startTime: Date)]? {
+    public func searchAttendanceInfo(name: String, needPersonInfo: Bool) -> [(name: String, detail: String, startTime: Date, additionalPerson: [(personID: Int32, id: String, password: String, remark: String, attendance: String)])]? {
         do {
             return try  __searchAttendanceInfo(name: name).map {
-                mo -> (name : String, detail : String, startTime : Date) in
-                let detail = mo.value(forKey: Information.attendance_detail) as? String
-                let startTime = mo.value(forKey: Information.attendance_startTime) as? Date
-                return (name : name, detail : detail ?? "", startTime : startTime ?? Date(timeIntervalSince1970: 0))
+                mo -> (name : String, detail : String, startTime : Date, additionalPerson: [(personID: Int32, id: String, password: String, remark: String, attendance: String)]) in
+                var additionalPerson = [(personID: Int32, id: String, password: String, remark: String, attendance: String)]()
+                if needPersonInfo {
+                    mo.include?.forEach{ p in
+                        if let person = p as? AdditionalPerson {
+                            additionalPerson.append((personID: person.personID, id: person.id ?? "", password: person.passward ?? "", remark: person.remark ?? "", attendance: mo.name ?? ""))
+                        }
+                    }
+                }
+                return (name : name, detail : mo.detail ?? "", startTime : mo.startTime ?? Date(timeIntervalSince1970: 0), additionalPerson : additionalPerson)
             }
         } catch {
             return nil
         }
     }
     
-    public func searchAttendanceInfo(startTime: Date) -> [(name: String, detail: String, startTime: Date)]? {
+    public func searchAttendanceInfo(startTime: Date, needPersonInfo: Bool) -> [(name: String, detail: String, startTime: Date, additionalPerson: [(personID: Int32, id: String, password: String, remark: String, attendance: String)])]? {
         do {
             return try __searchAttendanceInfo(startTime: startTime).map {
-                mo -> (name : String, detail : String, startTime : Date) in
-                let name = mo.value(forKey: Information.attendance_name) as? String
-                let detail = mo.value(forKey: Information.attendance_detail) as? String
-                return (name : name ?? "", detail : detail ?? "", startTime : startTime)
+                mo -> (name : String, detail : String, startTime : Date, additionalPerson: [(personID: Int32, id: String, password: String, remark: String, attendance: String)]) in
+                var additionalPerson = [(personID: Int32, id: String, password: String, remark: String, attendance: String)]()
+                if needPersonInfo {
+                    mo.include?.forEach{ p in
+                        if let person = p as? AdditionalPerson {
+                            additionalPerson.append((personID: person.personID, id: person.id ?? "", password: person.passward ?? "", remark: person.remark ?? "", attendance: mo.name ?? ""))
+                        }
+                    }
+                }
+                return (name : mo.name ?? "", detail : mo.detail ?? "", startTime : startTime, additionalPerson : additionalPerson)
             }
         } catch {
             return nil
@@ -174,15 +190,6 @@ extension Information {
     private static let timeZone = 8  // 东八区 China
     private static let AdditionalPerson_model = "AdditionalPerson"
     private static let Attendance_model = "Attendance"
-    
-    private static let additional_personID = "personID"
-    private static let additional_id = "id"
-    private static let additional_password = "password"
-    private static let additional_remark = "remark"
-    
-    private static let attendance_name = "name"
-    private static let attendance_detail = "detail"
-    private static let attendance_startTime = "startTime"
 }
 
 extension Information {
@@ -223,40 +230,44 @@ extension Information {
         return container.viewContext
     }
 
-    fileprivate func __searchAdditionalInfo(personID: Int32) throws -> [NSManagedObject] {
-        let fetchRequest = self.fetchRequest(entityName: Information.AdditionalPerson_model, predicate: NSPredicate(format: "personID=\(personID)"))
+    fileprivate func __searchAdditionalInfo(personID: Int32) throws -> [AdditionalPerson] {
+        let fetchRequest: NSFetchRequest<AdditionalPerson> = AdditionalPerson.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "personID=\(personID)")
         
-        guard let result = (try? additionalPersonContext.fetch(fetchRequest)) as? [NSManagedObject] else {
+        guard let result = try? additionalPersonContext.fetch(fetchRequest) else {
             throw InformationError.loadError(info: "use personID(\(personID)) to load additionalPerson NSManagedObject")
         }
         
         return result
     }
     
-    fileprivate func __searchAdditionalInfo(id: String) throws -> [NSManagedObject] {
-        let fetchRequest = self.fetchRequest(entityName: Information.AdditionalPerson_model, predicate: NSPredicate(format: "id=\(id)"))
+    fileprivate func __searchAdditionalInfo(id: String) throws -> [AdditionalPerson] {
+        let fetchRequest: NSFetchRequest<AdditionalPerson> = AdditionalPerson.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id=\(id)")
         
-        guard let result = (try? additionalPersonContext.fetch(fetchRequest)) as? [NSManagedObject] else {
+        guard let result = try? additionalPersonContext.fetch(fetchRequest) else {
             throw InformationError.loadError(info: "use id(\(id)) to load additionalPerson NSManagedObject")
         }
         
         return result
     }
     
-    fileprivate func __searchAttendanceInfo(name: String) throws -> [NSManagedObject] {
-        let fetchRequest = self.fetchRequest(entityName: Information.Attendance_model, predicate: NSPredicate(format: "name=\(name)"))
+    fileprivate func __searchAttendanceInfo(name: String) throws -> [Attendance] {
+        let fetchRequest: NSFetchRequest<Attendance> = Attendance.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name=\(name)")
         
-        guard let result = (try? attendanceContext.fetch(fetchRequest)) as? [NSManagedObject] else {
+        guard let result = try? attendanceContext.fetch(fetchRequest) else {
             throw InformationError.loadError(info: "use name(\(name)) to load Attendance NSManagedObject")
         }
         
         return result
     }
     
-    fileprivate func __searchAttendanceInfo(startTime: Date) throws -> [NSManagedObject] {
-        let fetchRequest = self.fetchRequest(entityName: Information.Attendance_model, predicate: NSPredicate(format: "startTime=\(startTime)"))
+    fileprivate func __searchAttendanceInfo(startTime: Date) throws -> [Attendance] {
+        let fetchRequest: NSFetchRequest<Attendance> = Attendance.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "startTime=\(startTime)")
         
-        guard let result = (try? attendanceContext.fetch(fetchRequest)) as? [NSManagedObject] else {
+        guard let result = try? attendanceContext.fetch(fetchRequest) else {
             throw InformationError.loadError(info: "use startTime(\(startTime)) to load Attendance NSManagedObject")
         }
         
