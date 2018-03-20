@@ -5,16 +5,16 @@
         <attribute name="passward" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="personID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="remark" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="included" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Attendance" syncable="YES"/>
+        <relationship name="included" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Attendance" inverseName="include" inverseEntity="Attendance" syncable="YES"/>
     </entity>
     <entity name="Attendance" representedClassName="Attendance" syncable="YES" codeGenerationType="class">
         <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="include" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AdditionalPerson" syncable="YES"/>
+        <relationship name="include" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AdditionalPerson" inverseName="included" inverseEntity="AdditionalPerson" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Attendance" positionX="-29" positionY="-0" width="128" height="103"/>
-        <element name="AdditionalPerson" positionX="-20" positionY="-190" width="128" height="118"/>
+        <element name="AdditionalPerson" positionX="-20" positionY="-190" width="128" height="120"/>
+        <element name="Attendance" positionX="-29" positionY="-0" width="128" height="105"/>
     </elements>
 </model>
