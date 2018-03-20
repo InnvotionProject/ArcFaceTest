@@ -31,6 +31,8 @@
 		007B0DD2201C89FD00E53324 /* libarcsoft_fsdk_face_tracking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DCB201C89FC00E53324 /* libarcsoft_fsdk_face_tracking.a */; };
 		007B0DE2201C8C3000E53324 /* FSDKFR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 007B0DE0201C8C3000E53324 /* FSDKFR.xcdatamodeld */; };
 		007B0DE5201C8CB600E53324 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DE4201C8CB600E53324 /* libstdc++.6.tbd */; };
+		009B75E9205ABD6400A81E7B /* Information.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B75E8205ABD6400A81E7B /* Information.swift */; };
+		009B75EC205ABD7400A81E7B /* InformationModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 009B75EA205ABD7400A81E7B /* InformationModel.xcdatamodeld */; };
 		280E454920580DB000D30C32 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 280E454820580DB000D30C32 /* Me.storyboard */; };
 		284B7055204EE32A006A8E60 /* MeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B7054204EE32A006A8E60 /* MeTableViewController.swift */; };
 		527401BC205BA6BA00695B8E /* CheckingIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527401BB205BA6BA00695B8E /* CheckingIn.storyboard */; };
@@ -115,6 +117,8 @@
 		007B0DDB201C8A9B00E53324 /* AFRCDVersion+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFRCDVersion+CoreDataProperties.h"; sourceTree = "<group>"; };
 		007B0DE1201C8C3000E53324 /* FSDKFR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FSDKFR.xcdatamodel; sourceTree = "<group>"; };
 		007B0DE4201C8CB600E53324 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+		009B75E8205ABD6400A81E7B /* Information.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Information.swift; sourceTree = "<group>"; };
+		009B75EB205ABD7400A81E7B /* InformationModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InformationModel.xcdatamodel; sourceTree = "<group>"; };
 		280E454820580DB000D30C32 /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
 		284B7054204EE32A006A8E60 /* MeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTableViewController.swift; sourceTree = "<group>"; };
 		527401BB205BA6BA00695B8E /* CheckingIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CheckingIn.storyboard; path = "../../../../Desktop/ArcFaceTest-master-4/ArcFaceTest/CheckingIn.storyboard"; sourceTree = "<group>"; };
@@ -200,6 +204,8 @@
 				735A1677203B385A00D8DD4B /* ProfileTableViewCell.swift */,
 				284B7054204EE32A006A8E60 /* MeTableViewController.swift */,
 				007B0D5C201C7A8700E53324 /* Info.plist */,
+				009B75E8205ABD6400A81E7B /* Information.swift */,
+				009B75EA205ABD7400A81E7B /* InformationModel.xcdatamodeld */,
 			);
 			path = ArcFaceTest;
 			sourceTree = "<group>";
@@ -535,6 +541,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				009B75EC205ABD7400A81E7B /* InformationModel.xcdatamodeld in Sources */,
 				007B0D9F201C88D900E53324 /* Utility.m in Sources */,
 				735A1678203B385A00D8DD4B /* ProfileTableViewCell.swift in Sources */,
 				007B0D9E201C88D900E53324 /* AFRCDManager.m in Sources */,
@@ -549,6 +556,7 @@
 				007B0DB0201C895900E53324 /* GLProgram.m in Sources */,
 				007B0D51201C7A8700E53324 /* AppDelegate.swift in Sources */,
 				735A1676203B375800D8DD4B /* MyStatisticsTableViewController.swift in Sources */,
+				009B75E9205ABD6400A81E7B /* Information.swift in Sources */,
 				007B0D9B201C88D900E53324 /* AFRManager.m in Sources */,
 				284B7055204EE32A006A8E60 /* MeTableViewController.swift in Sources */,
 			);
@@ -725,7 +733,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 72BRF3WV35;
+				DEVELOPMENT_TEAM = FH55SZ3XYA;
 				ENABLE_BITCODE = NO;
 				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
 				INFOPLIST_FILE = ArcFaceTest/Info.plist;
@@ -738,7 +746,7 @@
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_recognition/lib",
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_tracking/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFace;
+				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFaceTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ArcFaceTest/ArcFaceTest-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -751,7 +759,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 72BRF3WV35;
+				DEVELOPMENT_TEAM = FH55SZ3XYA;
 				ENABLE_BITCODE = NO;
 				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
 				INFOPLIST_FILE = ArcFaceTest/Info.plist;
@@ -764,7 +772,7 @@
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_recognition/lib",
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_tracking/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFace;
+				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFaceTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ArcFaceTest/ArcFaceTest-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -887,6 +895,16 @@
 			);
 			currentVersion = 007B0DE1201C8C3000E53324 /* FSDKFR.xcdatamodel */;
 			path = FSDKFR.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		009B75EA205ABD7400A81E7B /* InformationModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				009B75EB205ABD7400A81E7B /* InformationModel.xcdatamodel */,
+			);
+			currentVersion = 009B75EB205ABD7400A81E7B /* InformationModel.xcdatamodel */;
+			path = InformationModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

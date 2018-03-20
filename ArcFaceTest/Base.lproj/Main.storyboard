@@ -154,10 +154,10 @@
             </objects>
             <point key="canvasLocation" x="-1462" y="-33"/>
         </scene>
-        <!--UINavigationController-k1m-1a-Uta-->
+        <!--FaceRecognition-->
         <scene sceneID="nFf-xi-zqM">
             <objects>
-                <viewControllerPlaceholder storyboardName="FaceRecognition" referencedIdentifier="UINavigationController-k1m-1a-Uta" id="VSD-X4-jIr" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="FaceRecognition" referencedIdentifier="FaceRecognition" id="VSD-X4-jIr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="l5P-Zs-NYc"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4CZ-Mb-lEG" userLabel="First Responder" sceneMemberID="firstResponder"/>
