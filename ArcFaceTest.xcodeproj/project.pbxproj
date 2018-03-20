@@ -39,7 +39,6 @@
 		735A1676203B375800D8DD4B /* MyStatisticsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735A1675203B375800D8DD4B /* MyStatisticsTableViewController.swift */; };
 		735A1678203B385A00D8DD4B /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735A1677203B385A00D8DD4B /* ProfileTableViewCell.swift */; };
 		7382F42B20274C2700084440 /* FaceRecognition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7382F42A20274C2700084440 /* FaceRecognition.storyboard */; };
-		7382F42D20274C5800084440 /* CheckingIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7382F42C20274C5800084440 /* CheckingIn.storyboard */; };
 		7382F43220274C8100084440 /* MyStatistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7382F43020274C8100084440 /* MyStatistics.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -124,7 +123,6 @@
 		735A1675203B375800D8DD4B /* MyStatisticsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStatisticsTableViewController.swift; sourceTree = "<group>"; };
 		735A1677203B385A00D8DD4B /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		7382F42A20274C2700084440 /* FaceRecognition.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FaceRecognition.storyboard; sourceTree = "<group>"; };
-		7382F42C20274C5800084440 /* CheckingIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CheckingIn.storyboard; sourceTree = "<group>"; };
 		7382F43120274C8100084440 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ArcFaceTest/Base.lproj/MyStatistics.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,7 +187,6 @@
 				527401BB205BA6BA00695B8E /* CheckingIn.storyboard */,
 				007B0D54201C7A8700E53324 /* Main.storyboard */,
 				7382F43020274C8100084440 /* MyStatistics.storyboard */,
-				7382F42C20274C5800084440 /* CheckingIn.storyboard */,
 				280E454820580DB000D30C32 /* Me.storyboard */,
 				7382F42A20274C2700084440 /* FaceRecognition.storyboard */,
 				007B0D59201C7A8700E53324 /* LaunchScreen.storyboard */,
@@ -507,7 +504,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7382F42D20274C5800084440 /* CheckingIn.storyboard in Resources */,
 				7382F43220274C8100084440 /* MyStatistics.storyboard in Resources */,
 				007B0D5B201C7A8700E53324 /* LaunchScreen.storyboard in Resources */,
 				7382F42B20274C2700084440 /* FaceRecognition.storyboard in Resources */,
