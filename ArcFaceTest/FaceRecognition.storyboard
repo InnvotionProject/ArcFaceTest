@@ -215,7 +215,7 @@
         <!--人脸识别-->
         <scene sceneID="6VS-Zc-0gc">
             <objects>
-                <navigationController storyboardIdentifier="UINavigationController-k1m-1a-Uta" automaticallyAdjustsScrollViewInsets="NO" id="k1m-1a-Uta" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="FaceRecognition" automaticallyAdjustsScrollViewInsets="NO" id="k1m-1a-Uta" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="人脸识别" id="cB4-dA-f51"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IJH-Lp-ycB">
