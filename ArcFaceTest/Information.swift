@@ -22,7 +22,7 @@ class Information {
         return __context(name: Information.Attendance_model)
     }()
     
-    public func add(personID: Int32, id: String, password: String, remark: String, attendance: String?) -> Bool {
+    public func add(personID: Int32, id: String, password: String, remark: String, attendance: String) -> Bool {
         let info = AdditionalPerson(context: additionalPersonContext)
         info.personID = personID
         info.id = id
@@ -30,21 +30,20 @@ class Information {
         info.remark = remark
         
         // link
-        if let attendanceName = attendance {
-            do {
-                let attendances = try __searchAttendanceInfo(name: attendanceName)
-                if attendances.count != 1 {
-                    return false
-                } else {
-                    let atd = attendances[0]
-                    info.included = atd
-                    atd.addToInclude(info)
-                }
-            } catch {
+        do {
+            let attendances = try __searchAttendanceInfo(name: attendance)
+            if attendances.count != 1 {
                 return false
+            } else {
+                let atd = attendances[0]
+                info.included = atd
+                atd.addToInclude(info)
             }
+        } catch {
+            return false
         }
         
+        // save
         do {
             try additionalPersonSave()
         } catch {
