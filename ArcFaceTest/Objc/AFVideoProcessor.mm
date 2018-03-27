@@ -225,17 +225,17 @@
     return arrayFaceRect;
 }
 
-- (BOOL)registerDetectedPerson:(NSString *)personName
+- (NSUInteger)registerDetectedPerson:(NSString *)personName
 {
     AFRPerson *registerPerson = self.frPerson;
     if(registerPerson == nil || registerPerson.registered)
-        return NO;
+        return 0;
     
     registerPerson.name = personName;
     registerPerson.Id = [self.frManager getNewPersonID];
     registerPerson.registered = [self.frManager addPerson:registerPerson];
 
-    return registerPerson.registered;
+    return registerPerson.registered ? registerPerson.Id : 0;
 }
 
 - (LPASVLOFFSCREEN)copyOffscreenForProcess:(LPASVLOFFSCREEN)pOffscreenIn

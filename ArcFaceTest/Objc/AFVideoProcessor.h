@@ -28,6 +28,6 @@
 - (void)initProcessor;
 - (void)uninitProcessor;
 - (NSArray*)process:(LPASVLOFFSCREEN)offscreen;
-- (BOOL)registerDetectedPerson:(NSString*)personName;
+- (NSUInteger)registerDetectedPerson:(NSString*)personName;
 
 @end

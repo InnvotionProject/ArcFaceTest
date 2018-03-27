@@ -44,19 +44,32 @@ class CameraViewController: UIViewController {
 
     // button register clicked
     @IBAction func registerClickd(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Register", message: "", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "ok", style: .default) { action in
-            guard let text = alert.textFields?.first?.text else {
+        // attendance
+        let picker = AttendancePickerController()
+        self.present(picker, animated: true, completion: nil)
+        
+        guard let attendance = picker.selected else {
+            return
+        }
+        
+        // name remark
+        let ralert = UIAlertController(title: "Register", message: "", preferredStyle: .alert)
+        let rok = UIAlertAction(title: "ok", style: .default) { action in
+            guard let name = ralert.textFields?.first?.text,
+                let remark = ralert.textFields?[1].text else {
+                    return
+            }
+            
+            guard !name.isEmpty else {
                 return
             }
             
-            guard !text.isEmpty else {
+            let id = self.videoProcessor.registerDetectedPerson(name)
+            guard id != 0 else {
                 return
             }
             
-            guard self.videoProcessor.registerDetectedPerson(text) else {
-                return
-            }
+            self.addIntoCoreData(ID: id, name: name, remark: remark, attendance: attendance)
             
             let sAlert = UIAlertController(title: "Register Succeed", message: "", preferredStyle: .alert)
             
@@ -70,14 +83,17 @@ class CameraViewController: UIViewController {
         }
         let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
         
-        alert.addAction(ok)
-        alert.addAction(cancel)
+        ralert.addAction(rok)
+        ralert.addAction(cancel)
         
-        alert.addTextField { textField in
+        ralert.addTextField { textField in
             textField.placeholder = "name"
         }
+        ralert.addTextField { textField in
+            textField.placeholder = "remark"
+        }
         
-        self.present(alert, animated: true, completion: nil)
+        self.present(ralert, animated: true, completion: nil)
     }
     
     @IBAction func backFunc(_ sender: UIButton) {
@@ -307,5 +323,13 @@ extension CameraViewController {
         let width = frameGLView.width * CGFloat(faceRect.right - faceRect.left) / IMAGE_WIDTH
         let height = frameGLView.height * CGFloat(faceRect.bottom - faceRect.top) / IMAGE_HEIGHT
         return CGRect(x: x, y: y, width: width, height: height)
+    }
+    
+    fileprivate func addIntoCoreData(ID: UInt, name: String, remark: String, attendance: String) {
+        let info = Information.shared
+        guard info.add(personID: ID, id: name, password: "", remark: remark, attendance: attendance) else {
+            print("save error")
+            return
+        }
     }
 }

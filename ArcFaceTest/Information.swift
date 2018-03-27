@@ -22,9 +22,9 @@ class Information {
         return __context(name: Information.Attendance_model)
     }()
     
-    public func add(personID: Int32, id: String, password: String, remark: String, attendance: String) -> Bool {
+    public func add(personID: UInt, id: String, password: String, remark: String, attendance: String) -> Bool {
         let info = AdditionalPerson(context: additionalPersonContext)
-        info.personID = personID
+        info.personID = Int32(personID)
         info.id = id
         info.passward = password
         info.remark = remark
@@ -68,7 +68,7 @@ class Information {
         return true
     }
     
-    public func remove(personID: Int32) -> Bool {
+    public func remove(personID: UInt) -> Bool {
         do {
             try __searchAdditionalInfo(personID: personID).forEach({ additional in
                 additional.included?.removeFromInclude(additional)
@@ -124,10 +124,10 @@ class Information {
         }
     }
     
-    public func searchAdditionalInfo(personID: Int32) -> [(personID: Int32, id: String, password: String, remark: String, attendance: String)]? {
+    public func searchAdditionalInfo(personID: UInt) -> [(personID: UInt, id: String, password: String, remark: String, attendance: String)]? {
         do {
             return try __searchAdditionalInfo(personID: personID).map{
-                mo -> (personID : Int32, id : String, password : String, remark : String, attendance: String) in
+                mo -> (personID : UInt, id : String, password : String, remark : String, attendance: String) in
                 return (personID : personID, id : mo.id ?? "", password : mo.passward ?? "", remark : mo.remark ?? "", attendance: mo.included?.name ?? "")
             }
         } catch {
@@ -135,26 +135,26 @@ class Information {
         }
     }
     
-    public func searchAdditionalInfo(id: String) -> [(personID: Int32, id: String, password: String, remark: String, attendance: String)]? {
+    public func searchAdditionalInfo(id: String) -> [(personID: UInt, id: String, password: String, remark: String, attendance: String)]? {
         do {
             return try __searchAdditionalInfo(id: id).map {
-                mo -> (personID : Int32, id : String, password : String, remark : String, attendance: String) in
-                return (personID : mo.personID, id : id, password : mo.passward ?? "", remark : mo.remark ?? "", attendance: mo.included?.name ?? "")
+                mo -> (personID : UInt, id : String, password : String, remark : String, attendance: String) in
+                return (personID : UInt(mo.personID), id : id, password : mo.passward ?? "", remark : mo.remark ?? "", attendance: mo.included?.name ?? "")
             }
         } catch {
             return nil
         }
     }
     
-    public func searchAttendanceInfo(name: String, needPersonInfo: Bool) -> [(name: String, detail: String, startTime: Date, additionalPerson: [(personID: Int32, id: String, password: String, remark: String, attendance: String)])]? {
+    public func searchAttendanceInfo(name: String, needPersonInfo: Bool) -> [(name: String, detail: String, startTime: Date, additionalPerson: [(personID: UInt, id: String, password: String, remark: String, attendance: String)])]? {
         do {
             return try  __searchAttendanceInfo(name: name).map {
-                mo -> (name : String, detail : String, startTime : Date, additionalPerson: [(personID: Int32, id: String, password: String, remark: String, attendance: String)]) in
-                var additionalPerson = [(personID: Int32, id: String, password: String, remark: String, attendance: String)]()
+                mo -> (name : String, detail : String, startTime : Date, additionalPerson: [(personID: UInt, id: String, password: String, remark: String, attendance: String)]) in
+                var additionalPerson = [(personID: UInt, id: String, password: String, remark: String, attendance: String)]()
                 if needPersonInfo {
                     mo.include?.forEach{ p in
                         if let person = p as? AdditionalPerson {
-                            additionalPerson.append((personID: person.personID, id: person.id ?? "", password: person.passward ?? "", remark: person.remark ?? "", attendance: mo.name ?? ""))
+                            additionalPerson.append((personID: UInt(person.personID), id: person.id ?? "", password: person.passward ?? "", remark: person.remark ?? "", attendance: mo.name ?? ""))
                         }
                     }
                 }
@@ -165,15 +165,15 @@ class Information {
         }
     }
     
-    public func searchAttendanceInfo(startTime: Date, needPersonInfo: Bool) -> [(name: String, detail: String, startTime: Date, additionalPerson: [(personID: Int32, id: String, password: String, remark: String, attendance: String)])]? {
+    public func searchAttendanceInfo(startTime: Date, needPersonInfo: Bool) -> [(name: String, detail: String, startTime: Date, additionalPerson: [(personID: UInt, id: String, password: String, remark: String, attendance: String)])]? {
         do {
             return try __searchAttendanceInfo(startTime: startTime).map {
-                mo -> (name : String, detail : String, startTime : Date, additionalPerson: [(personID: Int32, id: String, password: String, remark: String, attendance: String)]) in
-                var additionalPerson = [(personID: Int32, id: String, password: String, remark: String, attendance: String)]()
+                mo -> (name : String, detail : String, startTime : Date, additionalPerson: [(personID: UInt, id: String, password: String, remark: String, attendance: String)]) in
+                var additionalPerson = [(personID: UInt, id: String, password: String, remark: String, attendance: String)]()
                 if needPersonInfo {
                     mo.include?.forEach{ p in
                         if let person = p as? AdditionalPerson {
-                            additionalPerson.append((personID: person.personID, id: person.id ?? "", password: person.passward ?? "", remark: person.remark ?? "", attendance: mo.name ?? ""))
+                            additionalPerson.append((personID: UInt(person.personID), id: person.id ?? "", password: person.passward ?? "", remark: person.remark ?? "", attendance: mo.name ?? ""))
                         }
                     }
                 }
@@ -229,7 +229,7 @@ extension Information {
         return container.viewContext
     }
 
-    fileprivate func __searchAdditionalInfo(personID: Int32) throws -> [AdditionalPerson] {
+    fileprivate func __searchAdditionalInfo(personID: UInt) throws -> [AdditionalPerson] {
         let fetchRequest: NSFetchRequest<AdditionalPerson> = AdditionalPerson.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "personID=\(personID)")
         
