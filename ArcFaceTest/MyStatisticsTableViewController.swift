@@ -102,6 +102,10 @@ class MyStatisticsTableViewController: UITableViewController {
                 利用data，将model传入目标viewcontroller内
                 */
             }
+        } else if segue.identifier == "register_statistics" {
+            if let camera = segue.destination as? CameraViewController {
+                camera.setPurpose(purpose: .register)
+            }
         }
     }
     

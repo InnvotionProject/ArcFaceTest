@@ -24,7 +24,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="开始识别"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" id="aef-ZT-G1C"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="recognition_faceRecognition" id="aef-ZT-G1C"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -40,12 +40,12 @@
         <!--Camera View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CameraViewController" customModule="ArcFaceTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cameraViewController" id="BYZ-38-t0r" customClass="CameraViewController" customModule="ArcFaceTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8K-Wv-RL6" userLabel="Gl View" customClass="GLView">
+                            <view contentMode="scaleToFill" restorationIdentifier="cameraViewController" translatesAutoresizingMaskIntoConstraints="NO" id="H8K-Wv-RL6" userLabel="Gl View" customClass="GLView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xk2-3f-wnt">
@@ -136,10 +136,20 @@
                                             <constraint firstItem="srh-HT-cG2" firstAttribute="width" secondItem="jBf-UY-ffF" secondAttribute="width" id="ypQ-vQ-j3G"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PSL-kt-yol">
+                                        <rect key="frame" x="293" y="40" width="67" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Register"/>
+                                        <connections>
+                                            <action selector="registerClickd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hKU-yU-BSj"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="xk2-3f-wnt" firstAttribute="top" secondItem="H8K-Wv-RL6" secondAttribute="top" constant="40" id="0Ao-wV-yLt"/>
+                                    <constraint firstAttribute="trailing" secondItem="PSL-kt-yol" secondAttribute="trailing" constant="15" id="Dqz-fo-sWp"/>
+                                    <constraint firstItem="PSL-kt-yol" firstAttribute="top" secondItem="H8K-Wv-RL6" secondAttribute="top" constant="40" id="ECF-DT-ce8"/>
                                     <constraint firstAttribute="bottom" secondItem="jBf-UY-ffF" secondAttribute="bottom" id="EHH-GZ-ecG"/>
                                     <constraint firstItem="xk2-3f-wnt" firstAttribute="leading" secondItem="H8K-Wv-RL6" secondAttribute="leading" constant="15" id="HDt-UH-3vz"/>
                                     <constraint firstItem="jBf-UY-ffF" firstAttribute="leading" secondItem="H8K-Wv-RL6" secondAttribute="leading" id="YjV-eU-vHw"/>
@@ -161,7 +171,9 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="glView" destination="H8K-Wv-RL6" id="fPI-05-Ikv"/>
+                        <outlet property="infoStackView" destination="jBf-UY-ffF" id="J01-YI-vcu"/>
                         <outlet property="name" destination="hT2-oh-zp7" id="CSu-2i-YfR"/>
+                        <outlet property="registerButton" destination="PSL-kt-yol" id="ESz-gs-Vg7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

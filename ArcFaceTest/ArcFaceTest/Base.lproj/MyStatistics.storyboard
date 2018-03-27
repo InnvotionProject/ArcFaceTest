@@ -10,6 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--cameraViewController-->
+        <scene sceneID="mpr-uU-z2M">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FaceRecognition" referencedIdentifier="cameraViewController" id="0dZ-zQ-Ifw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3B1-oQ-mMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="438" y="574"/>
+        </scene>
         <!--我的数据-->
         <scene sceneID="GXu-VQ-ppr">
             <objects>
@@ -76,7 +84,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="我的数据" id="bdf-Dh-0rK">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="i7x-dl-ML7"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="i7x-dl-ML7">
+                            <connections>
+                                <segue destination="0dZ-zQ-Ifw" kind="presentation" identifier="register_statistics" id="LYv-1y-WG0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HTw-2l-Vph" userLabel="First Responder" sceneMemberID="firstResponder"/>

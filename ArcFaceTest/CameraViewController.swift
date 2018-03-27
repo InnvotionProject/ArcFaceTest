@@ -14,6 +14,8 @@ let IMAGE_HEIGHT : CGFloat = 1280
 class CameraViewController: UIViewController {
     @IBOutlet weak var glView: GLView!
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var infoStackView: UIView!
     
     var cameraController = AFCameraController()
     var videoProcessor = AFVideoProcessor()
@@ -25,6 +27,7 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.UIsetup()
         self.setup()
     }
 
@@ -32,13 +35,14 @@ class CameraViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    private var purpose = Purpose.none
+    
+    func setPurpose(purpose: Purpose) {
+        self.purpose = purpose
+    }
 
     // button register clicked
-    /*
-        注册的事件都在这下面
-        主要是调用videoProcessor.registerDetectedPerson(text) -> bool
-     */
-    /*
     @IBAction func registerClickd(_ sender: UIButton) {
         let alert = UIAlertController(title: "Register", message: "", preferredStyle: .alert)
         let ok = UIAlertAction(title: "ok", style: .default) { action in
@@ -75,7 +79,14 @@ class CameraViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
-     */
+}
+
+extension CameraViewController {
+    enum Purpose {
+        case register
+        case recognition
+        case none
+    }
 }
 
 extension CameraViewController: AFCameraControllerDelegate, AFVideoProcessorDelegate {
@@ -159,6 +170,15 @@ extension CameraViewController: AFCameraControllerDelegate, AFVideoProcessorDele
 
 // private methods
 extension CameraViewController {
+    fileprivate func UIsetup() {
+        switch self.purpose {
+        case .register:
+            self.infoStackView.isHidden = true
+        case .recognition, .none:
+            self.registerButton.isHidden = true
+        }
+    }
+    
     fileprivate func setup() {
         let orientation = UIApplication.shared.statusBarOrientation
         guard let vorientation = AVCaptureVideoOrientation(rawValue: orientation.rawValue) else {
