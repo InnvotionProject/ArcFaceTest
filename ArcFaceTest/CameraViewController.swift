@@ -8,9 +8,6 @@
 
 import UIKit
 
-let IMAGE_WIDTH : CGFloat = 720
-let IMAGE_HEIGHT : CGFloat = 1280
-
 class CameraViewController: UIViewController {
     @IBOutlet weak var glView: GLView!
     @IBOutlet weak var name: UILabel!
@@ -44,56 +41,10 @@ class CameraViewController: UIViewController {
 
     // button register clicked
     @IBAction func registerClickd(_ sender: UIButton) {
-        // attendance
         let picker = AttendancePickerController()
+        picker.callback = alertInput
+        
         self.present(picker, animated: true, completion: nil)
-        
-        guard let attendance = picker.selected else {
-            return
-        }
-        
-        // name remark
-        let ralert = UIAlertController(title: "Register", message: "", preferredStyle: .alert)
-        let rok = UIAlertAction(title: "ok", style: .default) { action in
-            guard let name = ralert.textFields?.first?.text,
-                let remark = ralert.textFields?[1].text else {
-                    return
-            }
-            
-            guard !name.isEmpty else {
-                return
-            }
-            
-            let id = self.videoProcessor.registerDetectedPerson(name)
-            guard id != 0 else {
-                return
-            }
-            
-            self.addIntoCoreData(ID: id, name: name, remark: remark, attendance: attendance)
-            
-            let sAlert = UIAlertController(title: "Register Succeed", message: "", preferredStyle: .alert)
-            
-            self.present(sAlert, animated: true) {
-                let timer = Timer(timeInterval: 20, repeats: false) { _ in
-                    sAlert.dismiss(animated: true, completion: nil)
-                }
-                
-                timer.fire()
-            }
-        }
-        let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
-        
-        ralert.addAction(rok)
-        ralert.addAction(cancel)
-        
-        ralert.addTextField { textField in
-            textField.placeholder = "name"
-        }
-        ralert.addTextField { textField in
-            textField.placeholder = "remark"
-        }
-        
-        self.present(ralert, animated: true, completion: nil)
     }
     
     @IBAction func backFunc(_ sender: UIButton) {
@@ -110,6 +61,9 @@ extension CameraViewController {
 }
 
 extension CameraViewController: AFCameraControllerDelegate, AFVideoProcessorDelegate {
+    static let IMAGE_WIDTH : CGFloat = 720
+    static let IMAGE_HEIGHT : CGFloat = 1280
+    
     func processRecognized(_ personName: String!) {
         OperationQueue.main.addOperation {
             self.name.text = personName
@@ -205,8 +159,8 @@ extension CameraViewController {
             return
         }
         
-        let MIN = min(IMAGE_WIDTH, IMAGE_HEIGHT)
-        let MAX = max(IMAGE_WIDTH, IMAGE_HEIGHT)
+        let MIN = min(CameraViewController.IMAGE_WIDTH, CameraViewController.IMAGE_HEIGHT)
+        let MAX = max(CameraViewController.IMAGE_WIDTH, CameraViewController.IMAGE_HEIGHT)
         
         let sizet = (orientation == .portrait || orientation == .portraitUpsideDown) ? CGSize(width: MIN, height: MAX) : CGSize(width: MAX, height: MIN)
         let sizeb = self.view.bounds.size
@@ -318,11 +272,56 @@ extension CameraViewController {
     
     fileprivate func dataFaceRect2ViewFaceRect(_ faceRect: MRECT) -> CGRect {
         let frameGLView = self.glView.frame
-        let x = frameGLView.width * CGFloat(faceRect.left) / IMAGE_WIDTH
-        let y = frameGLView.height * CGFloat(faceRect.top) / IMAGE_HEIGHT
-        let width = frameGLView.width * CGFloat(faceRect.right - faceRect.left) / IMAGE_WIDTH
-        let height = frameGLView.height * CGFloat(faceRect.bottom - faceRect.top) / IMAGE_HEIGHT
+        let x = frameGLView.width * CGFloat(faceRect.left) / CameraViewController.IMAGE_WIDTH
+        let y = frameGLView.height * CGFloat(faceRect.top) / CameraViewController.IMAGE_HEIGHT
+        let width = frameGLView.width * CGFloat(faceRect.right - faceRect.left) / CameraViewController.IMAGE_WIDTH
+        let height = frameGLView.height * CGFloat(faceRect.bottom - faceRect.top) / CameraViewController.IMAGE_HEIGHT
         return CGRect(x: x, y: y, width: width, height: height)
+    }
+    
+    fileprivate func alertInput(attendance: String) {
+        let ralert = UIAlertController(title: "Register", message: "", preferredStyle: .alert)
+        // name remark
+        let rok = UIAlertAction(title: "ok", style: .default) { action in
+            guard let name = ralert.textFields?.first?.text,
+                let remark = ralert.textFields?[1].text else {
+                    return
+            }
+            
+            guard !name.isEmpty else {
+                return
+            }
+            
+            let id = self.videoProcessor.registerDetectedPerson(name)
+            guard id != 0 else {
+                return
+            }
+            
+            self.addIntoCoreData(ID: id, name: name, remark: remark, attendance: attendance)
+            
+            let sAlert = UIAlertController(title: "Register Succeed", message: "", preferredStyle: .alert)
+            
+            self.present(sAlert, animated: true) {
+                let timer = Timer(timeInterval: 20, repeats: false) { _ in
+                    sAlert.dismiss(animated: true, completion: nil)
+                }
+                
+                timer.fire()
+            }
+        }
+        let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        
+        ralert.addAction(rok)
+        ralert.addAction(cancel)
+        
+        ralert.addTextField { textField in
+            textField.placeholder = "name"
+        }
+        ralert.addTextField { textField in
+            textField.placeholder = "remark"
+        }
+        
+        self.present(ralert, animated: true, completion: nil)
     }
     
     fileprivate func addIntoCoreData(ID: UInt, name: String, remark: String, attendance: String) {

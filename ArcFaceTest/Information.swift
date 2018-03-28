@@ -14,16 +14,10 @@ class Information {
     //目前通过shared访问该类唯一实例
     static let shared = Information()
     
-    private lazy var additionalPersonContext: NSManagedObjectContext = {
-        return __context(name: Information.AdditionalPerson_model)
-    }()
-    
-    private lazy var attendanceContext: NSManagedObjectContext = {
-        return __context(name: Information.Attendance_model)
-    }()
+    private lazy var context: NSManagedObjectContext = __context()
     
     public func add(personID: UInt, id: String, password: String, remark: String, attendance: String) -> Bool {
-        let info = AdditionalPerson(context: additionalPersonContext)
+        let info = AdditionalPerson(context: context)
         info.personID = Int32(personID)
         info.id = id
         info.passward = password
@@ -53,9 +47,13 @@ class Information {
         return true
     }
     
-    public func add(name: String, detail: String, startTime: Date) -> Bool {
-        let info = Attendance(context: attendanceContext)
-        info.name = name
+    public func add(attendance: String, detail: String, startTime: Date) -> Bool {
+        guard attendance.count != 0 else {
+            return false
+        }
+        
+        let info = Attendance(context: context)
+        info.name = attendance
         info.detail = detail
         info.startTime = startTime
         
@@ -72,7 +70,7 @@ class Information {
         do {
             try __searchAdditionalInfo(personID: personID).forEach({ additional in
                 additional.included?.removeFromInclude(additional)
-                additionalPersonContext.delete(additional)
+                context.delete(additional)
             })
             try additionalPersonSave()
             return true
@@ -85,7 +83,7 @@ class Information {
         do {
             try __searchAdditionalInfo(id: id).forEach({ additional in
                 additional.included?.removeFromInclude(additional)
-                additionalPersonContext.delete(additional)
+                context.delete(additional)
             })
             try additionalPersonSave()
             return true
@@ -100,7 +98,7 @@ class Information {
                 attendance.include?.forEach { p in
                     (p as? AdditionalPerson)?.included = nil
                 }
-                attendanceContext.delete(attendance)
+                context.delete(attendance)
             })
             try attendanceSave()
             return true
@@ -115,7 +113,7 @@ class Information {
                 attendance.include?.forEach { p in
                     (p as? AdditionalPerson)?.included = nil
                 }
-                attendanceContext.delete(attendance)
+                context.delete(attendance)
             })
             try attendanceSave()
             return true
@@ -124,10 +122,10 @@ class Information {
         }
     }
     
-    public func searchAdditionalInfo(personID: UInt) -> [(personID: UInt, id: String, password: String, remark: String, attendance: String)]? {
+    public func searchAdditionalInfo(personID: UInt) -> [AdditionalInfo]? {
         do {
             return try __searchAdditionalInfo(personID: personID).map{
-                mo -> (personID : UInt, id : String, password : String, remark : String, attendance: String) in
+                mo -> AdditionalInfo in
                 return (personID : personID, id : mo.id ?? "", password : mo.passward ?? "", remark : mo.remark ?? "", attendance: mo.included?.name ?? "")
             }
         } catch {
@@ -135,10 +133,10 @@ class Information {
         }
     }
     
-    public func searchAdditionalInfo(id: String) -> [(personID: UInt, id: String, password: String, remark: String, attendance: String)]? {
+    public func searchAdditionalInfo(id: String) -> [AdditionalInfo]? {
         do {
             return try __searchAdditionalInfo(id: id).map {
-                mo -> (personID : UInt, id : String, password : String, remark : String, attendance: String) in
+                mo -> AdditionalInfo in
                 return (personID : UInt(mo.personID), id : id, password : mo.passward ?? "", remark : mo.remark ?? "", attendance: mo.included?.name ?? "")
             }
         } catch {
@@ -146,11 +144,11 @@ class Information {
         }
     }
     
-    public func searchAttendanceInfo(name: String, needPersonInfo: Bool) -> [(name: String, detail: String, startTime: Date, additionalPerson: [(personID: UInt, id: String, password: String, remark: String, attendance: String)])]? {
+    public func searchAttendanceInfo(name: String, needPersonInfo: Bool) -> [AttendanceInfo]? {
         do {
             return try  __searchAttendanceInfo(name: name).map {
-                mo -> (name : String, detail : String, startTime : Date, additionalPerson: [(personID: UInt, id: String, password: String, remark: String, attendance: String)]) in
-                var additionalPerson = [(personID: UInt, id: String, password: String, remark: String, attendance: String)]()
+                mo -> AttendanceInfo in
+                var additionalPerson = [AdditionalInfo]()
                 if needPersonInfo {
                     mo.include?.forEach{ p in
                         if let person = p as? AdditionalPerson {
@@ -165,11 +163,11 @@ class Information {
         }
     }
     
-    public func searchAttendanceInfo(startTime: Date, needPersonInfo: Bool) -> [(name: String, detail: String, startTime: Date, additionalPerson: [(personID: UInt, id: String, password: String, remark: String, attendance: String)])]? {
+    public func searchAttendanceInfo(startTime: Date, needPersonInfo: Bool) -> [AttendanceInfo]? {
         do {
             return try __searchAttendanceInfo(startTime: startTime).map {
-                mo -> (name : String, detail : String, startTime : Date, additionalPerson: [(personID: UInt, id: String, password: String, remark: String, attendance: String)]) in
-                var additionalPerson = [(personID: UInt, id: String, password: String, remark: String, attendance: String)]()
+                mo -> AttendanceInfo in
+                var additionalPerson = [AdditionalInfo]()
                 if needPersonInfo {
                     mo.include?.forEach{ p in
                         if let person = p as? AdditionalPerson {
@@ -183,10 +181,31 @@ class Information {
             return nil
         }
     }
+    
+    public func searchAttendanceNames() -> [String]? {
+        do {
+            return try __searchAttendanceInfo().map{ mo -> String in
+                return mo.name ?? ""
+            }
+        } catch {
+            return nil
+        }
+    }
+    
+    public func searchAdditionalNames(attendance: String) -> [String]? {
+        if let infos = searchAttendanceInfo(name: attendance, needPersonInfo: true) {
+            return infos.first?.additionalPerson.map{ info -> String in
+                return info.id
+            }
+        } else {
+            return nil
+        }
+    }
 }
 
 extension Information {
     private static let timeZone = 8  // 东八区 China
+    private static let model = "InformationModel"
     private static let AdditionalPerson_model = "AdditionalPerson"
     private static let Attendance_model = "Attendance"
 }
@@ -196,6 +215,9 @@ extension Information {
         case saveError(info: String)
         case loadError(info: String)
     }
+    
+    typealias AdditionalInfo = (personID: UInt, id: String, password: String, remark: String, attendance: String)
+    typealias AttendanceInfo = (name: String, detail: String, startTime: Date, additionalPerson: [(personID: UInt, id: String, password: String, remark: String, attendance: String)])
 }
 
 extension Information {
@@ -205,7 +227,7 @@ extension Information {
     
     fileprivate func additionalPersonSave() throws {
         do {
-            try additionalPersonContext.save()
+            try context.save()
         } catch {
             throw InformationError.saveError(info: "save additional person")
         }
@@ -213,14 +235,14 @@ extension Information {
     
     fileprivate func attendanceSave() throws {
         do {
-            try attendanceContext.save()
+            try context.save()
         } catch {
             throw InformationError.saveError(info: "save attendance person")
         }
     }
     
-    fileprivate func __context(name : String) -> NSManagedObjectContext {
-        let container = NSPersistentContainer(name: name)
+    fileprivate func __context() -> NSManagedObjectContext {
+        let container = NSPersistentContainer(name: Information.model)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if error != nil {
                 fatalError("use name(\(String(describing: error))) to load context ")
@@ -233,7 +255,7 @@ extension Information {
         let fetchRequest: NSFetchRequest<AdditionalPerson> = AdditionalPerson.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "personID=\(personID)")
         
-        guard let result = try? additionalPersonContext.fetch(fetchRequest) else {
+        guard let result = try? context.fetch(fetchRequest) else {
             throw InformationError.loadError(info: "use personID(\(personID)) to load additionalPerson NSManagedObject")
         }
         
@@ -242,20 +264,34 @@ extension Information {
     
     fileprivate func __searchAdditionalInfo(id: String) throws -> [AdditionalPerson] {
         let fetchRequest: NSFetchRequest<AdditionalPerson> = AdditionalPerson.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id=\(id)")
+        fetchRequest.predicate = NSPredicate(format: "id=\"\(id)\"")
         
-        guard let result = try? additionalPersonContext.fetch(fetchRequest) else {
+        guard let result = try? context.fetch(fetchRequest) else {
             throw InformationError.loadError(info: "use id(\(id)) to load additionalPerson NSManagedObject")
         }
         
         return result
     }
     
-    fileprivate func __searchAttendanceInfo(name: String) throws -> [Attendance] {
+    fileprivate func __searchAttendanceInfo() throws -> [Attendance] {
         let fetchRequest: NSFetchRequest<Attendance> = Attendance.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "name=\(name)")
         
-        guard let result = try? attendanceContext.fetch(fetchRequest) else {
+        guard let result = try? context.fetch(fetchRequest) else {
+            throw InformationError.loadError(info: "load all Attendance NSManagedObjects")
+        }
+        
+        return result
+    }
+    
+    fileprivate func __searchAttendanceInfo(name: String) throws -> [Attendance] {
+        guard name.count != 0 else {
+            throw InformationError.loadError(info: "name is empty")
+        }
+        
+        let fetchRequest: NSFetchRequest<Attendance> = Attendance.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name=\"\(name)\"")
+        
+        guard let result = try? context.fetch(fetchRequest) else {
             throw InformationError.loadError(info: "use name(\(name)) to load Attendance NSManagedObject")
         }
         
@@ -266,7 +302,7 @@ extension Information {
         let fetchRequest: NSFetchRequest<Attendance> = Attendance.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "startTime=\(startTime)")
         
-        guard let result = try? attendanceContext.fetch(fetchRequest) else {
+        guard let result = try? context.fetch(fetchRequest) else {
             throw InformationError.loadError(info: "use startTime(\(startTime)) to load Attendance NSManagedObject")
         }
         
