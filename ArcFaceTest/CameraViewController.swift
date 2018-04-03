@@ -335,7 +335,7 @@ extension CameraViewController {
     
     fileprivate func addIntoCoreData(personID: UInt, id: String, name: String, remark: String) {
         let info = InformationProvider.shared
-        guard info.add(personID: personID, id: id, name: name, password: "", remark: remark, attendance: nil, group: nil) else {
+        guard info.add(personID: personID, id: id, name: name, password: "", remark: remark, attendance: nil, group: nil, image: nil) else {
             print("save error")
             return
         }

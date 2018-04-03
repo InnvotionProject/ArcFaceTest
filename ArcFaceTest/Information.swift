@@ -31,10 +31,11 @@ protocol Information {
         - remark:    额外说明
         - attendance:参加的考勤（可空）
         - group:     所在的group（可空）
+        - image:     头像、照片（可空，为默认头像）
      - returns:
         返回是否成功 Bool
      */
-    func add(personID: UInt, id: String, name: String, password: String, remark: String, attendance: String?, group: String?) -> Bool
+    func add(personID: UInt, id: String, name: String, password: String, remark: String, attendance: String?, group: String?, image: UIImage?) -> Bool
     
     /**
      添加一个attendance
@@ -124,6 +125,15 @@ protocol Information {
      */
     func attendanceInfo(group: String) -> [AttendanceInfo]?
     
+    /**
+     获取用户头像
+     
+     - parameter personID: 用户的名字
+     - returns:
+        图片
+     */
+    func personImage(personID: UInt) -> UIImage?
+    
     /*
      
      修改相关
@@ -137,10 +147,11 @@ protocol Information {
         - personID:     person全局唯一标识符
         - attendance:   添加进一个新的考勤
         - group:        添加进一个新的班级
+        - image:        修改头像（照片）
      - returns:
         是否成功修改 Bool
      */
-    func update(personID: UInt, attendance: String?, group: String?) -> Bool
+    func update(personID: UInt, attendance: String?, group: String?, image: UIImage?) -> Bool
 }
 
 extension Information {

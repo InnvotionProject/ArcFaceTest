@@ -16,13 +16,20 @@ class InformationProvider: Information {
     
     private lazy var context: NSManagedObjectContext = __context()
     
-    public func add(personID: UInt, id: String, name: String, password: String, remark: String, attendance: String?, group: String?) -> Bool {
+    public func add(personID: UInt, id: String, name: String, password: String, remark: String, attendance: String?, group: String?, image: UIImage?) -> Bool {
         let info = AdditionalPerson(context: context)
         info.personID = Int32(personID)
         info.id = id
         info.name = name
         info.passward = password
         info.remark = remark
+        
+        // 头像存储
+        if let img = image {
+            if let data = UIImageJPEGRepresentation(img, InformationProvider.ImageQuality) as NSData? {
+                data.write(toFile: __imagePath(personID: personID), atomically: true)
+            }
+        }
         
         // link and save
         do {
@@ -48,11 +55,10 @@ class InformationProvider: Information {
             }
             
             try save()
+            return true
         } catch {
             return false
         }
-        
-        return true
     }
     
     public func add(attendance: String, detail: String, startTime: Date, group: String) -> Bool {
@@ -194,7 +200,11 @@ class InformationProvider: Information {
         }
     }
     
-    func update(personID: UInt, attendance: String?, group: String?) -> Bool {
+    func personImage(personID: UInt) -> UIImage? {
+        return UIImage(contentsOfFile: __imagePath(personID: personID))
+    }
+    
+    func update(personID: UInt, attendance: String?, group: String?, image: UIImage?) -> Bool {
         do {
             let additionals = try __searchAdditionalInfo(personID: personID)
             guard additionals.count == 1 else {
@@ -202,6 +212,7 @@ class InformationProvider: Information {
             }
             let additional = additionals[0]
             
+            // 添加attendance
             if let atd = attendance {
                 let attendances = try __searchAttendanceInfo(name: atd)
                 guard attendances.count == 1 else {
@@ -211,6 +222,7 @@ class InformationProvider: Information {
                 additional.addToInAttendance(atd0)
                 atd0.addToForPerson(additional)
             }
+            // 添加group
             if let gp = group {
                 let groups = try __searchGroupInfo(name: gp)
                 guard groups.count == 1 else {
@@ -220,6 +232,8 @@ class InformationProvider: Information {
                 additional.addToInGrounp(gp0)
                 gp0.addToPersons(additional)
             }
+            // 修改头像
+            
             
             try save()
             return true
@@ -314,8 +328,11 @@ class InformationProvider: Information {
 extension InformationProvider {
     private static let timeZone = 8  // 东八区 China
     private static let model = "InformationModel"
-    private static let AdditionalPerson_model = "AdditionalPerson"
-    private static let Attendance_model = "Attendance"
+    
+    private static let userDir = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
+    private static let userImageDir = userDir + "/images/"
+    
+    private static let ImageQuality: CGFloat = 1.0
 }
 
 extension InformationProvider {
@@ -439,5 +456,9 @@ extension InformationProvider {
         }
         
         return result
+    }
+    
+    fileprivate func __imagePath(personID: UInt) -> String {
+        return InformationProvider.userImageDir + "IMAGE_" + String(personID)
     }
 }
