@@ -202,13 +202,27 @@ class InformationProvider: Information {
         return UIImage(contentsOfFile: __imagePath(personID: personID))
     }
     
-    func update(personID: UInt, attendance: String?, group: String?, image: UIImage?) -> Bool {
+    func update(personID: UInt, id: String?, name: String?, password: String?, remark: String?, attendance: String?, group: String?, image: UIImage?) -> Bool {
         do {
             let additionals = try __searchAdditionalInfo(personID: personID)
             guard additionals.count == 1 else {
                 return false
             }
             let additional = additionals[0]
+            
+            // 修改id、name、password、remark
+            if let Id = id {
+                additional.id = Id
+            }
+            if let ne = name {
+                additional.name = ne
+            }
+            if let pw = password {
+                additional.passward = pw
+            }
+            if let rm = remark {
+                additional.remark = rm
+            }
             
             // 添加attendance
             if let atd = attendance {
@@ -220,6 +234,7 @@ class InformationProvider: Information {
                 additional.addToInAttendance(atd0)
                 atd0.addToForPerson(additional)
             }
+            
             // 添加group
             if let gp = group {
                 let groups = try __searchGroupInfo(name: gp)
@@ -230,6 +245,7 @@ class InformationProvider: Information {
                 additional.addToInGrounp(gp0)
                 gp0.addToPersons(additional)
             }
+            
             // 修改头像
             if let img = image {
                 let _ = __imageSave(personID: personID, image: img)

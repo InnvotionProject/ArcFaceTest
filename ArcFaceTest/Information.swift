@@ -151,7 +151,7 @@ protocol Information {
      - returns:
         是否成功修改 Bool
      */
-    func update(personID: UInt, attendance: String?, group: String?, image: UIImage?) -> Bool
+    func update(personID: UInt, id: String?, name: String?, password: String?, remark: String?, attendance: String?, group: String?, image: UIImage?) -> Bool
 }
 
 extension Information {
