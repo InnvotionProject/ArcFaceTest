@@ -12,7 +12,7 @@
 @class AFRPerson;
 @protocol AFVideoProcessorDelegate <NSObject>
 
-- (void)processRecognized:(NSString*)personName;
+- (void)processRecognized:(NSUInteger)Id personName:(NSString*)personName;
 
 @end
 

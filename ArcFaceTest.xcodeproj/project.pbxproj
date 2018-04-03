@@ -33,7 +33,7 @@
 		007B0DD2201C89FD00E53324 /* libarcsoft_fsdk_face_tracking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DCB201C89FC00E53324 /* libarcsoft_fsdk_face_tracking.a */; };
 		007B0DE2201C8C3000E53324 /* FSDKFR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 007B0DE0201C8C3000E53324 /* FSDKFR.xcdatamodeld */; };
 		007B0DE5201C8CB600E53324 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DE4201C8CB600E53324 /* libstdc++.6.tbd */; };
-		00D8AD47206A46B600633242 /* AttendancePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8AD46206A46B600633242 /* AttendancePickerController.swift */; };
+		00FACE6620738D3F0052BA27 /* InformationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FACE6520738D3F0052BA27 /* InformationProvider.swift */; };
 		284B7055204EE32A006A8E60 /* MeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B7054204EE32A006A8E60 /* MeTableViewController.swift */; };
 		52142241204F9A080052B5A8 /* CheckinginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52142240204F9A080052B5A8 /* CheckinginViewController.swift */; };
 		7318728B204E5EDC00BD59FE /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7318728A204E5EDC00BD59FE /* ProfileTableViewController.swift */; };
@@ -121,7 +121,7 @@
 		007B0DDB201C8A9B00E53324 /* AFRCDVersion+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFRCDVersion+CoreDataProperties.h"; sourceTree = "<group>"; };
 		007B0DE1201C8C3000E53324 /* FSDKFR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FSDKFR.xcdatamodel; sourceTree = "<group>"; };
 		007B0DE4201C8CB600E53324 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
-		00D8AD46206A46B600633242 /* AttendancePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendancePickerController.swift; sourceTree = "<group>"; };
+		00FACE6520738D3F0052BA27 /* InformationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationProvider.swift; sourceTree = "<group>"; };
 		284B7054204EE32A006A8E60 /* MeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTableViewController.swift; sourceTree = "<group>"; };
 		52142240204F9A080052B5A8 /* CheckinginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CheckinginViewController.swift; path = Objc/CheckinginViewController.swift; sourceTree = "<group>"; };
 		7318728A204E5EDC00BD59FE /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -209,8 +209,8 @@
 				735A1677203B385A00D8DD4B /* ProfileTableViewCell.swift */,
 				284B7054204EE32A006A8E60 /* MeTableViewController.swift */,
 				007B0D5C201C7A8700E53324 /* Info.plist */,
-				00D8AD46206A46B600633242 /* AttendancePickerController.swift */,
 				004543B920638D93006CBC8C /* Information.swift */,
+				00FACE6520738D3F0052BA27 /* InformationProvider.swift */,
 				004543BA20638D93006CBC8C /* InformationModel.xcdatamodeld */,
 			);
 			path = ArcFaceTest;
@@ -547,7 +547,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00D8AD47206A46B600633242 /* AttendancePickerController.swift in Sources */,
 				004543BC20638D93006CBC8C /* Information.swift in Sources */,
 				007B0D9F201C88D900E53324 /* Utility.m in Sources */,
 				735A1678203B385A00D8DD4B /* ProfileTableViewCell.swift in Sources */,
@@ -557,6 +556,7 @@
 				004543BD20638D93006CBC8C /* InformationModel.xcdatamodeld in Sources */,
 				007B0DE2201C8C3000E53324 /* FSDKFR.xcdatamodeld in Sources */,
 				7318728B204E5EDC00BD59FE /* ProfileTableViewController.swift in Sources */,
+				00FACE6620738D3F0052BA27 /* InformationProvider.swift in Sources */,
 				733774A42027091000FBD53E /* FaceRecognitionViewController.swift in Sources */,
 				007B0D53201C7A8700E53324 /* CameraViewController.swift in Sources */,
 				007B0D9A201C88D900E53324 /* AFRPerson.m in Sources */,

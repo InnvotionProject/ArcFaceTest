@@ -13,6 +13,7 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var infoStackView: UIView!
+    var ID: UInt = 0
     
     var cameraController = AFCameraController()
     var videoProcessor = AFVideoProcessor()
@@ -41,10 +42,13 @@ class CameraViewController: UIViewController {
 
     // button register clicked
     @IBAction func registerClickd(_ sender: UIButton) {
+        /*
         let picker = AttendancePickerController()
         picker.callback = alertInput
         
         self.present(picker, animated: true, completion: nil)
+         */
+        alertInput()
     }
     
     @IBAction func backFunc(_ sender: UIButton) {
@@ -64,8 +68,9 @@ extension CameraViewController: AFCameraControllerDelegate, AFVideoProcessorDele
     static let IMAGE_WIDTH : CGFloat = 720
     static let IMAGE_HEIGHT : CGFloat = 1280
     
-    func processRecognized(_ personName: String!) {
+    func processRecognized(_ Id: UInt, personName: String!) {
         OperationQueue.main.addOperation {
+            self.ID = Id
             self.name.text = personName
         }
     }
@@ -279,12 +284,13 @@ extension CameraViewController {
         return CGRect(x: x, y: y, width: width, height: height)
     }
     
-    fileprivate func alertInput(attendance: String) {
+    fileprivate func alertInput() {
         let ralert = UIAlertController(title: "Register", message: "", preferredStyle: .alert)
         // name remark
         let rok = UIAlertAction(title: "ok", style: .default) { action in
-            guard let name = ralert.textFields?.first?.text,
-                let remark = ralert.textFields?[1].text else {
+            guard let id = ralert.textFields?[0].text,
+                  let name = ralert.textFields?[1].text,
+                  let remark = ralert.textFields?[2].text else {
                     return
             }
             
@@ -292,12 +298,12 @@ extension CameraViewController {
                 return
             }
             
-            let id = self.videoProcessor.registerDetectedPerson(name)
-            guard id != 0 else {
+            let personID = self.videoProcessor.registerDetectedPerson(name)
+            guard personID != 0 else {
                 return
             }
             
-            self.addIntoCoreData(ID: id, name: name, remark: remark, attendance: attendance)
+            self.addIntoCoreData(personID: personID, id: id, name: name, remark: remark)
             
             let sAlert = UIAlertController(title: "Register Succeed", message: "", preferredStyle: .alert)
             
@@ -315,6 +321,9 @@ extension CameraViewController {
         ralert.addAction(cancel)
         
         ralert.addTextField { textField in
+            textField.placeholder = "id"
+        }
+        ralert.addTextField { textField in
             textField.placeholder = "name"
         }
         ralert.addTextField { textField in
@@ -324,9 +333,9 @@ extension CameraViewController {
         self.present(ralert, animated: true, completion: nil)
     }
     
-    fileprivate func addIntoCoreData(ID: UInt, name: String, remark: String, attendance: String) {
-        let info = Information.shared
-        guard info.add(personID: ID, id: name, password: "", remark: remark, attendance: attendance) else {
+    fileprivate func addIntoCoreData(personID: UInt, id: String, name: String, remark: String) {
+        let info = InformationProvider.shared
+        guard info.add(personID: personID, id: id, name: name, password: "", remark: remark, attendance: nil, group: nil) else {
             print("save error")
             return
         }

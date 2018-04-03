@@ -215,8 +215,8 @@
                 self.frPerson = nil;
             }
         
-            if(self.delegate && [self.delegate respondsToSelector:@selector(processRecognized:)])
-                [self.delegate processRecognized:self.frPerson.name];
+            if(self.delegate && [self.delegate respondsToSelector:@selector(processRecognized:personName:)])
+                [self.delegate processRecognized:self.frPerson.Id personName:self.frPerson.name];
 
             dispatch_semaphore_signal(_processSemaphore);
         });
