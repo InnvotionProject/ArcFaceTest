@@ -26,9 +26,7 @@ class InformationProvider: Information {
         
         // 头像存储
         if let img = image {
-            if let data = UIImageJPEGRepresentation(img, InformationProvider.ImageQuality) as NSData? {
-                data.write(toFile: __imagePath(personID: personID), atomically: true)
-            }
+            let _ = __imageSave(personID: personID, image: img)
         }
         
         // link and save
@@ -233,7 +231,9 @@ class InformationProvider: Information {
                 gp0.addToPersons(additional)
             }
             // 修改头像
-            
+            if let img = image {
+                let _ = __imageSave(personID: personID, image: img)
+            }
             
             try save()
             return true
@@ -460,5 +460,13 @@ extension InformationProvider {
     
     fileprivate func __imagePath(personID: UInt) -> String {
         return InformationProvider.userImageDir + "IMAGE_" + String(personID)
+    }
+    
+    fileprivate func __imageSave(personID: UInt, image: UIImage) -> Bool {
+        if let data = UIImageJPEGRepresentation(image, InformationProvider.ImageQuality) as NSData? {
+            return data.write(toFile: __imagePath(personID: personID), atomically: true)
+        } else {
+            return false
+        }
     }
 }
