@@ -19,7 +19,7 @@
 
 @property (nonatomic, weak)     id <AFCameraControllerDelegate>    delegate;
 
-- (BOOL) setupCaptureSession:(AVCaptureVideoOrientation)videoOrientation;
+- (BOOL) setupCaptureSession:(AVCaptureVideoOrientation)videoOrientation position:(AVCaptureDevicePosition)position;
 - (void) startCaptureSession;
 - (void) stopCaptureSession;
 

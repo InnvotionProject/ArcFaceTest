@@ -40,13 +40,13 @@
     return nil;
 }
 
-- (BOOL) setupCaptureSession:(AVCaptureVideoOrientation)videoOrientation
+- (BOOL) setupCaptureSession:(AVCaptureVideoOrientation)videoOrientation position:(AVCaptureDevicePosition)position
 {
     captureSession = [[AVCaptureSession alloc] init];
     
     [captureSession beginConfiguration];
     
-    AVCaptureDevice *videoDevice = [self videoDeviceWithPosition:AVCaptureDevicePositionFront];
+    AVCaptureDevice *videoDevice = [self videoDeviceWithPosition:position];
     
     AVCaptureDeviceInput *videoIn = [[AVCaptureDeviceInput alloc] initWithDevice:videoDevice error:nil];
     if ([captureSession canAddInput:videoIn])

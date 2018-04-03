@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -144,6 +144,12 @@
                                             <action selector="registerClickd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hKU-yU-BSj"/>
                                         </connections>
                                     </button>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ltb-VI-la9">
+                                        <rect key="frame" x="302" y="527.66666666666663" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="switchDevicePosition:" destination="BYZ-38-t0r" eventType="valueChanged" id="oPM-JV-SyM"/>
+                                        </connections>
+                                    </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -152,6 +158,8 @@
                                     <constraint firstItem="PSL-kt-yol" firstAttribute="top" secondItem="H8K-Wv-RL6" secondAttribute="top" constant="40" id="ECF-DT-ce8"/>
                                     <constraint firstAttribute="bottom" secondItem="jBf-UY-ffF" secondAttribute="bottom" id="EHH-GZ-ecG"/>
                                     <constraint firstItem="xk2-3f-wnt" firstAttribute="leading" secondItem="H8K-Wv-RL6" secondAttribute="leading" constant="15" id="HDt-UH-3vz"/>
+                                    <constraint firstItem="ltb-VI-la9" firstAttribute="centerX" secondItem="PSL-kt-yol" secondAttribute="centerX" id="In5-xM-EHU"/>
+                                    <constraint firstItem="ltb-VI-la9" firstAttribute="bottom" secondItem="jBf-UY-ffF" secondAttribute="top" constant="-10" id="Khn-Qr-PJL"/>
                                     <constraint firstItem="jBf-UY-ffF" firstAttribute="leading" secondItem="H8K-Wv-RL6" secondAttribute="leading" id="YjV-eU-vHw"/>
                                     <constraint firstItem="jBf-UY-ffF" firstAttribute="width" secondItem="H8K-Wv-RL6" secondAttribute="width" id="gSG-6N-lGL"/>
                                     <constraint firstItem="jBf-UY-ffF" firstAttribute="height" secondItem="H8K-Wv-RL6" secondAttribute="height" multiplier="0.3" id="yUR-m9-ADV"/>
@@ -170,6 +178,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="cameraSwitch" destination="ltb-VI-la9" id="SLH-7j-iMm"/>
                         <outlet property="glView" destination="H8K-Wv-RL6" id="fPI-05-Ikv"/>
                         <outlet property="infoStackView" destination="jBf-UY-ffF" id="J01-YI-vcu"/>
                         <outlet property="name" destination="hT2-oh-zp7" id="CSu-2i-YfR"/>

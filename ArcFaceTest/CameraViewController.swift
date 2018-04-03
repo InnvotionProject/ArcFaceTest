@@ -13,7 +13,10 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var infoStackView: UIView!
-    var ID: UInt = 0
+    @IBOutlet weak var cameraSwitch: UISwitch!
+    
+    private var ID: UInt = 0
+    private var devicePosition = AVCaptureDevice.Position.front
     
     var cameraController = AFCameraController()
     var videoProcessor = AFVideoProcessor()
@@ -42,13 +45,31 @@ class CameraViewController: UIViewController {
 
     // button register clicked
     @IBAction func registerClickd(_ sender: UIButton) {
-        /*
-        let picker = AttendancePickerController()
-        picker.callback = alertInput
+        guard sender === self.registerButton else {
+            return
+        }
         
-        self.present(picker, animated: true, completion: nil)
-         */
         alertInput()
+    }
+    
+    @IBAction func switchDevicePosition(_ sender: UISwitch) {
+        guard sender === self.cameraSwitch else {
+            return
+        }
+        
+        // 关闭控制权
+        self.cameraSwitch.isEnabled = false
+        
+        if self.cameraSwitch.isOn {
+            self.devicePosition = .back
+        } else {
+            self.devicePosition = .front
+        }
+        
+        self.setup()
+        
+        // 开启控制权
+        self.cameraSwitch.isEnabled = true
     }
     
     @IBAction func backFunc(_ sender: UIButton) {
@@ -156,6 +177,14 @@ extension CameraViewController {
         case .recognition, .none:
             self.registerButton.isHidden = true
         }
+        switch self.devicePosition {
+        case .front:
+            self.cameraSwitch.isOn = false
+        case .back:
+            self.cameraSwitch.isOn = true
+        case .unspecified:
+            break
+        }
     }
     
     fileprivate func setup() {
@@ -182,7 +211,7 @@ extension CameraViewController {
         
         // start camera
         self.cameraController.delegate = self
-        self.cameraController.setupCaptureSession(vorientation)
+        self.cameraController.setupCaptureSession(vorientation, position: self.devicePosition)
         self.cameraController.startCaptureSession()
         
         // video processor
