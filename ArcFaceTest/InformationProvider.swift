@@ -194,6 +194,39 @@ class InformationProvider: Information {
         }
     }
     
+    func update(personID: UInt, attendance: String?, group: String?) -> Bool {
+        do {
+            let additionals = try __searchAdditionalInfo(personID: personID)
+            guard additionals.count == 1 else {
+                return false
+            }
+            let additional = additionals[0]
+            
+            if let atd = attendance {
+                let attendances = try __searchAttendanceInfo(name: atd)
+                guard attendances.count == 1 else {
+                    return false
+                }
+                let atd0 = attendances[0]
+                additional.addToInAttendance(atd0)
+                atd0.addToForPerson(additional)
+            }
+            if let gp = group {
+                let groups = try __searchGroupInfo(name: gp)
+                guard groups.count == 1 else {
+                    return false
+                }
+                let gp0 = groups[0]
+                additional.addToInGrounp(gp0)
+                gp0.addToPersons(additional)
+            }
+        } catch {
+            return false
+        }
+        
+        return true
+    }
+    
     /*
     public func searchAdditionalInfo(personID: UInt) -> [AdditionalInfo]? {
         do {

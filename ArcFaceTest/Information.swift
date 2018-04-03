@@ -14,6 +14,12 @@ import CoreData
  如：let info = InformationProvider.shared
  */
 protocol Information {
+    /*
+     
+        添加相关
+     
+     */
+    
     /**
      添加一个person
      
@@ -54,6 +60,12 @@ protocol Information {
      */
     func add(group: String, detail: String) -> Bool
     
+    /*
+     
+        删除相关
+     
+     */
+    
     /**
      删除一个person信息
      
@@ -81,6 +93,12 @@ protocol Information {
      */
     func remove(group: String) -> Bool
     
+    /*
+     
+     获取相关
+     
+     */
+    
     /**
      获取所有person信息
      
@@ -105,6 +123,24 @@ protocol Information {
         所有attendance信息
      */
     func attendanceInfo(group: String) -> [AttendanceInfo]?
+    
+    /*
+     
+     修改相关
+     
+     */
+    
+    /**
+     更新一个person的某些值
+     
+     - parameters:
+        - personID:     person全局唯一标识符
+        - attendance:   添加进一个新的考勤
+        - group:        添加进一个新的班级
+     - returns:
+        是否成功修改 Bool
+     */
+    func update(personID: UInt, attendance: String?, group: String?) -> Bool
 }
 
 extension Information {
