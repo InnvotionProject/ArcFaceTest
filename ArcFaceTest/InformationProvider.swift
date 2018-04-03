@@ -220,11 +220,12 @@ class InformationProvider: Information {
                 additional.addToInGrounp(gp0)
                 gp0.addToPersons(additional)
             }
+            
+            try save()
+            return true
         } catch {
             return false
         }
-        
-        return true
     }
     
     /*
