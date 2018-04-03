@@ -35,7 +35,8 @@ class InformationProvider: Information {
                     info.addToInAttendance(atd0)
                     atd0.addToForPerson(info)
                 }
-            } else if let gp = group {
+            }
+            if let gp = group {
                 let groups = try __searchGroupInfo(name: gp)
                 if groups.count != 1 {
                     return false

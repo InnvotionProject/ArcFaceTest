@@ -8,6 +8,11 @@
 
 import CoreData
 
+/**
+ 使用该Information，请使用实现了该协议的provider，调用其shared。
+ 
+ 如：let info = InformationProvider.shared
+ */
 protocol Information {
     /**
      添加一个person
