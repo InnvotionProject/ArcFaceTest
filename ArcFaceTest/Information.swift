@@ -145,9 +145,13 @@ protocol Information {
      
      - parameters:
         - personID:     person全局唯一标识符
+        - id:           修改ID
+        - name:         修改名字
+        - password:     修改密码
+        - remark:       修改额外说明
         - attendance:   添加进一个新的考勤
         - group:        添加进一个新的班级
-        - image:        修改头像（照片）
+        - image:        修改头像、照片
      - returns:
         是否成功修改 Bool
      */
