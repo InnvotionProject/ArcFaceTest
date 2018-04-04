@@ -9,6 +9,8 @@
 import UIKit
 
 class ProfileTableViewCell: UITableViewCell {
+    
+    
 
     @IBOutlet weak var profileImageView: UIImageView! {
         didSet {
