@@ -245,11 +245,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="287" id="Di7-gT-ue6">
-                                        <rect key="frame" x="0.0" y="343" width="375" height="287"/>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="393" id="Di7-gT-ue6">
+                                        <rect key="frame" x="0.0" y="343" width="375" height="393"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Di7-gT-ue6" id="TD6-Kf-kID">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="286.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="392.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="0.40847067636986301" colorSpace="custom" customColorSpace="sRGB"/>
