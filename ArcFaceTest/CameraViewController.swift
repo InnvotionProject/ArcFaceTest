@@ -59,6 +59,7 @@ class CameraViewController: UIViewController {
         
         // 关闭控制权
         self.cameraSwitch.isEnabled = false
+        self.didSetUp = false
         
         if self.cameraSwitch.isOn {
             self.devicePosition = .back
@@ -86,8 +87,8 @@ extension CameraViewController {
 }
 
 extension CameraViewController: AFCameraControllerDelegate, AFVideoProcessorDelegate {
-    static let IMAGE_WIDTH : CGFloat = 720
-    static let IMAGE_HEIGHT : CGFloat = 1280
+    static let IMAGE_WIDTH: CGFloat = 720
+    static let IMAGE_HEIGHT: CGFloat = 1280
     
     func processRecognized(_ Id: UInt, personName: String!) {
         OperationQueue.main.addOperation {
@@ -315,7 +316,7 @@ extension CameraViewController {
     
     fileprivate func alertInput() {
         let ralert = UIAlertController(title: "Register", message: "", preferredStyle: .alert)
-        // name remark
+        // ID name remark
         let rok = UIAlertAction(title: "ok", style: .default) { action in
             guard let id = ralert.textFields?[0].text,
                   let name = ralert.textFields?[1].text,
@@ -332,7 +333,7 @@ extension CameraViewController {
                 return
             }
             
-            self.addIntoCoreData(personID: personID, id: id, name: name, remark: remark)
+            self.addIntoCoreData(personID: personID, id: id, name: name, remark: remark, image: nil)
             
             let sAlert = UIAlertController(title: "Register Succeed", message: "", preferredStyle: .alert)
             
@@ -362,9 +363,9 @@ extension CameraViewController {
         self.present(ralert, animated: true, completion: nil)
     }
     
-    fileprivate func addIntoCoreData(personID: UInt, id: String, name: String, remark: String) {
+    fileprivate func addIntoCoreData(personID: UInt, id: String, name: String, remark: String, image: UIImage?) {
         let info = InformationProvider.shared
-        guard info.add(personID: personID, id: id, name: name, password: "", remark: remark, attendance: nil, group: nil, image: nil) else {
+        guard info.add(personID: personID, id: id, name: name, password: "", remark: remark, attendance: nil, group: nil, image: image == nil ? #imageLiteral(resourceName: "InitialFace") : image ) else {
             print("save error")
             return
         }
