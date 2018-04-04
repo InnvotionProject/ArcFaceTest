@@ -1,14 +1,14 @@
 //
-//  MeTableViewController.swift
+//  DevelopInfoTableViewController.swift
 //  ArcFaceTest
 //
-//  Created by jimmy233 on 2018/3/6.
+//  Created by jimmy233 on 2018/4/3.
 //  Copyright © 2018年 王宇鑫. All rights reserved.
 //
 
 import UIKit
 
-class MeTableViewController: UITableViewController {
+class DevelopInfoTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class MeTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 7
+        return 5
     }
 
     /*
