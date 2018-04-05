@@ -198,6 +198,11 @@ class InformationProvider: Information {
         }
     }
     
+    func personInfo(personID: UInt) -> AdditionalInfo? {
+        /// TODO: 实现
+        return nil
+    }
+    
     func personImage(personID: UInt) -> UIImage? {
         return UIImage(contentsOfFile: __imagePath(personID: personID))
     }

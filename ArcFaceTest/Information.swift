@@ -134,6 +134,11 @@ protocol Information {
      */
     func personImage(personID: UInt) -> UIImage?
     
+    /**
+     根据personID(UInt)，获取person信息
+     */
+    func personInfo(personID: UInt) -> AdditionalInfo?
+    
     /*
      
      修改相关
