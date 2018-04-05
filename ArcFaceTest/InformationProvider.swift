@@ -198,6 +198,10 @@ class InformationProvider: Information {
         }
     }
     
+    func personImage(personID: UInt) -> UIImage? {
+        return UIImage(contentsOfFile: __imagePath(personID: personID))
+    }
+    
     func personInfo(personID: UInt) -> AdditionalInfo? {
         do {
             let persons = try __searchAdditionalInfo(personID: personID)
@@ -212,8 +216,13 @@ class InformationProvider: Information {
         }
     }
     
-    func personImage(personID: UInt) -> UIImage? {
-        return UIImage(contentsOfFile: __imagePath(personID: personID))
+    func managerUser() -> AdditionalInfo? {
+        if let infos = personInfos(),
+            let index = infos.index(where: { !$0.password.isEmpty }) {
+            return infos[index]
+        } else {
+            return nil
+        }
     }
     
     func update(personID: UInt, id: String?, name: String?, password: String?, remark: String?, attendance: String?, group: String?, image: UIImage?) -> Bool {

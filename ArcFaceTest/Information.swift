@@ -143,6 +143,14 @@ protocol Information {
      */
     func personInfo(personID: UInt) -> AdditionalInfo?
     
+    /**
+     返回权限用户信息
+     
+     - returns:
+        权限用户（唯一）
+     */
+    func managerUser() -> AdditionalInfo?
+    
     /*
      
      修改相关
@@ -150,7 +158,7 @@ protocol Information {
      */
     
     /**
-     更新一个person的某些值
+     更新一个person的某些值。（除了personID作为必要外，其他值为nil则表示不更新）
      
      - parameters:
         - personID:     person全局唯一标识符
