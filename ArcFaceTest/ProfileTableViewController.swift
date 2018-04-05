@@ -11,7 +11,8 @@ import UIKit
 class ProfileTableViewController: UITableViewController {
 
     //MARK: model
-      //TODO： 存放待显示数据
+    typealias ProfileInfo = (image: UIImage, name: String, gender: String, remark: String)
+    var profileInfo: ProfileInfo?
     //MARK: outlets
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -21,6 +22,13 @@ class ProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //set up views if showdetail
+        if let profileInfo = profileInfo {
+            profileImage.image = profileInfo.image
+            nameLabel.text = profileInfo.name
+            genderLabel.text = profileInfo.gender
+            remarkLabel.text = profileInfo.remark
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -30,10 +38,6 @@ class ProfileTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // TODO： 加载数据
-        profileImage.image = #imageLiteral(resourceName: "Portrait")
-        nameLabel.text = "李博文"
-        genderLabel.text = "男"
-        remarkLabel.text = ""
     }
 
     override func didReceiveMemoryWarning() {

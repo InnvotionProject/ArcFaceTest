@@ -7,13 +7,34 @@
 //
 
 import UIKit
+import CoreData
 
 class MyStatisticsTableViewController: UITableViewController {
     
-
+    //model
+    fileprivate lazy var fetchedRequestsController: NSFetchedResultsController<AdditionalPerson> = {
+        let fetchRequest: NSFetchRequest<AdditionalPerson> = AdditionalPerson.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        
+        let fetchRequestController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: AppDelegate.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchRequestController.delegate = self
+        return fetchRequestController
+    }()
+    
+    let info = InformationProvider.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        do {
+            try fetchedRequestsController.performFetch()
+        } catch {
+            let fetchError = error as NSError
+            print("Unable to perform fetch Request")
+            print("\(fetchError)", "\(fetchError.localizedDescription)")
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -35,18 +56,23 @@ class MyStatisticsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        guard let persons = fetchedRequestsController.fetchedObjects else {return 0}
+        print("MystatisticsViewController --> persons: \(persons)")
+        return persons.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PersonInfo", for: indexPath)
-
+        
+        let person = fetchedRequestsController.object(at: indexPath)
         // Configure the cell...
         if let profileCell = cell as? ProfileTableViewCell {
             //TODO： load data from database
-            profileCell.profileImageView.image = #imageLiteral(resourceName: "Portrait")
-            profileCell.nameLabel.text = "李博文"
+            let personID = person.personID
+            
+            profileCell.profileImageView.image = info.personImage(personID: UInt(personID)) ?? #imageLiteral(resourceName: "InitialFace") 
+            profileCell.nameLabel.text = person.name
         }
 
         return cell
@@ -97,11 +123,21 @@ class MyStatisticsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         super.prepare(for: segue, sender: sender)
         if segue.identifier == "showDetail" {
-            if let profileTMVC = segue.destination as? ProfileTableViewController {
-                /*
-                利用data，将model传入目标viewcontroller内
-                */
+            guard let profileTMVC = segue.destination as? ProfileTableViewController else{
+                fatalError("Unexpected destination")
             }
+            guard let selectedProfileCell = sender as? ProfileTableViewCell else{
+                fatalError("unexpected sender")
+            }
+            guard let indexPath = tableView.indexPath(for: selectedProfileCell) else{
+                fatalError("the selected cell is not being dislplayed by the table")
+            }
+            
+            let person = fetchedRequestsController.object(at: indexPath)
+            let personID = person.personID
+            //transport data to model
+            profileTMVC.profileInfo = (image: info.personImage(personID: UInt(personID)) ?? #imageLiteral(resourceName: "InitialFace"), name: person.name!, gender: "男", remark: person.remark ?? "")
+            
         } else if segue.identifier == "register_statistics" {
             if let camera = segue.destination as? CameraViewController {
                 camera.setPurpose(purpose: .register)
@@ -110,4 +146,8 @@ class MyStatisticsTableViewController: UITableViewController {
     }
     
 
+}
+
+extension MyStatisticsTableViewController: NSFetchedResultsControllerDelegate {
+    
 }
