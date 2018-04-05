@@ -163,7 +163,7 @@ class InformationProvider: Information {
     func personInfos() -> [AdditionalInfo]? {
         do {
             return try __searchAdditionalInfo().map { ad -> AdditionalInfo in
-                return (personID: UInt(ad.personID), id: ad.id ?? "", name: ad.name ?? "", remark: ad.remark ?? "")
+                return (personID: UInt(ad.personID), id: ad.id ?? "", name: ad.name ?? "", password: ad.passward ?? "", remark: ad.remark ?? "")
             }
         } catch {
             return nil
@@ -199,8 +199,17 @@ class InformationProvider: Information {
     }
     
     func personInfo(personID: UInt) -> AdditionalInfo? {
-        /// TODO: 实现
-        return nil
+        do {
+            let persons = try __searchAdditionalInfo(personID: personID)
+            guard persons.count == 1 else {
+                return nil
+            }
+            let person = persons[0]
+            
+            return (personID: UInt(person.personID), id: person.id ?? "", name: person.name ?? "", password: person.passward ?? "", remark: person.remark ?? "")
+        } catch {
+            return nil
+        }
     }
     
     func personImage(personID: UInt) -> UIImage? {

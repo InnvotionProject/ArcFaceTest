@@ -136,6 +136,10 @@ protocol Information {
     
     /**
      根据personID(UInt)，获取person信息
+     
+     - parameter personID: person全局唯一标识(UInt)
+     - returns:
+        person信息
      */
     func personInfo(personID: UInt) -> AdditionalInfo?
     
@@ -164,7 +168,7 @@ protocol Information {
 }
 
 extension Information {
-    typealias AdditionalInfo = (personID: UInt, id: String, name: String, remark: String)
+    typealias AdditionalInfo = (personID: UInt, id: String, name: String, password: String, remark: String)
     typealias AttendanceInfo = (name: String, detail: String, startTime: Date)
     typealias GroupInfo = (name: String, detail: String)
 }
