@@ -13,9 +13,9 @@
  */
 protocol Information {
     /*
-     
         添加相关
-     
+        添加相关
+        添加相关
      */
     
     /**
@@ -60,9 +60,9 @@ protocol Information {
     func add(group: String, detail: String) -> Bool
     
     /*
-     
         删除相关
-     
+        删除相关
+        删除相关
      */
     
     /**
@@ -93,9 +93,9 @@ protocol Information {
     func remove(group: String) -> Bool
     
     /*
-     
-     获取相关
-     
+        获取相关
+        获取相关
+        获取相关
      */
     
     /**
@@ -150,9 +150,9 @@ protocol Information {
     func managerUser() -> AdditionalInfo?
     
     /*
-     
-     修改相关
-     
+        修改相关
+        修改相关
+        修改相关
      */
     
     /**
