@@ -119,6 +119,10 @@ class InformationProvider: Information {
             }
             
             try save()
+            
+            // delete IMAGE
+            let _ = __imageDelete(personID: personID)
+            
             return true
         } catch {
             return false
@@ -396,11 +400,11 @@ extension InformationProvider {
     
     fileprivate func __context() -> NSManagedObjectContext {
         let container = NSPersistentContainer(name: InformationProvider.model)
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores { (storeDescription, error) in
             if error != nil {
                 fatalError("use name(\(String(describing: error))) to load context ")
             }
-        })
+        }
         return container.viewContext
     }
     
@@ -505,6 +509,15 @@ extension InformationProvider {
         if let data = UIImageJPEGRepresentation(image, InformationProvider.ImageQuality) as NSData? {
             return data.write(toFile: __imagePath(personID: personID), atomically: true)
         } else {
+            return false
+        }
+    }
+    
+    fileprivate func __imageDelete(personID: UInt) -> Bool {
+        do {
+            try FileManager.default.removeItem(atPath: __imagePath(personID: personID))
+            return true
+        } catch {
             return false
         }
     }

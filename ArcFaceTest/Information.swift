@@ -6,8 +6,6 @@
 //  Copyright © 2018年 王宇鑫. All rights reserved.
 //
 
-import CoreData
-
 /**
  使用该Information，请使用实现了该协议的provider，调用其shared。
  
@@ -68,7 +66,7 @@ protocol Information {
      */
     
     /**
-     删除一个person信息
+     删除一个person信息，会同时删除他的头像
      
      - parameter personID: person的全局唯一标识符
      - returns:
