@@ -7,12 +7,41 @@
 //
 
 import UIKit
+import CoreData
 
 class KeyTableViewController: UITableViewController {
 
+    @IBOutlet weak var Origin: UITextField!
+    @IBOutlet weak var New: UITextField!
+    @IBOutlet weak var Repeat: UITextField!
+    let info = InformationProvider.shared
+    
+    
+    
+    @IBAction func Confirm(_ sender: UIButton) {
+        let str_a = Origin.text
+        let str_b = New.text
+        let str_c = Repeat.text
+        let Me = info.managerUser()
+       let passwd = Me?.password
+       if(passwd == str_a)
+       {
+        if(!(str_b?.isEmpty)! && !(str_c?.isEmpty)!)
+        {
+            if(str_b == str_c)
+            {
+                if(info.update(personID: (Me?.personID)!, id: nil, name: nil, password: str_b, remark: nil, attendance: nil, group: nil, image: nil))
+                {
+                self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+       }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class ScanTableViewController: UITableViewController {
 
+    let info = InformationProvider.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,7 +29,10 @@ class ScanTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+    @IBOutlet weak var UserProfile: UIImageView!
+    
+    @IBAction func ScanforChange(_ sender: UIButton) {
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -91,5 +97,15 @@ class ScanTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+            if segue.identifier == "scan" {
+            if let camera = segue.destination as? CameraViewController {
+                camera.setPurpose(purpose: .photo)
+            }
+        }
+    }
 
 }
