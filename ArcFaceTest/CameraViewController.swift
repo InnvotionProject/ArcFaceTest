@@ -82,6 +82,7 @@ extension CameraViewController {
     enum Purpose {
         case register
         case recognition
+        case photo
         case none
     }
 }
@@ -175,6 +176,9 @@ extension CameraViewController {
         switch self.purpose {
         case .register:
             self.infoStackView.isHidden = true
+        case .photo:
+            // TODO: 实现
+            break
         case .recognition, .none:
             self.registerButton.isHidden = true
         }
