@@ -49,7 +49,14 @@ class CameraViewController: UIViewController {
             return
         }
         
-        alertInput()
+        switch purpose {
+        case .register:
+            registerInput()
+        case .photo:
+            photoInput()
+        default:
+            break
+        }
     }
     
     @IBAction func switchDevicePosition(_ sender: UISwitch) {
@@ -170,18 +177,35 @@ extension CameraViewController: AFCameraControllerDelegate, AFVideoProcessorDele
     }
 }
 
+extension CameraViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    fileprivate func photoInput() {
+        guard self.ID != 0 else {
+            return
+        }
+        
+        // TODO: 搞清楚需求
+    }
+}
+
 // private methods
 extension CameraViewController {
     fileprivate func UIsetup() {
+        
         switch self.purpose {
         case .register:
             self.infoStackView.isHidden = true
         case .photo:
-            // TODO: 实现
+            //self.infoStackView.isHidden = true
+            /*
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                self.glView
+            }
+            */
             break
         case .recognition, .none:
             self.registerButton.isHidden = true
         }
+        
         switch self.devicePosition {
         case .front:
             self.cameraSwitch.isOn = false
@@ -318,7 +342,7 @@ extension CameraViewController {
         return CGRect(x: x, y: y, width: width, height: height)
     }
     
-    fileprivate func alertInput() {
+    fileprivate func registerInput() {
         let ralert = UIAlertController(title: "Register", message: "", preferredStyle: .alert)
         // ID name remark
         let rok = UIAlertAction(title: "ok", style: .default) { action in

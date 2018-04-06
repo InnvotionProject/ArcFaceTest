@@ -188,6 +188,7 @@
 
                 NSArray* persons = self.frManager.allPersons;
                 NSString* recognizedName = nil;
+                NSUInteger recognizedId = 0;
                 float maxScore = 0.0;
                 for (AFRPerson* person in persons)
                 {
@@ -200,12 +201,14 @@
                     if (mr == MOK && fMimilScore >= maxScore) {
                         maxScore = fMimilScore;
                         recognizedName = person.name;
+                        recognizedId = person.Id;
                     }
                 }
                 
                 MFloat scoreThreshold = 0.56;
                 if (maxScore > scoreThreshold) {
                     currentPerson.name = recognizedName;
+                    currentPerson.Id = recognizedId;
                 }
                 
                 self.frPerson = currentPerson;
