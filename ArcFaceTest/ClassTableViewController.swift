@@ -10,7 +10,7 @@ import UIKit
 
 class ClassTableViewController: UITableViewController {
     
-    var Mid_name:String = ""
+    var Mid_name:String? = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,5 +95,22 @@ class ClassTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "classmember" {
+            
+            
+            if let purpose = segue.destination as? ClassMemberTableViewController{
+                if let re = Mid_name
+                {
+                    purpose.classname = re
+                }
+            }
+            
+        }
+ 
+    }
 
 }
