@@ -34,6 +34,7 @@
 		007B0DE2201C8C3000E53324 /* FSDKFR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 007B0DE0201C8C3000E53324 /* FSDKFR.xcdatamodeld */; };
 		007B0DE5201C8CB600E53324 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DE4201C8CB600E53324 /* libstdc++.6.tbd */; };
 		00FACE6620738D3F0052BA27 /* InformationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FACE6520738D3F0052BA27 /* InformationProvider.swift */; };
+		2814FAE02078B43200F2148E /* KeyLoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2814FADF2078B43200F2148E /* KeyLoginTableViewController.swift */; };
 		284181DF207411EA002C1634 /* DevelopInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284181DE207411EA002C1634 /* DevelopInfoTableViewController.swift */; };
 		284181E1207411F7002C1634 /* KeyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284181E0207411F6002C1634 /* KeyTableViewController.swift */; };
 		284181E320741206002C1634 /* ScanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284181E220741206002C1634 /* ScanTableViewController.swift */; };
@@ -133,6 +134,7 @@
 		007B0DE1201C8C3000E53324 /* FSDKFR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FSDKFR.xcdatamodel; sourceTree = "<group>"; };
 		007B0DE4201C8CB600E53324 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		00FACE6520738D3F0052BA27 /* InformationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationProvider.swift; sourceTree = "<group>"; };
+		2814FADF2078B43200F2148E /* KeyLoginTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyLoginTableViewController.swift; sourceTree = "<group>"; };
 		284181DE207411EA002C1634 /* DevelopInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevelopInfoTableViewController.swift; sourceTree = "<group>"; };
 		284181E0207411F6002C1634 /* KeyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyTableViewController.swift; sourceTree = "<group>"; };
 		284181E220741206002C1634 /* ScanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanTableViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				00FACE6520738D3F0052BA27 /* InformationProvider.swift */,
 				004543BA20638D93006CBC8C /* InformationModel.xcdatamodeld */,
 				28D114B320768279001088FC /* RegisTableViewController.swift */,
+				2814FADF2078B43200F2148E /* KeyLoginTableViewController.swift */,
 			);
 			path = ArcFaceTest;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				284181E52074120F002C1634 /* UserNameTableViewController.swift in Sources */,
 				007B0DE2201C8C3000E53324 /* FSDKFR.xcdatamodeld in Sources */,
 				284181E1207411F7002C1634 /* KeyTableViewController.swift in Sources */,
+				2814FAE02078B43200F2148E /* KeyLoginTableViewController.swift in Sources */,
 				7318728B204E5EDC00BD59FE /* ProfileTableViewController.swift in Sources */,
 				00FACE6620738D3F0052BA27 /* InformationProvider.swift in Sources */,
 				284181E720753E0F002C1634 /* UserNameViewController.swift in Sources */,
@@ -786,7 +790,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 72BRF3WV35;
+				DEVELOPMENT_TEAM = FH55SZ3XYA;
 				ENABLE_BITCODE = NO;
 				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
 				INFOPLIST_FILE = ArcFaceTest/Info.plist;
@@ -799,7 +803,7 @@
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_recognition/lib",
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_tracking/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFaceTes;
+				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFaceTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ArcFaceTest/ArcFaceTest-Bridging-Header.h";
@@ -814,7 +818,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 72BRF3WV35;
+				DEVELOPMENT_TEAM = FH55SZ3XYA;
 				ENABLE_BITCODE = NO;
 				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
 				INFOPLIST_FILE = ArcFaceTest/Info.plist;
@@ -827,7 +831,7 @@
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_recognition/lib",
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_tracking/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFaceTes;
+				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFaceTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ArcFaceTest/ArcFaceTest-Bridging-Header.h";
