@@ -6,8 +6,6 @@
 //  Copyright © 2018年 王宇鑫. All rights reserved.
 //
 
-import CoreData
-
 /**
  使用该Information，请使用实现了该协议的provider，调用其shared。
  
@@ -15,9 +13,9 @@ import CoreData
  */
 protocol Information {
     /*
-     
         添加相关
-     
+        添加相关
+        添加相关
      */
     
     /**
@@ -62,13 +60,13 @@ protocol Information {
     func add(group: String, detail: String) -> Bool
     
     /*
-     
         删除相关
-     
+        删除相关
+        删除相关
      */
     
     /**
-     删除一个person信息
+     删除一个person信息，会同时删除他的头像
      
      - parameter personID: person的全局唯一标识符
      - returns:
@@ -95,9 +93,9 @@ protocol Information {
     func remove(group: String) -> Bool
     
     /*
-     
-     获取相关
-     
+        获取相关
+        获取相关
+        获取相关
      */
     
     /**
@@ -143,14 +141,22 @@ protocol Information {
      */
     func personInfo(personID: UInt) -> AdditionalInfo?
     
+    /**
+     返回权限用户信息
+     
+     - returns:
+        权限用户（唯一）
+     */
+    func managerUser() -> AdditionalInfo?
+    
     /*
-     
-     修改相关
-     
+        修改相关
+        修改相关
+        修改相关
      */
     
     /**
-     更新一个person的某些值
+     更新一个person的某些值。（除了personID作为必要外，其他值为nil则表示不更新）
      
      - parameters:
         - personID:     person全局唯一标识符

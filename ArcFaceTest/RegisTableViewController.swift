@@ -1,18 +1,51 @@
 //
-//  ScanTableViewController.swift
+//  RegisTableViewController.swift
 //  ArcFaceTest
 //
-//  Created by jimmy233 on 2018/4/4.
+//  Created by jimmy233 on 2018/4/6.
 //  Copyright © 2018年 王宇鑫. All rights reserved.
 //
 
 import UIKit
 import CoreData
-
-class ScanTableViewController: UITableViewController {
-
-    let info = InformationProvider.shared
+class RegisTableViewController: UITableViewController {
+    var Judge:Bool = false
     
+    @IBAction func Scan(_ sender: Any) {
+        Judge=true
+    }
+    
+    @IBOutlet weak var InputAgain: UITextField!
+    @IBOutlet weak var Input: UITextField!
+    @IBAction func Confirm(_ sender: Any) {
+    let str_a = Input.text
+    let str_b = InputAgain.text
+    if(!(str_a?.isEmpty)! && !(str_b?.isEmpty)!)
+    {
+        if(str_a == str_b)
+        {
+         let person = info.personInfos()
+        if(info.update(personID: (person?.last?.personID)!, id: nil, name: nil, password: str_a, remark: nil, attendance: nil, group: nil, image: nil))
+            {
+              print("update success")
+            self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+}
+    @IBOutlet weak var ProImage: UIImageView!
+    @IBOutlet weak var RemarkInfo: UILabel!
+    @IBOutlet weak var UserName: UILabel!
+    @IBOutlet weak var ID: UILabel!
+
+    
+
+    @IBAction func Back(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    let info=InformationProvider.shared
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,17 +55,37 @@ class ScanTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        if(Judge==true)
+        {
+        let person = info.personInfos()
+        print(person?.first?.id as Any)
+        if let Ide = person?.last?.id
+        {
+            ID.text=Ide
+        }
+        if let Namee = person?.last?.name
+        {
+            UserName.text = Namee
+        }
+        if let Remarke = person?.last?.remark
+        {
+            RemarkInfo.text = Remarke
+        }
+            if let ProImagee = info.personImage(personID: (person?.last?.personID)!)
+        {
+            ProImage.image = ProImagee
+        }
+            
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
-    @IBOutlet weak var UserProfile: UIImageView!
-    
-    @IBAction func ScanforChange(_ sender: UIButton) {
-    }
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -40,7 +93,8 @@ class ScanTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        
+        return 6
     }
 
     /*
@@ -101,9 +155,9 @@ class ScanTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         super.prepare(for: segue, sender: sender)
-            if segue.identifier == "scan" {
+        if segue.identifier == "register_user" {
             if let camera = segue.destination as? CameraViewController {
-                camera.setPurpose(purpose: .photo(personID: InformationProvider.shared.managerUser()?.personID ?? 0))
+                camera.setPurpose(purpose: .register)
             }
         }
     }

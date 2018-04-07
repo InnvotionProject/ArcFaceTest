@@ -7,19 +7,26 @@
 //
 
 import UIKit
+import CoreData
 
-class MeTableViewController: UITableViewController {
-
+class MeTableViewController: UITableViewController,ReDelegate{
+    func sendAgain(message: String) {
+        Name.text!=message
+    }
+    let info = InformationProvider.shared
+    @IBOutlet weak var Name: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if let person = info.managerUser()
+        {
+            Name.text = person.id
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -91,5 +98,22 @@ class MeTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "PassName" {
+            if let purpose = segue.destination as? UserNameViewController {
+                if let re = self.Name.text
+                {
+                    purpose.Mid_name = re
+                    purpose.delegate=self
+                }
+                
+            }
+        }
+    }
 
 }
+

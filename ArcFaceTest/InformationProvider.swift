@@ -119,6 +119,10 @@ class InformationProvider: Information {
             }
             
             try save()
+            
+            // delete IMAGE
+            let _ = __imageDelete(personID: personID)
+            
             return true
         } catch {
             return false
@@ -198,6 +202,10 @@ class InformationProvider: Information {
         }
     }
     
+    func personImage(personID: UInt) -> UIImage? {
+        return UIImage(contentsOfFile: __imagePath(personID: personID))
+    }
+    
     func personInfo(personID: UInt) -> AdditionalInfo? {
         do {
             let persons = try __searchAdditionalInfo(personID: personID)
@@ -212,8 +220,13 @@ class InformationProvider: Information {
         }
     }
     
-    func personImage(personID: UInt) -> UIImage? {
-        return UIImage(contentsOfFile: __imagePath(personID: personID))
+    func managerUser() -> AdditionalInfo? {
+        if let infos = personInfos(),
+            let index = infos.index(where: { !$0.password.isEmpty }) {
+            return infos[index]
+        } else {
+            return nil
+        }
     }
     
     func update(personID: UInt, id: String?, name: String?, password: String?, remark: String?, attendance: String?, group: String?, image: UIImage?) -> Bool {
@@ -387,11 +400,11 @@ extension InformationProvider {
     
     fileprivate func __context() -> NSManagedObjectContext {
         let container = NSPersistentContainer(name: InformationProvider.model)
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores { (storeDescription, error) in
             if error != nil {
                 fatalError("use name(\(String(describing: error))) to load context ")
             }
-        })
+        }
         return container.viewContext
     }
     
@@ -496,6 +509,15 @@ extension InformationProvider {
         if let data = UIImageJPEGRepresentation(image, InformationProvider.ImageQuality) as NSData? {
             return data.write(toFile: __imagePath(personID: personID), atomically: true)
         } else {
+            return false
+        }
+    }
+    
+    fileprivate func __imageDelete(personID: UInt) -> Bool {
+        do {
+            try FileManager.default.removeItem(atPath: __imagePath(personID: personID))
+            return true
+        } catch {
             return false
         }
     }

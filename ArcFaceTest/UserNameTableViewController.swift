@@ -7,19 +7,38 @@
 //
 
 import UIKit
+import CoreData
 
-class UserNameTableViewController: UITableViewController {
+protocol BackDelegate {
+    func sendWord(message:String)
+}
 
+class UserNameTableViewController:UITableViewController {
+    let info = InformationProvider.shared
+    @IBAction func Save(_ sender: Any) {
+        print(Name.text!)
+         if let person = info.managerUser()
+         {
+          if(info.update(personID: person.personID, id: Name.text, name: nil, password: nil, remark: nil, attendance: nil, group: nil, image: nil))
+          {
+           print("Success Change Name")
+          }
+         }
+            self.delegate?.sendWord(message: Name.text!)
+            self.navigationController?.popViewController(animated: true)
+    }
+    var delegate:BackDelegate?
+    var Mid_na:String = ""
+    @IBOutlet weak var Name: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        Name.text!=Mid_na
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

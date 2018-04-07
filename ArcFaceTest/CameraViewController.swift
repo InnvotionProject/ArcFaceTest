@@ -9,6 +9,7 @@
 import UIKit
 
 class CameraViewController: UIViewController {
+    @IBOutlet weak var canvas: UIView!
     @IBOutlet weak var glView: GLView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var registerButton: UIButton!
@@ -18,12 +19,13 @@ class CameraViewController: UIViewController {
     private var ID: UInt = 0
     private var devicePosition = AVCaptureDevice.Position.front
     
-    var cameraController = AFCameraController()
-    var videoProcessor = AFVideoProcessor()
-    var arrayAllFaceRectView = NSMutableArray()
-    var _offscreenIn : LPASVLOFFSCREEN?
+    private var cameraController = AFCameraController()
+    private var videoProcessor = AFVideoProcessor()
+    private var arrayAllFaceRectView = NSMutableArray()
+    private var _offscreenIn : LPASVLOFFSCREEN?
     
-    var didSetUp = false
+    private var didSetUp = false
+    private var cameraPicker: UIImagePickerController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +51,14 @@ class CameraViewController: UIViewController {
             return
         }
         
-        alertInput()
+        switch purpose {
+        case .register:
+            registerInput()
+        case .photo:
+            photoInput()
+        default:
+            break
+        }
     }
     
     @IBAction func switchDevicePosition(_ sender: UISwitch) {
@@ -82,6 +91,7 @@ extension CameraViewController {
     enum Purpose {
         case register
         case recognition
+        case photo(personID: UInt)
         case none
     }
 }
@@ -167,6 +177,58 @@ extension CameraViewController: AFCameraControllerDelegate, AFVideoProcessorDele
             }
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let picker = self.cameraPicker {
+            self.present(picker, animated: false, completion: nil)
+        }
+    }
+}
+
+extension CameraViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func fromLibrary() {
+        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
+            return
+        }
+        
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        picker.allowsEditing = true
+        self.present(picker, animated: true, completion: nil)
+    }
+    
+    func takePhoto() {
+        self.cameraPicker?.takePicture()
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        self.dismiss(animated: true, completion: nil)
+        
+        let image = info[UIImagePickerControllerEditedImage] as? UIImage
+        print(image)
+        print(self.ID)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    fileprivate func cameraSetup() {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            return
+        }
+        
+        let picker = UIImagePickerController()
+        picker.sourceType = .camera
+        picker.delegate = self
+        picker.allowsEditing = true
+        picker.cameraDevice = .front
+        picker.showsCameraControls = false
+        picker.cameraOverlayView = self.canvas
+        
+        self.cameraPicker = picker
+    }
 }
 
 // private methods
@@ -175,9 +237,15 @@ extension CameraViewController {
         switch self.purpose {
         case .register:
             self.infoStackView.isHidden = true
+        case .photo(let personID):
+            self.infoStackView.isHidden = true
+            self.registerButton.setTitle("photo", for: .normal)
+            self.ID = personID
+            self.cameraSetup()
         case .recognition, .none:
             self.registerButton.isHidden = true
         }
+        
         switch self.devicePosition {
         case .front:
             self.cameraSwitch.isOn = false
@@ -189,6 +257,13 @@ extension CameraViewController {
     }
     
     fileprivate func setup() {
+        switch purpose {
+        case .photo:
+            return
+        default:
+            break
+        }
+        
         let orientation = UIApplication.shared.statusBarOrientation
         guard let vorientation = AVCaptureVideoOrientation(rawValue: orientation.rawValue) else {
             return
@@ -314,7 +389,7 @@ extension CameraViewController {
         return CGRect(x: x, y: y, width: width, height: height)
     }
     
-    fileprivate func alertInput() {
+    fileprivate func registerInput() {
         let ralert = UIAlertController(title: "Register", message: "", preferredStyle: .alert)
         // ID name remark
         let rok = UIAlertAction(title: "ok", style: .default) { action in
@@ -363,10 +438,37 @@ extension CameraViewController {
         self.present(ralert, animated: true, completion: nil)
     }
     
+    fileprivate func photoInput() {
+        let chooseAlert = UIAlertController(title: "Choose", message: nil, preferredStyle: .actionSheet)
+        let fromLibrary = UIAlertAction(title: "从相册", style: .default) { action in
+            self.fromLibrary()
+        }
+        let takingPhoto = UIAlertAction(title: "从相机", style: .default) { action in
+            self.takePhoto()
+        }
+        let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        
+        chooseAlert.addAction(fromLibrary)
+        chooseAlert.addAction(takingPhoto)
+        chooseAlert.addAction(cancel)
+        
+        self.present(chooseAlert, animated: true, completion: nil)
+    }
+    
     fileprivate func addIntoCoreData(personID: UInt, id: String, name: String, remark: String, image: UIImage?) {
         let info = InformationProvider.shared
-        guard info.add(personID: personID, id: id, name: name, password: "", remark: remark, attendance: nil, group: nil, image: image == nil ? #imageLiteral(resourceName: "InitialFace") : image ) else {
+        
+        guard info.add(personID: personID, id: id, name: name, password: "", remark: remark, attendance: nil, group: nil, image: image) else {
             print("save error")
+            return
+        }
+    }
+    
+    fileprivate func updateCoreData(personID: UInt, image: UIImage?) {
+        let info = InformationProvider.shared
+        
+        guard info.update(personID: personID, id: nil, name: nil, password: nil, remark: nil, attendance: nil, group: nil, image: image) else {
+            print("update error")
             return
         }
     }
