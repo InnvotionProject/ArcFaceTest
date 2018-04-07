@@ -180,11 +180,8 @@ class InformationProvider: Information {
             guard groups.count == 1 else {
                 return nil
             }
-            guard let persons = groups[0].persons else {
-                return nil
-            }
             
-            return persons.map { person -> AdditionalInfo in
+            return groups[0].persons?.map { person -> AdditionalInfo in
                 if let p = person as? AdditionalPerson {
                     return (personID: UInt(p.personID), id: p.id ?? "", name: p.name ?? "", password: p.passward ?? "", remark: p.remark ?? "")
                 } else {
@@ -212,6 +209,7 @@ class InformationProvider: Information {
             guard groups.count == 1 else {
                 return nil
             }
+            
             return groups[0].attendances?.map{ attendance -> AttendanceInfo in
                 if let atd = attendance as? Attendance {
                     return (name: atd.name ?? "", detail: atd.detail ?? "", startTime: atd.startTime ?? Date(timeIntervalSince1970: 0))
