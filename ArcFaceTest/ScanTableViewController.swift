@@ -103,7 +103,7 @@ class ScanTableViewController: UITableViewController {
         super.prepare(for: segue, sender: sender)
             if segue.identifier == "scan" {
             if let camera = segue.destination as? CameraViewController {
-                camera.setPurpose(purpose: .photo)
+                camera.setPurpose(purpose: .photo(personID: InformationProvider.shared.managerUser()?.personID ?? 0))
             }
         }
     }
