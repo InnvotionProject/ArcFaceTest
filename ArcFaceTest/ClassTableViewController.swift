@@ -9,9 +9,13 @@
 import UIKit
 
 class ClassTableViewController: UITableViewController {
-
+    
+    var Mid_name:String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(Mid_name)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

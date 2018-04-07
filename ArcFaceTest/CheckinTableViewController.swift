@@ -11,6 +11,7 @@ import CoreData
 
 class CheckinTableViewController: UITableViewController {
     
+    var cname:String? = ""
     
     fileprivate lazy var fetchedRequestsController: NSFetchedResultsController<Group> = {
         let fetchRequest: NSFetchRequest<Group> = Group.fetchRequest()
@@ -64,6 +65,25 @@ class CheckinTableViewController: UITableViewController {
         return groups.count
     }
 
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Classinfo", for: indexPath)
+        configureCell(cell, at: indexPath)
+        return cell
+    }
+    private func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
+        let person = fetchedRequestsController.object(at: indexPath)
+        // Configure the cell...
+        if let profileCell = cell as? ClassTableViewCell {
+            // load data from database
+           // let personID = person.name
+            
+            //profileCell.profileImageView.image = info.personImage(personID: UInt(personID)) ?? #imageLiteral(resourceName: "InitialFace")
+            profileCell.Classname.text = person.name
+            cname = person.name!
+            
+        }
+    }
     
     
     /*
@@ -121,5 +141,33 @@ class CheckinTableViewController: UITableViewController {
         
     }
     */
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "Passname" {
+            
+            guard let selectedProfileCell = sender as? ClassTableViewCell else{
+                fatalError("unexpected sender")
+            }
+            guard let indexPath = tableView.indexPath(for: selectedProfileCell) else{
+                fatalError("the selected cell is not being dislplayed by the table")
+            }
+            
+            let person = fetchedRequestsController.object(at: indexPath)
+            
+            if let purpose = segue.destination as? ClassTableViewController{
+                if let re = person.name
+                {
+                    purpose.Mid_name = re
+                    // purpose.delegate=self
+                }
+               // fatalError("Unexpected destination")
+            }
+            
+           
+        }
+    }
+    
 }

@@ -1,5 +1,5 @@
 //
-//  AddClassTableViewController.swift
+//  AddAttendanceTableViewController.swift
 //  ArcFaceTest
 //
 //  Created by 张睿恺 on 2018/4/7.
@@ -7,27 +7,9 @@
 //
 
 import UIKit
-import CoreData
 
-class AddClassTableViewController: UITableViewController {
+class AddAttendanceTableViewController: UITableViewController {
 
-    @IBOutlet weak var classname: UITextField!
-    @IBOutlet weak var classdetail: UITextField!
-    let info = InformationProvider.shared
-    
-    @IBAction func Confirm(_ sender: Any) {
-        let str_a = classname.text
-        let str_b = classdetail.text
-        if(!(str_a?.isEmpty)!)
-        {
-            if(info.add(group: str_a!, detail: str_b!))
-            {
-                print("success add ")
-            }
-        }
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,12 +29,12 @@ class AddClassTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 0
     }
 
     /*
@@ -109,15 +91,5 @@ class AddClassTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        super.prepare(for: segue, sender: sender)
-        if segue.identifier == "Classmate" {
-            if let camera = segue.destination as? CameraViewController {
-                camera.setPurpose(purpose: .register)
-            }
-        }
-    }
 
 }
