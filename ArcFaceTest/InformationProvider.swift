@@ -14,7 +14,7 @@ class InformationProvider: Information {
     //目前通过shared访问该类唯一实例
     static let shared: Information = InformationProvider()
     
-    private lazy var context: NSManagedObjectContext = __context()
+    public lazy var context: NSManagedObjectContext = __context()
     
     public func add(personID: UInt, id: String, name: String, password: String, remark: String, attendance: String?, group: String?, image: UIImage?) -> Bool {
         let info = AdditionalPerson(context: context)

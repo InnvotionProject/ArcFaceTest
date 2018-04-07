@@ -17,12 +17,13 @@ class MyStatisticsTableViewController: UITableViewController {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
         
-        let fetchRequestController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: AppDelegate.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchRequestController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: info.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchRequestController.delegate = self
         return fetchRequestController
     }()
     
-    let info = InformationProvider.shared
+    private let info = InformationProvider.shared as! InformationProvider
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +40,10 @@ class MyStatisticsTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -57,27 +59,28 @@ class MyStatisticsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         guard let persons = fetchedRequestsController.fetchedObjects else {return 0}
-        print("MystatisticsViewController --> persons: \(persons)")
+        //print("MystatisticsViewController --> persons: \(persons)")
         return persons.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PersonInfo", for: indexPath)
-        
+        configureCell(cell, at: indexPath)
+        return cell
+    }
+    private func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
         let person = fetchedRequestsController.object(at: indexPath)
         // Configure the cell...
         if let profileCell = cell as? ProfileTableViewCell {
-            //TODO： load data from database
+            // load data from database
             let personID = person.personID
             
-            profileCell.profileImageView.image = info.personImage(personID: UInt(personID)) ?? #imageLiteral(resourceName: "InitialFace") 
+            profileCell.profileImageView.image = info.personImage(personID: UInt(personID)) ?? #imageLiteral(resourceName: "InitialFace")
             profileCell.nameLabel.text = person.name
         }
 
-        return cell
     }
-    
 
     /*
     // Override to support conditional editing of the table view.
@@ -87,17 +90,22 @@ class MyStatisticsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let person = fetchedRequestsController.object(at: indexPath)
+            print("delete person with personId: \(person.personID)")
+            if info.remove(personID: UInt(person.personID)) {
+                //tableView.deleteRows(at: [indexPath], with: .fade)
+                print("delete succeed")
+            }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -149,5 +157,25 @@ class MyStatisticsTableViewController: UITableViewController {
 }
 
 extension MyStatisticsTableViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
     
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+        case .delete:
+            if let deleteIndex = indexPath {
+                tableView.deleteRows(at: [deleteIndex], with: .fade)
+            }
+        default:
+            tableView.reloadData()
+        }
+    }
 }
