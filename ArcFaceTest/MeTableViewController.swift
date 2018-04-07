@@ -13,6 +13,7 @@ class MeTableViewController: UITableViewController,ReDelegate{
     func sendAgain(message: String) {
         Name.text!=message
     }
+    @IBOutlet weak var Portrait: UIImageView!
     let info = InformationProvider.shared
     @IBOutlet weak var Name: UILabel!
     override func viewDidLoad() {
@@ -20,6 +21,11 @@ class MeTableViewController: UITableViewController,ReDelegate{
         if let person = info.managerUser()
         {
             Name.text = person.id
+        }
+        if let person = info.managerUser()
+        {
+            Portrait.image = info.personImage(personID: person.personID) ?? #imageLiteral(resourceName: "InitialFace")
+            
         }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

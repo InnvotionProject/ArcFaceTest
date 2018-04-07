@@ -345,6 +345,7 @@
                         <outlet property="ID" destination="n7e-cb-rIC" id="sg1-kS-6Z3"/>
                         <outlet property="Input" destination="NkA-eH-Kmc" id="HV3-tV-5tT"/>
                         <outlet property="InputAgain" destination="9d8-AS-jlX" id="Ei6-pN-1WE"/>
+                        <outlet property="Portrait" destination="cvC-te-Mr8" id="XFH-eq-Ow3"/>
                         <outlet property="ProImage" destination="cvC-te-Mr8" id="pnx-0n-DMl"/>
                         <outlet property="RemarkInfo" destination="53R-bI-o4z" id="ZpX-IN-ofV"/>
                         <outlet property="UserName" destination="e0T-Q5-JDM" id="ysj-Qb-xKB"/>

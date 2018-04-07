@@ -15,6 +15,7 @@ class RegisTableViewController: UITableViewController {
         Judge=true
     }
     
+    @IBOutlet weak var Portrait: UIImageView!
     @IBOutlet weak var InputAgain: UITextField!
     @IBOutlet weak var Input: UITextField!
     @IBAction func Confirm(_ sender: Any) {
@@ -42,6 +43,13 @@ class RegisTableViewController: UITableViewController {
     
 
     @IBAction func Back(_ sender: UIBarButtonItem) {
+        if let person = info.personInfos()
+        {
+            if(info.remove(personID: (person.last?.personID)!))
+            {
+             print("success remove")
+            }
+        }
         self.dismiss(animated: true, completion: nil)
     }
     

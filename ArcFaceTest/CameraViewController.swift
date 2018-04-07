@@ -12,6 +12,8 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var canvas: UIView!
     @IBOutlet weak var glView: GLView!
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var id: UILabel!
+    @IBOutlet weak var remark: UILabel!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var infoStackView: UIView!
     @IBOutlet weak var cameraSwitch: UISwitch!
@@ -25,7 +27,6 @@ class CameraViewController: UIViewController {
     private var _offscreenIn : LPASVLOFFSCREEN?
     
     private var didSetUp = false
-    private var cameraPicker: UIImagePickerController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +92,7 @@ extension CameraViewController {
     enum Purpose {
         case register
         case recognition
-        case photo(personID: UInt)
+        case photo
         case none
     }
 }
@@ -104,6 +105,10 @@ extension CameraViewController: AFCameraControllerDelegate, AFVideoProcessorDele
         OperationQueue.main.addOperation {
             self.ID = Id
             self.name.text = personName
+            if let person = InformationProvider.shared.personInfo(personID: Id) {
+                self.id.text = person.id
+                self.remark.text = person.remark
+            }
         }
     }
     
@@ -177,12 +182,6 @@ extension CameraViewController: AFCameraControllerDelegate, AFVideoProcessorDele
             }
         }
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if let picker = self.cameraPicker {
-            self.present(picker, animated: false, completion: nil)
-        }
-    }
 }
 
 extension CameraViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -199,35 +198,19 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
     }
     
     func takePhoto() {
-        self.cameraPicker?.takePicture()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         self.dismiss(animated: true, completion: nil)
         
-        let image = info[UIImagePickerControllerEditedImage] as? UIImage
-        print(image)
-        print(self.ID)
+        guard self.ID != 0 else {
+            return
+        }
+        updateCoreData(personID: self.ID, image: info[UIImagePickerControllerEditedImage] as? UIImage)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    fileprivate func cameraSetup() {
-        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
-            return
-        }
-        
-        let picker = UIImagePickerController()
-        picker.sourceType = .camera
-        picker.delegate = self
-        picker.allowsEditing = true
-        picker.cameraDevice = .front
-        picker.showsCameraControls = false
-        picker.cameraOverlayView = self.canvas
-        
-        self.cameraPicker = picker
     }
 }
 
@@ -237,11 +220,9 @@ extension CameraViewController {
         switch self.purpose {
         case .register:
             self.infoStackView.isHidden = true
-        case .photo(let personID):
+        case .photo:
             self.infoStackView.isHidden = true
             self.registerButton.setTitle("photo", for: .normal)
-            self.ID = personID
-            self.cameraSetup()
         case .recognition, .none:
             self.registerButton.isHidden = true
         }
@@ -257,13 +238,6 @@ extension CameraViewController {
     }
     
     fileprivate func setup() {
-        switch purpose {
-        case .photo:
-            return
-        default:
-            break
-        }
-        
         let orientation = UIApplication.shared.statusBarOrientation
         guard let vorientation = AVCaptureVideoOrientation(rawValue: orientation.rawValue) else {
             return

@@ -264,6 +264,7 @@
                     </tableView>
                     <connections>
                         <outlet property="Name" destination="urs-61-K5c" id="WAc-xY-Tgv"/>
+                        <outlet property="Portrait" destination="nEC-Ru-9EN" id="lHc-Mt-e0A"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Tm-VL-REF" userLabel="First Responder" sceneMemberID="firstResponder"/>
