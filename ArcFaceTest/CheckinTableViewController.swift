@@ -12,6 +12,17 @@ import CoreData
 class CheckinTableViewController: UITableViewController {
     
     var cname:String? = ""
+    @IBAction func unwindToCheckIn(sender:UIStoryboardSegue)
+    {
+        if let sourceViewController = sender.source as? AddClassTableViewController, let classname = sourceViewController.classname.text , let remark = sourceViewController.classdetail.text {
+            
+            if(info.add(group: classname, detail: remark))
+            {
+                print("success")
+            }
+        }
+        
+    }
     
     fileprivate lazy var fetchedRequestsController: NSFetchedResultsController<Group> = {
         let fetchRequest: NSFetchRequest<Group> = Group.fetchRequest()
@@ -42,7 +53,7 @@ class CheckinTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-         self.navigationItem.rightBarButtonItem = self.editButtonItem
+         //self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -170,4 +181,29 @@ class CheckinTableViewController: UITableViewController {
         }
     }
     
+
+    
+}
+extension CheckinTableViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+        case .delete:
+            if let deleteIndex = indexPath {
+                tableView.deleteRows(at: [deleteIndex], with: .fade)
+            }
+        default:
+            tableView.reloadData()
+        }
+    }
 }

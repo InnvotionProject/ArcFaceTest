@@ -15,7 +15,7 @@ class AddClassTableViewController: UITableViewController {
     @IBOutlet weak var classdetail: UITextField!
     let info = InformationProvider.shared
     
-    @IBAction func Confirm(_ sender: Any) {
+  /*  @IBAction func Confirm(_ sender: Any) {
         let str_a = classname.text
         let str_b = classdetail.text
         if(!(str_a?.isEmpty)!)
@@ -23,8 +23,14 @@ class AddClassTableViewController: UITableViewController {
             if(info.add(group: str_a!, detail: str_b!))
             {
                 print("success add ")
+                
             }
+            self.navigationController?.popViewController(animated: true)
         }
+    }*/
+    
+    @IBAction func Cancle(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     
