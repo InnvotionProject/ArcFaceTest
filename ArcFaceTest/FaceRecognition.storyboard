@@ -92,17 +92,17 @@
                                                         <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </stackView>
                                                     <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebN-AX-MzW">
-                                                        <rect key="frame" x="0.0" y="81" width="93.666666666666671" height="81.333333333333314"/>
+                                                        <rect key="frame" x="0.0" y="81" width="35" height="81.333333333333314"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性别:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJs-qC-V5R">
-                                                                <rect key="frame" x="0.0" y="0.0" width="39.333333333333336" height="81.333333333333329"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJs-qC-V5R">
+                                                                <rect key="frame" x="0.0" y="0.0" width="21" height="81.333333333333329"/>
                                                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="gender" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJh-Nl-1Ba">
-                                                                <rect key="frame" x="39.333333333333329" y="0.0" width="54.333333333333329" height="81.333333333333329"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="id" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJh-Nl-1Ba">
+                                                                <rect key="frame" x="21" y="0.0" width="14" height="81.333333333333329"/>
                                                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -111,7 +111,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wop-uH-hSR">
-                                                        <rect key="frame" x="0.0" y="162.33333333333337" width="81.333333333333329" height="81"/>
+                                                        <rect key="frame" x="0.0" y="162.33333333333337" width="93" height="81"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xf-zX-1pK">
                                                                 <rect key="frame" x="0.0" y="0.0" width="39.333333333333336" height="81"/>
@@ -120,8 +120,8 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DfG-uQ-swt">
-                                                                <rect key="frame" x="39.333333333333329" y="0.0" width="42" height="81"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="remark" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DfG-uQ-swt">
+                                                                <rect key="frame" x="39.333333333333329" y="0.0" width="53.666666666666671" height="81"/>
                                                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -189,9 +189,11 @@
                         <outlet property="cameraSwitch" destination="ltb-VI-la9" id="SLH-7j-iMm"/>
                         <outlet property="canvas" destination="H8K-Wv-RL6" id="T53-zc-Epj"/>
                         <outlet property="glView" destination="tZy-4e-qXT" id="yP8-4K-gZF"/>
+                        <outlet property="id" destination="sJh-Nl-1Ba" id="Lqw-fF-WQw"/>
                         <outlet property="infoStackView" destination="jBf-UY-ffF" id="J01-YI-vcu"/>
                         <outlet property="name" destination="hT2-oh-zp7" id="CSu-2i-YfR"/>
                         <outlet property="registerButton" destination="PSL-kt-yol" id="ESz-gs-Vg7"/>
+                        <outlet property="remark" destination="DfG-uQ-swt" id="c0p-Lk-k6k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
