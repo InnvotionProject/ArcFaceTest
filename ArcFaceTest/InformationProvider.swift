@@ -174,6 +174,28 @@ class InformationProvider: Information {
         }
     }
     
+    func personInfos(group: String) -> [AdditionalInfo]? {
+        do {
+            let groups = try __searchGroupInfo(name: group)
+            guard groups.count == 1 else {
+                return nil
+            }
+            guard let persons = groups[0].persons else {
+                return nil
+            }
+            
+            return persons.map { person -> AdditionalInfo in
+                if let p = person as? AdditionalPerson {
+                    return (personID: UInt(p.personID), id: p.id ?? "", name: p.name ?? "", password: p.passward ?? "", remark: p.remark ?? "")
+                } else {
+                    return (personID: 0, id: "", name: "", password: "", remark: "")
+                }
+            }
+        } catch {
+            return nil
+        }
+    }
+    
     func groupInfos() -> [GroupInfo]? {
         do {
             return try __searchGroupInfo().map { gp -> GroupInfo in

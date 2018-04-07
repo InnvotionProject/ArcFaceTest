@@ -107,6 +107,15 @@ protocol Information {
     func personInfos() -> [AdditionalInfo]?
     
     /**
+     获取指定名字的group所包含的person信息
+     
+     - parameter group: 名字
+     - returns:
+        该group下的personInfo
+     */
+    func personInfos(group: String) -> [AdditionalInfo]?
+    
+    /**
      获取所有group信息
      
      - returns:
