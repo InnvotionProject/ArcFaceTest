@@ -79,7 +79,6 @@ class MyStatisticsTableViewController: UITableViewController {
             profileCell.profileImageView.image = info.personImage(personID: UInt(personID)) ?? #imageLiteral(resourceName: "InitialFace")
             profileCell.nameLabel.text = person.name
         }
-
     }
 
     /*
