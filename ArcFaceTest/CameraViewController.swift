@@ -41,9 +41,38 @@ class CameraViewController: UIViewController {
     }
     
     private var purpose = Purpose.none
+    private var attendance: String?
+    private var group: String?
     
+    /**
+     说明使用此controller的目的
+     
+     - parameter purpose: 目的(CameraViewController.Purpose)
+     */
     func setPurpose(purpose: Purpose) {
         self.purpose = purpose
+    }
+    
+    /**
+     要求purpose = register
+     
+     注册时同时添加进attendance
+     
+     - parameter attendance: 考勤
+     */
+    func setAttendance(attendance: String) {
+        self.attendance = attendance
+    }
+    
+    /**
+     要求purpose = register
+     
+     注册时同时添加进group
+     
+     - parameter group: 组
+     */
+    func setGroup(group: String) {
+        self.group = group
     }
 
     // button register clicked
@@ -432,7 +461,7 @@ extension CameraViewController {
     fileprivate func addIntoCoreData(personID: UInt, id: String, name: String, remark: String, image: UIImage?) {
         let info = InformationProvider.shared
         
-        guard info.add(personID: personID, id: id, name: name, password: "", remark: remark, attendance: nil, group: nil, image: image) else {
+        guard info.add(personID: personID, id: id, name: name, password: "", remark: remark, attendance: self.attendance, group: self.group, image: image) else {
             print("save error")
             return
         }
