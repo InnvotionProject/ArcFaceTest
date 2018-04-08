@@ -15,8 +15,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
             endingLineNumber = "31"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "ScanTableViewController"
+            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -26,7 +26,7 @@
                   moduleName = "ArcFaceTest"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Mid-2/ArcFaceTest/ArcFaceTest/ScanTableViewController.swift"
-                  timestampString = "544802612.430087"
+                  timestampString = "544863125.0655659"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
@@ -41,7 +41,7 @@
                   moduleName = "ArcFaceTest"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Mid-2/ArcFaceTest/ArcFaceTest/ScanTableViewController.swift"
-                  timestampString = "544802612.432265"
+                  timestampString = "544863125.067322"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
@@ -56,7 +56,7 @@
                   moduleName = "ArcFaceTest"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Mid-2/ArcFaceTest/ArcFaceTest/ScanTableViewController.swift"
-                  timestampString = "544802612.435668"
+                  timestampString = "544863125.0689861"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
@@ -71,7 +71,7 @@
                   moduleName = "ArcFaceTest"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Mid-2/ArcFaceTest/ArcFaceTest/ScanTableViewController.swift"
-                  timestampString = "544802612.440366"
+                  timestampString = "544863125.0705841"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
@@ -86,7 +86,7 @@
                   moduleName = "ArcFaceTest"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Mid-2/ArcFaceTest/ArcFaceTest/ScanTableViewController.swift"
-                  timestampString = "544802612.442715"
+                  timestampString = "544863125.0725631"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
@@ -103,13 +103,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArcFaceTest/CameraViewController.swift"
-            timestampString = "544698224.981938"
+            timestampString = "544860165.037096"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "captureOutput(_:didOutputSampleBuffer:from:)"
-            landmarkType = "7">
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "Purpose"
+            landmarkType = "13">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "globalinit_33_926D1220C80A3A78DDC97199AB9A078D_func0"
+                  moduleName = "ArcFaceTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Mid-2/ArcFaceTest/ArcFaceTest/CameraViewController.swift"
+                  timestampString = "544863125.07941"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ArcFaceTest.CameraViewController.IMAGE_WIDTH.unsafeMutableAddressor : CoreGraphics.CGFloat"
+                  moduleName = "ArcFaceTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Mid-2/ArcFaceTest/ArcFaceTest/CameraViewController.swift"
+                  timestampString = "544863125.081039"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static ArcFaceTest.CameraViewController.IMAGE_WIDTH.getter : CoreGraphics.CGFloat"
+                  moduleName = "ArcFaceTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Mid-2/ArcFaceTest/ArcFaceTest/CameraViewController.swift"
+                  timestampString = "544863125.08269"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

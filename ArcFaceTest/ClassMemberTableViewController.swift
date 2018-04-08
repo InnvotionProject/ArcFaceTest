@@ -11,25 +11,11 @@ import CoreData
 class ClassMemberTableViewController: UITableViewController {
     var classname:String? = ""
     
-       
-fileprivate lazy var fetchedRequestsController: NSFetchedResultsController<AdditionalPerson> = {
-        let fetchRequest: NSFetchRequest<AdditionalPerson> = AdditionalPerson.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        
-        let fetchRequestController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: info.context, sectionNameKeyPath: nil, cacheName: nil)
-        fetchRequestController.delegate = self
-        return fetchRequestController
-    }()
-    private let info = InformationProvider.shared as! InformationProvider
+    let info = InformationProvider.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
-            try fetchedRequestsController.performFetch()
-        } catch {
-            let fetchError = error as NSError
-            print("Unable to perform fetch Request")
-            print("\(fetchError)", "\(fetchError.localizedDescription)")
-        }
+
         //self.navigationItem.leftBarButtonItem = self.editButtonItem
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -37,7 +23,9 @@ fileprivate lazy var fetchedRequestsController: NSFetchedResultsController<Addit
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -52,9 +40,15 @@ fileprivate lazy var fetchedRequestsController: NSFetchedResultsController<Addit
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        guard let persons = fetchedRequestsController.fetchedObjects else {return 0}
+        if let persons = info.personInfos(group: classname!)
+        {
+            return persons.count
+        }
+        else
+        {
+            return 0
+        }
         //print("MystatisticsViewController --> persons: \(persons)")
-        return persons.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PersonInfo", for: indexPath)
@@ -62,7 +56,9 @@ fileprivate lazy var fetchedRequestsController: NSFetchedResultsController<Addit
         return cell
     }
     private func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
-        let person = fetchedRequestsController.object(at: indexPath)
+        if let persons = info.personInfos(group: classname!)
+        {
+        let person = persons[indexPath.row]
         // Configure the cell...
         if let profileCell = cell as? ProfileTableViewCell {
             // load data from database
@@ -71,16 +67,20 @@ fileprivate lazy var fetchedRequestsController: NSFetchedResultsController<Addit
             profileCell.profileImageView.image = info.personImage(personID: UInt(personID)) ?? #imageLiteral(resourceName: "InitialFace")
             profileCell.nameLabel.text = person.name
         }
+        }
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            let person = fetchedRequestsController.object(at: indexPath)
+            if let persons = info.personInfos(group: classname!)
+            {
+            let person = persons[indexPath.row]
             print("delete person with personId: \(person.personID)")
             if info.remove(personID: UInt(person.personID)) {
                 //tableView.deleteRows(at: [indexPath], with: .fade)
                 print("delete succeed")
+            }
             }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -99,7 +99,7 @@ fileprivate lazy var fetchedRequestsController: NSFetchedResultsController<Addit
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         super.prepare(for: segue, sender: sender)
-        if segue.identifier == "showDetail" {
+        if segue.identifier == "showSDetails" {
             guard let profileTMVC = segue.destination as? ProfileTableViewController else{
                 fatalError("Unexpected destination")
             }
@@ -110,21 +110,26 @@ fileprivate lazy var fetchedRequestsController: NSFetchedResultsController<Addit
                 fatalError("the selected cell is not being dislplayed by the table")
             }
             
-            let person = fetchedRequestsController.object(at: indexPath)
+            if let persons = info.personInfos(group: classname!)
+            {
+            let person = persons[indexPath.row]
             let personID = person.personID
             //transport data to model
-            profileTMVC.profileInfo = (image: info.personImage(personID: UInt(personID)) ?? #imageLiteral(resourceName: "InitialFace"), name: person.name!, gender: "男", remark: person.remark ?? "")
+                profileTMVC.profileInfo = (image: info.personImage(personID: UInt(personID)) ?? #imageLiteral(resourceName: "InitialFace"), name: person.name, gender: "男", remark: person.remark )
+            }
             
-        } else if segue.identifier == "register_statistics" {
+        } else if segue.identifier == "register_classmate" {
             if let camera = segue.destination as? CameraViewController {
                 camera.setPurpose(purpose: .register)
+                camera.setGroup(group: classname!)
+                
             }
         }
     }
 
 }
 
-extension ClassMemberTableViewController: NSFetchedResultsControllerDelegate {
+/*extension ClassMemberTableViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
@@ -146,7 +151,7 @@ extension ClassMemberTableViewController: NSFetchedResultsControllerDelegate {
             tableView.reloadData()
         }
     }
-}
+}*/
 
 
 

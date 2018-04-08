@@ -445,7 +445,7 @@
                     <navigationItem key="navigationItem" id="s71-r0-rUx">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cBB-U5-UWO">
                             <connections>
-                                <segue destination="BcI-2y-bTH" kind="presentation" id="6rV-6O-KPC"/>
+                                <segue destination="BcI-2y-bTH" kind="presentation" identifier="register_classmate" id="6rV-6O-KPC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
