@@ -6,7 +6,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArcFaceTest/ScanTableViewController.swift"
@@ -19,14 +19,14 @@
             landmarkType = "3">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "ArcFaceTest.ScanTableViewController.UserProfile.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIImageView&gt;"
                   moduleName = "ArcFaceTest"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Mid-2/ArcFaceTest/ArcFaceTest/ScanTableViewController.swift"
-                  timestampString = "544863676.299619"
+                  urlString = "file:///Users/apple/MidTest/ArcFaceTest/ArcFaceTest/ScanTableViewController.swift"
+                  timestampString = "545588163.936534"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
@@ -34,14 +34,14 @@
                   offsetFromSymbolStart = "92">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "ArcFaceTest.ScanTableViewController.UserProfile.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIImageView&gt;"
                   moduleName = "ArcFaceTest"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Mid-2/ArcFaceTest/ArcFaceTest/ScanTableViewController.swift"
-                  timestampString = "544863676.30176"
+                  urlString = "file:///Users/apple/MidTest/ArcFaceTest/ArcFaceTest/ScanTableViewController.swift"
+                  timestampString = "545588163.938972"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
@@ -49,14 +49,14 @@
                   offsetFromSymbolStart = "96">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "ArcFaceTest.ScanTableViewController.init(style: __C.UITableViewStyle) -&gt; ArcFaceTest.ScanTableViewController"
                   moduleName = "ArcFaceTest"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Mid-2/ArcFaceTest/ArcFaceTest/ScanTableViewController.swift"
-                  timestampString = "544863676.3039041"
+                  urlString = "file:///Users/apple/MidTest/ArcFaceTest/ArcFaceTest/ScanTableViewController.swift"
+                  timestampString = "545588163.941049"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
@@ -64,14 +64,14 @@
                   offsetFromSymbolStart = "252">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "ArcFaceTest.ScanTableViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; ArcFaceTest.ScanTableViewController"
                   moduleName = "ArcFaceTest"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Mid-2/ArcFaceTest/ArcFaceTest/ScanTableViewController.swift"
-                  timestampString = "544863676.30612"
+                  urlString = "file:///Users/apple/MidTest/ArcFaceTest/ArcFaceTest/ScanTableViewController.swift"
+                  timestampString = "545588163.944508"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
@@ -79,14 +79,14 @@
                   offsetFromSymbolStart = "288">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "ArcFaceTest.ScanTableViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;ArcFaceTest.ScanTableViewController&gt;"
                   moduleName = "ArcFaceTest"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Mid-2/ArcFaceTest/ArcFaceTest/ScanTableViewController.swift"
-                  timestampString = "544863676.308293"
+                  urlString = "file:///Users/apple/MidTest/ArcFaceTest/ArcFaceTest/ScanTableViewController.swift"
+                  timestampString = "545588163.949018"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
