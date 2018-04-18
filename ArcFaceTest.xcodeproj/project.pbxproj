@@ -58,6 +58,7 @@
 		7382F42B20274C2700084440 /* FaceRecognition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7382F42A20274C2700084440 /* FaceRecognition.storyboard */; };
 		7382F42D20274C5800084440 /* CheckingIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7382F42C20274C5800084440 /* CheckingIn.storyboard */; };
 		7382F42F20274C6E00084440 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7382F42E20274C6E00084440 /* Me.storyboard */; };
+		73CDA1AC2087ACA1004750A9 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CDA1AB2087ACA1004750A9 /* LogInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +161,7 @@
 		7382F42A20274C2700084440 /* FaceRecognition.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FaceRecognition.storyboard; sourceTree = "<group>"; };
 		7382F42C20274C5800084440 /* CheckingIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CheckingIn.storyboard; sourceTree = "<group>"; };
 		7382F42E20274C6E00084440 /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
+		73CDA1AB2087ACA1004750A9 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +231,7 @@
 				007B0D80201C81BB00E53324 /* ArcFaceTest-Bridging-Header.h */,
 				007B0D82201C826F00E53324 /* Objc */,
 				007B0D50201C7A8700E53324 /* AppDelegate.swift */,
+				73CDA1AB2087ACA1004750A9 /* LogInViewController.swift */,
 				524558F72078404E0051DB21 /* CheckinTableViewController.swift */,
 				52DF05232078AC2300AD1CCB /* ClassTableViewCell.swift */,
 				52DF05252078C32C00AD1CCB /* AddAttendanceTableViewController.swift */,
@@ -592,6 +595,7 @@
 				004543BC20638D93006CBC8C /* Information.swift in Sources */,
 				007B0D9F201C88D900E53324 /* Utility.m in Sources */,
 				735A1678203B385A00D8DD4B /* ProfileTableViewCell.swift in Sources */,
+				73CDA1AC2087ACA1004750A9 /* LogInViewController.swift in Sources */,
 				007B0D9E201C88D900E53324 /* AFRCDManager.m in Sources */,
 				284181DF207411EA002C1634 /* DevelopInfoTableViewController.swift in Sources */,
 				007B0D9C201C88D900E53324 /* AFVideoProcessor.mm in Sources */,
@@ -796,9 +800,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 72BRF3WV35;
+				DEVELOPMENT_TEAM = FH55SZ3XYA;
 				ENABLE_BITCODE = NO;
 				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
 				INFOPLIST_FILE = ArcFaceTest/Info.plist;
@@ -811,7 +816,7 @@
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_recognition/lib",
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_tracking/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFaceTes;
+				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFaceTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ArcFaceTest/ArcFaceTest-Bridging-Header.h";
@@ -824,9 +829,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 72BRF3WV35;
+				DEVELOPMENT_TEAM = FH55SZ3XYA;
 				ENABLE_BITCODE = NO;
 				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
 				INFOPLIST_FILE = ArcFaceTest/Info.plist;
@@ -839,7 +845,7 @@
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_recognition/lib",
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_tracking/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFaceTes;
+				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFaceTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ArcFaceTest/ArcFaceTest-Bridging-Header.h";

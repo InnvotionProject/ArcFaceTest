@@ -18,7 +18,7 @@ class CheckinTableViewController: UITableViewController {
             
             if(info.add(group: classname, detail: remark))
             {
-                print("success")
+                print("success to add class: \(classname)")
             }
         }
         

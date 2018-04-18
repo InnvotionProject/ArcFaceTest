@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jpG-zS-0uH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jpG-zS-0uH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Log In View Controller-->
         <scene sceneID="qFc-sc-U0p">
             <objects>
-                <viewController id="jpG-zS-0uH" sceneMemberID="viewController">
+                <viewController id="jpG-zS-0uH" customClass="LogInViewController" customModule="ArcFaceTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qID-RZ-0uC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,7 +64,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="密码登录"/>
                                 <connections>
-                                    <segue destination="117-Fc-HCO" kind="show" id="EeY-GJ-eTJ"/>
+                                    <segue destination="cLh-kt-UDC" kind="presentation" id="Mbr-Fv-dsC"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -355,36 +355,7 @@
             </objects>
             <point key="canvasLocation" x="-1834.4000000000001" y="957.57121439280365"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="K67-Pn-9MR">
-            <objects>
-                <viewController id="117-Fc-HCO" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Nvx-Gt-u5B">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L6u-G2-rfK">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <connections>
-                                    <segue destination="wJJ-9T-ehI" kind="embed" id="iNb-XG-xmm"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="L6u-G2-rfK" firstAttribute="leading" secondItem="deS-bm-VfT" secondAttribute="leading" id="01K-gg-9mD"/>
-                            <constraint firstItem="L6u-G2-rfK" firstAttribute="top" secondItem="Nvx-Gt-u5B" secondAttribute="top" id="Jpq-7u-3qO"/>
-                            <constraint firstItem="L6u-G2-rfK" firstAttribute="bottom" secondItem="deS-bm-VfT" secondAttribute="bottom" id="PmP-Yn-sIf"/>
-                            <constraint firstItem="L6u-G2-rfK" firstAttribute="trailing" secondItem="deS-bm-VfT" secondAttribute="trailing" id="cLy-QQ-a0a"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="deS-bm-VfT"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4z9-JZ-tUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2778.4000000000001" y="-690.40479760119945"/>
-        </scene>
-        <!--Login Table View Controller-->
+        <!--密码登陆-->
         <scene sceneID="ej3-Pd-fMz">
             <objects>
                 <tableViewController id="wJJ-9T-ehI" customClass="LoginTableViewController" customModule="ArcFaceTest" customModuleProvider="target" sceneMemberID="viewController">
@@ -392,24 +363,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="QHk-pr-dIO">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="Login" id="uvj-ra-U49">
-                                    <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="NMa-9y-f32">
-                                        <connections>
-                                            <action selector="Back:" destination="wJJ-9T-ehI" id="x2k-tu-UF3"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </navigationItem>
-                            </items>
-                        </navigationBar>
                         <sections>
                             <tableViewSection id="rph-Dq-1gL">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="176" id="oTM-xP-cnU">
-                                        <rect key="frame" x="0.0" y="44" width="375" height="176"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="176"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oTM-xP-cnU" id="Qxd-u5-7x3">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="175.5"/>
@@ -418,7 +376,7 @@
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="57" id="VMe-dP-pKT">
-                                        <rect key="frame" x="0.0" y="220" width="375" height="57"/>
+                                        <rect key="frame" x="0.0" y="176" width="375" height="57"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VMe-dP-pKT" id="BJL-Eg-GhR">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="56.5"/>
@@ -452,7 +410,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="tZ6-H5-0UT">
-                                        <rect key="frame" x="0.0" y="277" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="233" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tZ6-H5-0UT" id="6Od-6c-RuC">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
@@ -489,7 +447,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="46" id="lfc-gV-RdM">
-                                        <rect key="frame" x="0.0" y="327" width="375" height="46"/>
+                                        <rect key="frame" x="0.0" y="283" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lfc-gV-RdM" id="2jj-SY-vZM">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="45.5"/>
@@ -511,7 +469,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="320" id="INO-QC-Bev">
-                                        <rect key="frame" x="0.0" y="373" width="375" height="320"/>
+                                        <rect key="frame" x="0.0" y="329" width="375" height="320"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="INO-QC-Bev" id="a1A-hO-V7m">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="319.5"/>
@@ -527,6 +485,13 @@
                             <outlet property="delegate" destination="wJJ-9T-ehI" id="5B0-oB-gEM"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="密码登陆" id="oQO-q5-82Z">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="I1M-EO-hP6">
+                            <connections>
+                                <segue destination="YtT-pS-JFa" kind="unwind" unwindAction="unwindtoLogInViewControllerWithSegui:" id="fsT-oY-vEN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="PassWord" destination="WDe-3B-4QW" id="b6q-KK-kld"/>
                         <outlet property="UserName" destination="8gR-X0-9wy" id="mvW-eE-MOp"/>
@@ -534,8 +499,9 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="veW-SL-DcA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="YtT-pS-JFa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1943.2" y="-708.39580209895053"/>
+            <point key="canvasLocation" x="-1004" y="-708.39580209895053"/>
         </scene>
         <!--Initial-->
         <scene sceneID="sFa-0B-nEA">
@@ -573,7 +539,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="FaceRectVideoController" storyboardName="FaceRecognition" referencedIdentifier="FaceRectVideoController" id="PFn-Wx-LwV" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LwG-OJ-Myv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1464" y="-577"/>
+            <point key="canvasLocation" x="2402.4000000000001" y="-577.51124437781118"/>
         </scene>
         <!--CheckingIn-->
         <scene sceneID="8Eh-zP-VVs">
@@ -612,6 +578,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4QF-x5-gSx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2322" y="1403"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wvv-yj-ftd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cLh-kt-UDC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1RY-wk-Mdi">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wJJ-9T-ehI" kind="relationship" relationship="rootViewController" id="DMK-Zl-51Q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Jg-gG-qWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1943.2" y="-708.39580209895053"/>
         </scene>
     </scenes>
     <resources>
