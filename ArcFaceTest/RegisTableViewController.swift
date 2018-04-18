@@ -45,9 +45,12 @@ class RegisTableViewController: UITableViewController {
     @IBAction func Back(_ sender: UIBarButtonItem) {
         if let person = info.personInfos()
         {
+        if(!person.isEmpty)
+        {
             if(info.remove(personID: (person.last?.personID)!))
             {
              print("success remove")
+            }
             }
         }
         self.dismiss(animated: true, completion: nil)
@@ -80,10 +83,13 @@ class RegisTableViewController: UITableViewController {
         {
             RemarkInfo.text = Remarke
         }
-            if let ProImagee = info.personImage(personID: (person?.last?.personID)!)
+        if let ProImagee = info.personImage(personID: (person?.last?.personID)!)
         {
             ProImage.image = ProImagee
         }
+        else{
+            ProImage.image=#imageLiteral(resourceName: "InitialFace")
+            }
             
         }
     }
