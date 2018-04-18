@@ -18,29 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="GHY-7E-OM8">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="添加" id="OEX-um-Y57">
-                                    <barButtonItem key="leftBarButtonItem" title="Cancle" id="kcg-ds-Cca">
-                                        <connections>
-                                            <action selector="Cancle:" destination="yAn-FB-2gQ" id="TaZ-uO-nfc"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem key="rightBarButtonItem" title="Save" id="LY1-S4-jAE">
-                                        <connections>
-                                            <segue destination="Ohg-aO-w8p" kind="unwind" unwindAction="unwindToCheckInSender:" id="Uzn-Bp-mv3"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </navigationItem>
-                            </items>
-                        </navigationBar>
                         <sections>
                             <tableViewSection id="Vlm-iH-poi">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="48" id="ARr-6R-bP2">
-                                        <rect key="frame" x="0.0" y="44" width="375" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ARr-6R-bP2" id="TNo-Nx-SnX">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
@@ -64,7 +46,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="49" id="U7x-vy-rwC">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="49"/>
+                                        <rect key="frame" x="0.0" y="48" width="375" height="49"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U7x-vy-rwC" id="dD5-mj-QIb">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="48.5"/>
@@ -88,7 +70,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="49" id="2s9-q7-7Mr">
-                                        <rect key="frame" x="0.0" y="141" width="375" height="49"/>
+                                        <rect key="frame" x="0.0" y="97" width="375" height="49"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2s9-q7-7Mr" id="mvC-2A-5O8">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="48.5"/>
@@ -103,7 +85,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="543" id="Xb2-7x-ZUa">
-                                        <rect key="frame" x="0.0" y="190" width="375" height="543"/>
+                                        <rect key="frame" x="0.0" y="146" width="375" height="543"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xb2-7x-ZUa" id="YUf-vA-TfA">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="542.5"/>
@@ -119,7 +101,13 @@
                             <outlet property="delegate" destination="yAn-FB-2gQ" id="tqW-iI-tyI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="pYE-gG-4dG"/>
+                    <navigationItem key="navigationItem" title="添加" id="pYE-gG-4dG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ZnP-UM-G2F">
+                            <connections>
+                                <segue destination="Ohg-aO-w8p" kind="unwind" unwindAction="unwindToCheckInSender:" id="tRf-E9-aao"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="classdetail" destination="mwC-sV-7Gl" id="ijO-pT-pwa"/>
                         <outlet property="classname" destination="ZeI-sr-X1K" id="WO9-OF-j6d"/>
@@ -169,7 +157,7 @@
                     <navigationItem key="navigationItem" id="XDQ-1Q-lgv">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OaH-oY-pAB">
                             <connections>
-                                <segue destination="yAn-FB-2gQ" kind="presentation" id="EGn-4b-fum"/>
+                                <segue destination="yAn-FB-2gQ" kind="show" id="HfH-rz-vgt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
