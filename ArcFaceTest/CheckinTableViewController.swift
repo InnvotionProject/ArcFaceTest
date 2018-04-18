@@ -30,7 +30,7 @@ class CheckinTableViewController: UITableViewController {
         
         
         let fetchRequestController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: info.context, sectionNameKeyPath: nil, cacheName: nil)
-     //   fetchRequestController.delegate = self
+        fetchRequestController.delegate = self
         return fetchRequestController
     }()
     
@@ -53,7 +53,7 @@ class CheckinTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-         //self.navigationItem.rightBarButtonItem = self.editButtonItem
+         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -116,13 +116,13 @@ class CheckinTableViewController: UITableViewController {
     */
 
     
-    /*// Override to support editing the table view.
+    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             let group = fetchedRequestsController.object(at: indexPath)
             print("delete person with personId: \(String(describing: group.name))")
-            if info.remove(group: String(group.name)) {
+            if info.remove(group: group.name!) {
                 //tableView.deleteRows(at: [indexPath], with: .fade)
                 print("delete succeed")
             }
@@ -130,7 +130,6 @@ class CheckinTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
     /*
     // Override to support rearranging the table view.

@@ -167,7 +167,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="XDQ-1Q-lgv">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="Ssr-n2-9oO"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OaH-oY-pAB">
                             <connections>
                                 <segue destination="yAn-FB-2gQ" kind="presentation" id="EGn-4b-fum"/>
@@ -231,6 +230,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKj-q5-3Px">
+                                                    <rect key="frame" x="299" y="12" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -262,6 +268,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="AttendenceNum" destination="qKj-q5-3Px" id="onK-ho-4CI"/>
                         <outlet property="ClassmateNum" destination="P8a-58-d09" id="H6S-h2-txt"/>
                     </connections>
                 </tableViewController>

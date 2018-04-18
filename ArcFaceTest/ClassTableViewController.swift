@@ -13,6 +13,7 @@ class ClassTableViewController: UITableViewController {
     let info = InformationProvider.shared
     
     @IBOutlet weak var ClassmateNum: UILabel!
+    @IBOutlet weak var AttendenceNum: UILabel!
     
     
     var Mid_name:String? = ""
@@ -24,7 +25,10 @@ class ClassTableViewController: UITableViewController {
         {
              ClassmateNum.text = String(persons.count)
         }
-        
+        if let attendence = info.attendanceInfo(group: Mid_name!)
+        {
+            AttendenceNum.text = String(attendence.count)
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
