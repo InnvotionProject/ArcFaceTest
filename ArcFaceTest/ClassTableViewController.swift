@@ -10,12 +10,21 @@ import UIKit
 
 class ClassTableViewController: UITableViewController {
     
+    let info = InformationProvider.shared
+    
+    @IBOutlet weak var ClassmateNum: UILabel!
+    
+    
     var Mid_name:String? = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(Mid_name)
+        if let persons = info.personInfos(group: Mid_name!)
+        {
+             ClassmateNum.text = String(persons.count)
+        }
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
