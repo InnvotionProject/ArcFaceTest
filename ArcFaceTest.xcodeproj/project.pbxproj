@@ -33,6 +33,7 @@
 		007B0DD2201C89FD00E53324 /* libarcsoft_fsdk_face_tracking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DCB201C89FC00E53324 /* libarcsoft_fsdk_face_tracking.a */; };
 		007B0DE2201C8C3000E53324 /* FSDKFR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 007B0DE0201C8C3000E53324 /* FSDKFR.xcdatamodeld */; };
 		007B0DE5201C8CB600E53324 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DE4201C8CB600E53324 /* libstdc++.6.tbd */; };
+		00E2D1ED2088C79500785093 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00E2D1EC2088C79500785093 /* Register.storyboard */; };
 		00FACE6620738D3F0052BA27 /* InformationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FACE6520738D3F0052BA27 /* InformationProvider.swift */; };
 		2814D2AC2084EF2C00D0F10A /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2814D2AB2084EF2C00D0F10A /* LoginTableViewController.swift */; };
 		284181DF207411EA002C1634 /* DevelopInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284181DE207411EA002C1634 /* DevelopInfoTableViewController.swift */; };
@@ -136,6 +137,7 @@
 		007B0DDB201C8A9B00E53324 /* AFRCDVersion+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFRCDVersion+CoreDataProperties.h"; sourceTree = "<group>"; };
 		007B0DE1201C8C3000E53324 /* FSDKFR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FSDKFR.xcdatamodel; sourceTree = "<group>"; };
 		007B0DE4201C8CB600E53324 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+		00E2D1EC2088C79500785093 /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		00FACE6520738D3F0052BA27 /* InformationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationProvider.swift; sourceTree = "<group>"; };
 		2814D2AB2084EF2C00D0F10A /* LoginTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
 		284181DE207411EA002C1634 /* DevelopInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevelopInfoTableViewController.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			children = (
 				007B0D54201C7A8700E53324 /* Main.storyboard */,
 				7382F42E20274C6E00084440 /* Me.storyboard */,
+				00E2D1EC2088C79500785093 /* Register.storyboard */,
 				735DF68C2078996A006BB84C /* MyStatistics.storyboard */,
 				7382F42C20274C5800084440 /* CheckingIn.storyboard */,
 				7382F42A20274C2700084440 /* FaceRecognition.storyboard */,
@@ -568,6 +571,7 @@
 				7382F42B20274C2700084440 /* FaceRecognition.storyboard in Resources */,
 				007B0D58201C7A8700E53324 /* Assets.xcassets in Resources */,
 				007B0D56201C7A8700E53324 /* Main.storyboard in Resources */,
+				00E2D1ED2088C79500785093 /* Register.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

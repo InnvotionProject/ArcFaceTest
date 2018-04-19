@@ -366,10 +366,10 @@
             </objects>
             <point key="canvasLocation" x="4044" y="-262.21889055472263"/>
         </scene>
-        <!--cameraViewController-->
+        <!--Register-->
         <scene sceneID="Czb-er-f1z">
             <objects>
-                <viewControllerPlaceholder storyboardName="FaceRecognition" referencedIdentifier="cameraViewController" id="BcI-2y-bTH" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Register" id="BcI-2y-bTH" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sgv-uS-b0C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3730" y="1117"/>

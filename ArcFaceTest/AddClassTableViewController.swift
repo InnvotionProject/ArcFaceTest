@@ -119,11 +119,13 @@ class AddClassTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         super.prepare(for: segue, sender: sender)
+        /*
         if segue.identifier == "Classmate" {
             if let camera = segue.destination as? CameraViewController {
                 camera.setPurpose(purpose: .register)
             }
         }
+        */
     }
 
 }

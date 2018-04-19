@@ -146,8 +146,8 @@ class MyStatisticsTableViewController: UITableViewController {
             profileTMVC.profileInfo = (image: info.personImage(personID: UInt(personID)) ?? #imageLiteral(resourceName: "InitialFace"), name: person.name!, gender: "男", remark: person.remark ?? "")
             
         } else if segue.identifier == "register_statistics" {
-            if let camera = segue.destination as? CameraViewController {
-                camera.setPurpose(purpose: .register)
+            if let regis = segue.destination as? RegisTableViewController {
+                regis.setPurpose(purpose: .user)
             }
         }
     }

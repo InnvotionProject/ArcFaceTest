@@ -119,9 +119,9 @@ class ClassMemberTableViewController: UITableViewController {
             }
             
         } else if segue.identifier == "register_classmate" {
-            if let camera = segue.destination as? CameraViewController {
-                camera.setPurpose(purpose: .register)
-                camera.setGroup(group: classname!)
+            if let register = segue.destination as? RegisTableViewController {
+                register.setPurpose(purpose: .user)
+                register.setGroup(group: classname)
                 
             }
         }

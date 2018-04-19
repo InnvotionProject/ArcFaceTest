@@ -10,15 +10,25 @@ import UIKit
 import CoreData
 class RegisTableViewController: UITableViewController {
     var Judge:Bool = false
+    private var purpose = Purpose.none
+    private var group: String?
+    private var attendance: String?
     
+    /*
     @IBAction func Scan(_ sender: Any) {
         Judge=true
     }
+     */
     
     @IBOutlet weak var Portrait: UIImageView!
     @IBOutlet weak var InputAgain: UITextField!
     @IBOutlet weak var Input: UITextField!
     @IBAction func Confirm(_ sender: Any) {
+        // 如果不是manager注册，就不需要密码了
+        guard purpose == .manager else {
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
     let str_a = Input.text
     let str_b = InputAgain.text
     if(!(str_a?.isEmpty)! && !(str_b?.isEmpty)!)
@@ -36,13 +46,17 @@ class RegisTableViewController: UITableViewController {
     
 }
     @IBOutlet weak var ProImage: UIImageView!
-    @IBOutlet weak var RemarkInfo: UILabel!
-    @IBOutlet weak var UserName: UILabel!
-    @IBOutlet weak var ID: UILabel!
-
-    
+    @IBOutlet weak var ID: UITextField!
+    @IBOutlet weak var UserName: UITextField!
+    @IBOutlet weak var RemarkInfo: UITextField!
 
     @IBAction func Back(_ sender: UIBarButtonItem) {
+        // 保证不会在没有注册的情况下删掉多余前一个人的信息
+        guard Judge else {
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
+        
         if let person = info.personInfos()
         {
         if(!person.isEmpty)
@@ -57,6 +71,9 @@ class RegisTableViewController: UITableViewController {
     }
     
     let info=InformationProvider.shared
+    
+    @IBOutlet weak var InputStack: UITableViewCell!
+    @IBOutlet weak var InputAgainStack: UITableViewCell!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -65,11 +82,17 @@ class RegisTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // 如果不是manager注册，就不需要密码了
+        if purpose != .manager {
+            InputStack.isHidden = true
+            InputAgainStack.isHidden = true
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         if(Judge==true)
         {
         let person = info.personInfos()
+        /*
         print(person?.first?.id as Any)
         if let Ide = person?.last?.id
         {
@@ -83,6 +106,7 @@ class RegisTableViewController: UITableViewController {
         {
             RemarkInfo.text = Remarke
         }
+        */
         if let ProImagee = info.personImage(personID: (person?.last?.personID)!)
         {
             ProImage.image = ProImagee
@@ -171,9 +195,38 @@ class RegisTableViewController: UITableViewController {
         super.prepare(for: segue, sender: sender)
         if segue.identifier == "register_user" {
             if let camera = segue.destination as? CameraViewController {
-                camera.setPurpose(purpose: .register)
+                camera.setPurpose(purpose: .register(success: success))
+                camera.setGroup(group: group)
+                camera.setID(ID: ID.text)
+                camera.setName(name: UserName.text)
+                camera.setRemark(remark: RemarkInfo.text)
             }
         }
     }
 
+}
+
+extension RegisTableViewController {
+    enum Purpose {
+        case manager
+        case user
+        case none
+    }
+    
+    func setPurpose(purpose: Purpose) {
+        self.purpose = purpose
+    }
+    
+    func setGroup(group: String?) {
+        self.group = group
+    }
+    
+    func setAttendance(attendance: String?) {
+        self.attendance = attendance
+    }
+    
+    // 回调函数，success为是否录入成功
+    func success(_ success: Bool) {
+        self.Judge = success
+    }
 }

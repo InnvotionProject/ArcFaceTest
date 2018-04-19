@@ -41,6 +41,9 @@ class CameraViewController: UIViewController {
     }
     
     private var purpose = Purpose.none
+    private var _id: String?
+    private var _name: String?
+    private var _remark: String?
     private var attendance: String?
     private var group: String?
     
@@ -60,7 +63,7 @@ class CameraViewController: UIViewController {
      
      - parameter attendance: 考勤
      */
-    func setAttendance(attendance: String) {
+    func setAttendance(attendance: String?) {
         self.attendance = attendance
     }
     
@@ -71,8 +74,35 @@ class CameraViewController: UIViewController {
      
      - parameter group: 组
      */
-    func setGroup(group: String) {
+    func setGroup(group: String?) {
         self.group = group
+    }
+    
+    /**
+     要求purpose = register
+     
+     - parameter ID: ID
+     */
+    func setID(ID: String?) {
+        self._id = ID
+    }
+    
+    /**
+     要求purpose = register
+     
+     - parameter name: 姓名
+     */
+    func setName(name: String?) {
+        self._name = name
+    }
+    
+    /**
+     要求purpose = register
+     
+     - parameter remark: 更多
+     */
+    func setRemark(remark: String?) {
+        self._remark = remark
     }
 
     // button register clicked
@@ -82,13 +112,15 @@ class CameraViewController: UIViewController {
         }
         
         switch purpose {
-        case .register:
-            registerInput()
+        case .register(success: let success):
+            success(registerInput())
         case .photo:
             photoInput()
         default:
             break
         }
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func switchDevicePosition(_ sender: UISwitch) {
@@ -119,7 +151,7 @@ class CameraViewController: UIViewController {
 
 extension CameraViewController {
     enum Purpose {
-        case register
+        case register(success: (Bool) -> ())
         case recognition
         case photo
         case none
@@ -392,23 +424,43 @@ extension CameraViewController {
         return CGRect(x: x, y: y, width: width, height: height)
     }
     
-    fileprivate func registerInput() {
+    fileprivate func registerInput() -> Bool {
+        guard let id = self._id, let name = self._name, let remark = self._remark else {
+            return false
+        }
+        
+        guard !name.isEmpty else {
+            return false
+        }
+        
+        let personID = self.videoProcessor.registerDetectedPerson(name)
+        guard personID != 0 else {
+            return false
+        }
+        
+        self.addIntoCoreData(personID: personID, id: id, name: name, remark: remark, image: nil)
+        
+        return true
+    }
+    
+    /*
+    fileprivate func registerInput() -> Bool {
         let ralert = UIAlertController(title: "Register", message: "", preferredStyle: .alert)
         // ID name remark
         let rok = UIAlertAction(title: "ok", style: .default) { action in
             guard let id = ralert.textFields?[0].text,
                   let name = ralert.textFields?[1].text,
                   let remark = ralert.textFields?[2].text else {
-                    return
+                    return false
             }
             
             guard !name.isEmpty else {
-                return
+                return false
             }
             
             let personID = self.videoProcessor.registerDetectedPerson(name)
             guard personID != 0 else {
-                return
+                return false
             }
             
             self.addIntoCoreData(personID: personID, id: id, name: name, remark: remark, image: nil)
@@ -440,6 +492,7 @@ extension CameraViewController {
         
         self.present(ralert, animated: true, completion: nil)
     }
+     */
     
     fileprivate func photoInput() {
         let chooseAlert = UIAlertController(title: "Choose", message: nil, preferredStyle: .actionSheet)

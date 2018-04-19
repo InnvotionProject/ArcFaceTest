@@ -68,6 +68,8 @@ protocol Information {
     /**
      删除一个person信息，会同时删除他的头像
      
+     TODO: 同时删除人脸识别coredata里的信息
+     
      - parameter personID: person的全局唯一标识符
      - returns:
         返回是否成功 Bool
