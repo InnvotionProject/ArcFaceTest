@@ -13,6 +13,7 @@ class RegisTableViewController: UITableViewController {
     private var purpose = Purpose.none
     private var group: String?
     private var attendance: String?
+
     
     /*
     @IBAction func Scan(_ sender: Any) {
@@ -50,24 +51,26 @@ class RegisTableViewController: UITableViewController {
     @IBOutlet weak var UserName: UITextField!
     @IBOutlet weak var RemarkInfo: UITextField!
 
+
     @IBAction func Back(_ sender: UIBarButtonItem) {
-        // 保证不会在没有注册的情况下删掉多余前一个人的信息
-        guard Judge else {
-            self.dismiss(animated: true, completion: nil)
-            return
-        }
-        
-        if let person = info.personInfos()
-        {
-        if(!person.isEmpty)
-        {
-            if(info.remove(personID: (person.last?.personID)!))
+            // 保证不会在没有注册的情况下删掉多余前一个人的信息
+            guard Judge else {
+                self.dismiss(animated: true, completion: nil)
+                return
+            }
+            
+            if let person = info.personInfos()
             {
-             print("success remove")
+                if(!person.isEmpty)
+                {
+                    if(info.remove(personID: (person.last?.personID)!))
+                    {
+                        print("success remove")
+                    }
+                }
             }
-            }
-        }
-        self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
+        
     }
     
     let info=InformationProvider.shared
