@@ -33,14 +33,28 @@ class LoginTableViewController: UITableViewController {
                 
                 
             }
+            else
+            {
+                let alert = UIAlertController.init(title: "无法登陆", message: "ID或密码错误", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction.init(title: "确定", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert,animated: true,completion: nil)
+            }
+            
+        }
+        else
+        {
+            let alert = UIAlertController.init(title: "无法登陆", message: "未注册过用户", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction.init(title: "确定", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert,animated: true,completion: nil)
             
         }
         }
         
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(UserName.text)
+        //print(UserName.text)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
