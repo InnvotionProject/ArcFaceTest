@@ -85,12 +85,8 @@ class RegisTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        // 如果不是manager注册，就不需要密码了
-        if purpose != .manager {
-            InputStack.isHidden = true
-            InputAgainStack.isHidden = true
-        }
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         if(Judge==true)
         {
@@ -218,6 +214,12 @@ extension RegisTableViewController {
     
     func setPurpose(purpose: Purpose) {
         self.purpose = purpose
+        
+        // 如果不是manager注册，就不需要密码了
+        if purpose != .manager {
+            InputStack.isHidden = true
+            InputAgainStack.isHidden = true
+        }
     }
     
     func setGroup(group: String?) {

@@ -31,7 +31,7 @@ class LogInViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "register_manager" {
-            if let register = segue.destination as? RegisTableViewController {
+            if let register = segue.destination as? RegisPrepareViewController {
                 register.setPurpose(purpose: .manager)
             }
         }

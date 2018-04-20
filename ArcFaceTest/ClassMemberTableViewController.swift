@@ -119,7 +119,7 @@ class ClassMemberTableViewController: UITableViewController {
             }
             
         } else if segue.identifier == "register_classmate" {
-            if let register = segue.destination as? RegisTableViewController {
+            if let register = segue.destination as? RegisPrepareViewController {
                 register.setPurpose(purpose: .user)
                 register.setGroup(group: classname)
                 
