@@ -16,8 +16,10 @@
 
 @end
 
-@interface AFVideoFaceRect : NSObject
+@interface AFVideoFaceInfo : NSObject
 @property(nonatomic,assign) MRECT faceRect;
+@property(nonatomic,assign) MInt32 age;
+@property(nonatomic,assign) MInt32 gender;
 @end
 
 @interface AFVideoProcessor : NSObject

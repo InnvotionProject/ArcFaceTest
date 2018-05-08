@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		001029C2209966BC00FC54D3 /* GLKitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 001029C0209966BB00FC54D3 /* GLKitView.m */; };
 		004543BC20638D93006CBC8C /* Information.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004543B920638D93006CBC8C /* Information.swift */; };
 		004543BD20638D93006CBC8C /* InformationModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 004543BA20638D93006CBC8C /* InformationModel.xcdatamodeld */; };
 		007B0D51201C7A8700E53324 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B0D50201C7A8700E53324 /* AppDelegate.swift */; };
@@ -22,17 +23,20 @@
 		007B0D9D201C88D900E53324 /* AFCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 007B0D95201C88D800E53324 /* AFCameraController.m */; };
 		007B0D9E201C88D900E53324 /* AFRCDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 007B0D96201C88D800E53324 /* AFRCDManager.m */; };
 		007B0D9F201C88D900E53324 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 007B0D98201C88D900E53324 /* Utility.m */; };
-		007B0DAF201C895900E53324 /* GLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 007B0DAA201C895900E53324 /* GLView.mm */; };
-		007B0DB0201C895900E53324 /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 007B0DAB201C895900E53324 /* GLProgram.m */; };
-		007B0DCC201C89FD00E53324 /* libmpbase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DB9201C89FC00E53324 /* libmpbase.a */; };
-		007B0DCD201C89FD00E53324 /* libarcsoft_mobilecv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DBA201C89FC00E53324 /* libarcsoft_mobilecv.a */; };
-		007B0DCE201C89FD00E53324 /* arcsoft_face_base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DBB201C89FC00E53324 /* arcsoft_face_base.a */; };
-		007B0DCF201C89FD00E53324 /* libarcsoft_fsdk_base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DBC201C89FC00E53324 /* libarcsoft_fsdk_base.a */; };
-		007B0DD0201C89FD00E53324 /* libarcsoft_fsdk_face_detection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DC1201C89FC00E53324 /* libarcsoft_fsdk_face_detection.a */; };
-		007B0DD1201C89FD00E53324 /* libarcsoft_fsdk_face_recognition.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DC6201C89FC00E53324 /* libarcsoft_fsdk_face_recognition.a */; };
-		007B0DD2201C89FD00E53324 /* libarcsoft_fsdk_face_tracking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DCB201C89FC00E53324 /* libarcsoft_fsdk_face_tracking.a */; };
 		007B0DE2201C8C3000E53324 /* FSDKFR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 007B0DE0201C8C3000E53324 /* FSDKFR.xcdatamodeld */; };
 		007B0DE5201C8CB600E53324 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B0DE4201C8CB600E53324 /* libstdc++.6.tbd */; };
+		007D951120A1CE59008B9592 /* arcsoft_fsdk_age_estimation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001029C720996B9500FC54D3 /* arcsoft_fsdk_age_estimation.framework */; };
+		007D951220A1CE59008B9592 /* arcsoft_fsdk_age_estimation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 001029C720996B9500FC54D3 /* arcsoft_fsdk_age_estimation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		007D951320A1CE59008B9592 /* arcsoft_fsdk_base.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001029C420996B9500FC54D3 /* arcsoft_fsdk_base.framework */; };
+		007D951420A1CE59008B9592 /* arcsoft_fsdk_base.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 001029C420996B9500FC54D3 /* arcsoft_fsdk_base.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		007D951520A1CE59008B9592 /* arcsoft_fsdk_face_detection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001029C620996B9500FC54D3 /* arcsoft_fsdk_face_detection.framework */; };
+		007D951620A1CE59008B9592 /* arcsoft_fsdk_face_detection.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 001029C620996B9500FC54D3 /* arcsoft_fsdk_face_detection.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		007D951720A1CE59008B9592 /* arcsoft_fsdk_face_recognition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001029C820996B9500FC54D3 /* arcsoft_fsdk_face_recognition.framework */; };
+		007D951820A1CE59008B9592 /* arcsoft_fsdk_face_recognition.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 001029C820996B9500FC54D3 /* arcsoft_fsdk_face_recognition.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		007D951920A1CE59008B9592 /* arcsoft_fsdk_face_tracking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001029C520996B9500FC54D3 /* arcsoft_fsdk_face_tracking.framework */; };
+		007D951A20A1CE59008B9592 /* arcsoft_fsdk_face_tracking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 001029C520996B9500FC54D3 /* arcsoft_fsdk_face_tracking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		007D951B20A1CE59008B9592 /* arcsoft_fsdk_gender_estimation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001029C320996B9500FC54D3 /* arcsoft_fsdk_gender_estimation.framework */; };
+		007D951C20A1CE59008B9592 /* arcsoft_fsdk_gender_estimation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 001029C320996B9500FC54D3 /* arcsoft_fsdk_gender_estimation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		008C6B8F2089A50F00F2D86E /* RegisPrepareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C6B8E2089A50F00F2D86E /* RegisPrepareViewController.swift */; };
 		00E2D1ED2088C79500785093 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00E2D1EC2088C79500785093 /* Register.storyboard */; };
 		00FACE6620738D3F0052BA27 /* InformationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FACE6520738D3F0052BA27 /* InformationProvider.swift */; };
@@ -80,7 +84,34 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		007D951D20A1CE59008B9592 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				007D951420A1CE59008B9592 /* arcsoft_fsdk_base.framework in Embed Frameworks */,
+				007D951C20A1CE59008B9592 /* arcsoft_fsdk_gender_estimation.framework in Embed Frameworks */,
+				007D951220A1CE59008B9592 /* arcsoft_fsdk_age_estimation.framework in Embed Frameworks */,
+				007D951820A1CE59008B9592 /* arcsoft_fsdk_face_recognition.framework in Embed Frameworks */,
+				007D951620A1CE59008B9592 /* arcsoft_fsdk_face_detection.framework in Embed Frameworks */,
+				007D951A20A1CE59008B9592 /* arcsoft_fsdk_face_tracking.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		001029C0209966BB00FC54D3 /* GLKitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLKitView.m; sourceTree = "<group>"; };
+		001029C1209966BC00FC54D3 /* GLKitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLKitView.h; sourceTree = "<group>"; };
+		001029C320996B9500FC54D3 /* arcsoft_fsdk_gender_estimation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = arcsoft_fsdk_gender_estimation.framework; sourceTree = "<group>"; };
+		001029C420996B9500FC54D3 /* arcsoft_fsdk_base.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = arcsoft_fsdk_base.framework; sourceTree = "<group>"; };
+		001029C520996B9500FC54D3 /* arcsoft_fsdk_face_tracking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = arcsoft_fsdk_face_tracking.framework; sourceTree = "<group>"; };
+		001029C620996B9500FC54D3 /* arcsoft_fsdk_face_detection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = arcsoft_fsdk_face_detection.framework; sourceTree = "<group>"; };
+		001029C720996B9500FC54D3 /* arcsoft_fsdk_age_estimation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = arcsoft_fsdk_age_estimation.framework; sourceTree = "<group>"; };
+		001029C820996B9500FC54D3 /* arcsoft_fsdk_face_recognition.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = arcsoft_fsdk_face_recognition.framework; sourceTree = "<group>"; };
 		004543B920638D93006CBC8C /* Information.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Information.swift; sourceTree = "<group>"; };
 		004543BB20638D93006CBC8C /* InformationModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InformationModel.xcdatamodel; sourceTree = "<group>"; };
 		007B0D4D201C7A8700E53324 /* ArcFaceTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArcFaceTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,25 +140,6 @@
 		007B0D97201C88D800E53324 /* AFRPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFRPerson.h; sourceTree = "<group>"; };
 		007B0D98201C88D900E53324 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		007B0D99201C88D900E53324 /* AFRCDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFRCDManager.h; sourceTree = "<group>"; };
-		007B0DAA201C895900E53324 /* GLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GLView.mm; path = ArcFaceTest/Objc/render/GLView.mm; sourceTree = SOURCE_ROOT; };
-		007B0DAB201C895900E53324 /* GLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLProgram.m; path = ArcFaceTest/Objc/render/GLProgram.m; sourceTree = SOURCE_ROOT; };
-		007B0DAC201C895900E53324 /* GLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLProgram.h; path = ArcFaceTest/Objc/render/GLProgram.h; sourceTree = SOURCE_ROOT; };
-		007B0DAD201C895900E53324 /* GLShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLShader.h; path = ArcFaceTest/Objc/render/GLShader.h; sourceTree = SOURCE_ROOT; };
-		007B0DAE201C895900E53324 /* GLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLView.h; path = ArcFaceTest/Objc/render/GLView.h; sourceTree = SOURCE_ROOT; };
-		007B0DB4201C89FC00E53324 /* asvloffscreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asvloffscreen.h; sourceTree = "<group>"; };
-		007B0DB5201C89FC00E53324 /* amcomdef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amcomdef.h; sourceTree = "<group>"; };
-		007B0DB6201C89FC00E53324 /* ammem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ammem.h; sourceTree = "<group>"; };
-		007B0DB7201C89FC00E53324 /* merror.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = merror.h; sourceTree = "<group>"; };
-		007B0DB9201C89FC00E53324 /* libmpbase.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmpbase.a; sourceTree = "<group>"; };
-		007B0DBA201C89FC00E53324 /* libarcsoft_mobilecv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libarcsoft_mobilecv.a; sourceTree = "<group>"; };
-		007B0DBB201C89FC00E53324 /* arcsoft_face_base.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = arcsoft_face_base.a; sourceTree = "<group>"; };
-		007B0DBC201C89FC00E53324 /* libarcsoft_fsdk_base.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libarcsoft_fsdk_base.a; sourceTree = "<group>"; };
-		007B0DBF201C89FC00E53324 /* arcsoft_fsdk_face_detection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = arcsoft_fsdk_face_detection.h; sourceTree = "<group>"; };
-		007B0DC1201C89FC00E53324 /* libarcsoft_fsdk_face_detection.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libarcsoft_fsdk_face_detection.a; sourceTree = "<group>"; };
-		007B0DC4201C89FC00E53324 /* arcsoft_fsdk_face_recognition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = arcsoft_fsdk_face_recognition.h; sourceTree = "<group>"; };
-		007B0DC6201C89FC00E53324 /* libarcsoft_fsdk_face_recognition.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libarcsoft_fsdk_face_recognition.a; sourceTree = "<group>"; };
-		007B0DC9201C89FC00E53324 /* arcsoft_fsdk_face_tracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = arcsoft_fsdk_face_tracking.h; sourceTree = "<group>"; };
-		007B0DCB201C89FC00E53324 /* libarcsoft_fsdk_face_tracking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libarcsoft_fsdk_face_tracking.a; sourceTree = "<group>"; };
 		007B0DD3201C8A9000E53324 /* AFRCDPerson+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFRCDPerson+CoreDataClass.h"; sourceTree = "<group>"; };
 		007B0DD4201C8A9100E53324 /* AFRCDPerson+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFRCDPerson+CoreDataClass.m"; sourceTree = "<group>"; };
 		007B0DD6201C8A9A00E53324 /* AFRCDVersion+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFRCDVersion+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -138,6 +150,10 @@
 		007B0DDB201C8A9B00E53324 /* AFRCDVersion+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFRCDVersion+CoreDataProperties.h"; sourceTree = "<group>"; };
 		007B0DE1201C8C3000E53324 /* FSDKFR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FSDKFR.xcdatamodel; sourceTree = "<group>"; };
 		007B0DE4201C8CB600E53324 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+		007D950720A1C50C008B9592 /* asvloffscreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asvloffscreen.h; sourceTree = "<group>"; };
+		007D950820A1C5A0008B9592 /* amcomdef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amcomdef.h; sourceTree = "<group>"; };
+		007D950920A1C616008B9592 /* ammem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ammem.h; sourceTree = "<group>"; };
+		007D950A20A1C616008B9592 /* merror.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = merror.h; sourceTree = "<group>"; };
 		008C6B8E2089A50F00F2D86E /* RegisPrepareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegisPrepareViewController.swift; path = ArcFaceTest/RegisPrepareViewController.swift; sourceTree = SOURCE_ROOT; };
 		00E2D1EC2088C79500785093 /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		00FACE6520738D3F0052BA27 /* InformationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationProvider.swift; sourceTree = "<group>"; };
@@ -173,14 +189,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				007D951120A1CE59008B9592 /* arcsoft_fsdk_age_estimation.framework in Frameworks */,
+				007D951320A1CE59008B9592 /* arcsoft_fsdk_base.framework in Frameworks */,
+				007D951B20A1CE59008B9592 /* arcsoft_fsdk_gender_estimation.framework in Frameworks */,
+				007D951520A1CE59008B9592 /* arcsoft_fsdk_face_detection.framework in Frameworks */,
 				007B0DE5201C8CB600E53324 /* libstdc++.6.tbd in Frameworks */,
-				007B0DCE201C89FD00E53324 /* arcsoft_face_base.a in Frameworks */,
-				007B0DD2201C89FD00E53324 /* libarcsoft_fsdk_face_tracking.a in Frameworks */,
-				007B0DCC201C89FD00E53324 /* libmpbase.a in Frameworks */,
-				007B0DCD201C89FD00E53324 /* libarcsoft_mobilecv.a in Frameworks */,
-				007B0DD0201C89FD00E53324 /* libarcsoft_fsdk_face_detection.a in Frameworks */,
-				007B0DCF201C89FD00E53324 /* libarcsoft_fsdk_base.a in Frameworks */,
-				007B0DD1201C89FD00E53324 /* libarcsoft_fsdk_face_recognition.a in Frameworks */,
+				007D951720A1CE59008B9592 /* arcsoft_fsdk_face_recognition.framework in Frameworks */,
+				007D951920A1CE59008B9592 /* arcsoft_fsdk_face_tracking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +313,6 @@
 				007B0DD4201C8A9100E53324 /* AFRCDPerson+CoreDataClass.m */,
 				007B0DDF201C8C0400E53324 /* coredata */,
 				007B0DB1201C89FC00E53324 /* engines */,
-				007B0DA2201C891B00E53324 /* render */,
 				007B0D8F201C88D700E53324 /* AFCameraController.h */,
 				007B0D95201C88D800E53324 /* AFCameraController.m */,
 				007B0D91201C88D800E53324 /* AFRManager.h */,
@@ -309,137 +323,27 @@
 				007B0D93201C88D800E53324 /* AFVideoProcessor.mm */,
 				007B0D94201C88D800E53324 /* Utility.h */,
 				007B0D98201C88D900E53324 /* Utility.m */,
+				001029C1209966BC00FC54D3 /* GLKitView.h */,
+				001029C0209966BB00FC54D3 /* GLKitView.m */,
 			);
 			path = Objc;
-			sourceTree = "<group>";
-		};
-		007B0DA2201C891B00E53324 /* render */ = {
-			isa = PBXGroup;
-			children = (
-				007B0DAC201C895900E53324 /* GLProgram.h */,
-				007B0DAB201C895900E53324 /* GLProgram.m */,
-				007B0DAD201C895900E53324 /* GLShader.h */,
-				007B0DAE201C895900E53324 /* GLView.h */,
-				007B0DAA201C895900E53324 /* GLView.mm */,
-			);
-			path = render;
 			sourceTree = "<group>";
 		};
 		007B0DB1201C89FC00E53324 /* engines */ = {
 			isa = PBXGroup;
 			children = (
-				007B0DB2201C89FC00E53324 /* common */,
-				007B0DBD201C89FC00E53324 /* arcsoft_fsdk_face_detection */,
-				007B0DC2201C89FC00E53324 /* arcsoft_fsdk_face_recognition */,
-				007B0DC7201C89FC00E53324 /* arcsoft_fsdk_face_tracking */,
+				007D950920A1C616008B9592 /* ammem.h */,
+				007D950A20A1C616008B9592 /* merror.h */,
+				007D950820A1C5A0008B9592 /* amcomdef.h */,
+				007D950720A1C50C008B9592 /* asvloffscreen.h */,
+				001029C720996B9500FC54D3 /* arcsoft_fsdk_age_estimation.framework */,
+				001029C420996B9500FC54D3 /* arcsoft_fsdk_base.framework */,
+				001029C620996B9500FC54D3 /* arcsoft_fsdk_face_detection.framework */,
+				001029C820996B9500FC54D3 /* arcsoft_fsdk_face_recognition.framework */,
+				001029C520996B9500FC54D3 /* arcsoft_fsdk_face_tracking.framework */,
+				001029C320996B9500FC54D3 /* arcsoft_fsdk_gender_estimation.framework */,
 			);
 			path = engines;
-			sourceTree = "<group>";
-		};
-		007B0DB2201C89FC00E53324 /* common */ = {
-			isa = PBXGroup;
-			children = (
-				007B0DB3201C89FC00E53324 /* inc */,
-				007B0DB8201C89FC00E53324 /* lib */,
-			);
-			path = common;
-			sourceTree = "<group>";
-		};
-		007B0DB3201C89FC00E53324 /* inc */ = {
-			isa = PBXGroup;
-			children = (
-				007B0DB4201C89FC00E53324 /* asvloffscreen.h */,
-				007B0DB5201C89FC00E53324 /* amcomdef.h */,
-				007B0DB6201C89FC00E53324 /* ammem.h */,
-				007B0DB7201C89FC00E53324 /* merror.h */,
-			);
-			path = inc;
-			sourceTree = "<group>";
-		};
-		007B0DB8201C89FC00E53324 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				007B0DB9201C89FC00E53324 /* libmpbase.a */,
-				007B0DBA201C89FC00E53324 /* libarcsoft_mobilecv.a */,
-				007B0DBB201C89FC00E53324 /* arcsoft_face_base.a */,
-				007B0DBC201C89FC00E53324 /* libarcsoft_fsdk_base.a */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		007B0DBD201C89FC00E53324 /* arcsoft_fsdk_face_detection */ = {
-			isa = PBXGroup;
-			children = (
-				007B0DBE201C89FC00E53324 /* inc */,
-				007B0DC0201C89FC00E53324 /* lib */,
-			);
-			path = arcsoft_fsdk_face_detection;
-			sourceTree = "<group>";
-		};
-		007B0DBE201C89FC00E53324 /* inc */ = {
-			isa = PBXGroup;
-			children = (
-				007B0DBF201C89FC00E53324 /* arcsoft_fsdk_face_detection.h */,
-			);
-			path = inc;
-			sourceTree = "<group>";
-		};
-		007B0DC0201C89FC00E53324 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				007B0DC1201C89FC00E53324 /* libarcsoft_fsdk_face_detection.a */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		007B0DC2201C89FC00E53324 /* arcsoft_fsdk_face_recognition */ = {
-			isa = PBXGroup;
-			children = (
-				007B0DC3201C89FC00E53324 /* inc */,
-				007B0DC5201C89FC00E53324 /* lib */,
-			);
-			path = arcsoft_fsdk_face_recognition;
-			sourceTree = "<group>";
-		};
-		007B0DC3201C89FC00E53324 /* inc */ = {
-			isa = PBXGroup;
-			children = (
-				007B0DC4201C89FC00E53324 /* arcsoft_fsdk_face_recognition.h */,
-			);
-			path = inc;
-			sourceTree = "<group>";
-		};
-		007B0DC5201C89FC00E53324 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				007B0DC6201C89FC00E53324 /* libarcsoft_fsdk_face_recognition.a */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		007B0DC7201C89FC00E53324 /* arcsoft_fsdk_face_tracking */ = {
-			isa = PBXGroup;
-			children = (
-				007B0DC8201C89FC00E53324 /* inc */,
-				007B0DCA201C89FC00E53324 /* lib */,
-			);
-			path = arcsoft_fsdk_face_tracking;
-			sourceTree = "<group>";
-		};
-		007B0DC8201C89FC00E53324 /* inc */ = {
-			isa = PBXGroup;
-			children = (
-				007B0DC9201C89FC00E53324 /* arcsoft_fsdk_face_tracking.h */,
-			);
-			path = inc;
-			sourceTree = "<group>";
-		};
-		007B0DCA201C89FC00E53324 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				007B0DCB201C89FC00E53324 /* libarcsoft_fsdk_face_tracking.a */,
-			);
-			path = lib;
 			sourceTree = "<group>";
 		};
 		007B0DDF201C8C0400E53324 /* coredata */ = {
@@ -470,6 +374,7 @@
 				007B0D49201C7A8700E53324 /* Sources */,
 				007B0D4A201C7A8700E53324 /* Frameworks */,
 				007B0D4B201C7A8700E53324 /* Resources */,
+				007D951D20A1CE59008B9592 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -523,7 +428,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "王宇鑫";
 				TargetAttributes = {
 					007B0D4C201C7A8700E53324 = {
@@ -607,6 +512,7 @@
 				007B0D9E201C88D900E53324 /* AFRCDManager.m in Sources */,
 				284181DF207411EA002C1634 /* DevelopInfoTableViewController.swift in Sources */,
 				007B0D9C201C88D900E53324 /* AFVideoProcessor.mm in Sources */,
+				001029C2209966BC00FC54D3 /* GLKitView.m in Sources */,
 				28D114B420768279001088FC /* RegisTableViewController.swift in Sources */,
 				007B0D9D201C88D900E53324 /* AFCameraController.m in Sources */,
 				004543BD20638D93006CBC8C /* InformationModel.xcdatamodeld in Sources */,
@@ -625,9 +531,7 @@
 				524558F82078404E0051DB21 /* CheckinTableViewController.swift in Sources */,
 				007B0D53201C7A8700E53324 /* CameraViewController.swift in Sources */,
 				007B0D9A201C88D900E53324 /* AFRPerson.m in Sources */,
-				007B0DAF201C895900E53324 /* GLView.mm in Sources */,
 				52142241204F9A080052B5A8 /* CheckinginViewController.swift in Sources */,
-				007B0DB0201C895900E53324 /* GLProgram.m in Sources */,
 				007B0D51201C7A8700E53324 /* AppDelegate.swift in Sources */,
 				524558FE2078551D0051DB21 /* ClassMemberTableViewController.swift in Sources */,
 				52455900207855F70051DB21 /* NumberTableViewController.swift in Sources */,
@@ -711,6 +615,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -718,6 +623,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -768,6 +674,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -775,6 +682,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -813,17 +721,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FH55SZ3XYA;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines",
+				);
 				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
 				INFOPLIST_FILE = ArcFaceTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/common/lib",
-					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_detection/lib",
-					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_recognition/lib",
-					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_tracking/lib",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFaceTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -842,17 +748,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FH55SZ3XYA;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines",
+				);
 				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
 				INFOPLIST_FILE = ArcFaceTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/common/lib",
-					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_detection/lib",
-					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_recognition/lib",
-					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/arcsoft_fsdk_face_tracking/lib",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Innovation.ArcFaceTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
