@@ -32,7 +32,7 @@
 #pragma mark - Setup Video Session
 - (AVCaptureDevice *)videoDeviceWithPosition:(AVCaptureDevicePosition)position
 {
-    AVCaptureDeviceDiscoverySession *captureDeviceDiscoverySession = [AVCaptureDeviceDiscoverySession discoverySessionWithDeviceTypes:@[] mediaType:AVMediaTypeVideo position:position];
+    AVCaptureDeviceDiscoverySession *captureDeviceDiscoverySession = [AVCaptureDeviceDiscoverySession discoverySessionWithDeviceTypes:@[AVCaptureDeviceTypeBuiltInWideAngleCamera] mediaType:AVMediaTypeVideo position:position];
     
     return [[captureDeviceDiscoverySession devices] firstObject];
 }
