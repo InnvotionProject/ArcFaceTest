@@ -32,12 +32,9 @@
 #pragma mark - Setup Video Session
 - (AVCaptureDevice *)videoDeviceWithPosition:(AVCaptureDevicePosition)position
 {
-    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
-    for (AVCaptureDevice *device in devices)
-        if ([device position] == position)
-            return device;
+    AVCaptureDeviceDiscoverySession *captureDeviceDiscoverySession = [AVCaptureDeviceDiscoverySession discoverySessionWithDeviceTypes:@[] mediaType:AVMediaTypeVideo position:position];
     
-    return nil;
+    return [[captureDeviceDiscoverySession devices] firstObject];
 }
 
 - (BOOL) setupCaptureSession:(AVCaptureVideoOrientation)videoOrientation position:(AVCaptureDevicePosition)position

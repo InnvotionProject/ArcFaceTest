@@ -249,10 +249,12 @@
                     const AFR_FSDK_Version* version = AFR_FSDK_GetVersion(self->_arcsoftFR);
                     if(version && oldFRModelVersion != version->lFeatureLevel)
                     {
+                        /*
                         NSArray* persons = self.frManager.allPersons;
                         for (AFRPerson *person in persons) {
                             //To do: Update person FR model data
                         }
+                         */
                         [self.frManager updateAllPersonsFeatureData];
                         self.frManager.frModelVersion = version->lFeatureLevel;
                     }
@@ -307,7 +309,7 @@
                 dispatch_semaphore_signal(self->_processFRSemaphore);
                 
                 dispatch_sync(dispatch_get_main_queue(), ^{
-                    if(self.delegate && [self.delegate respondsToSelector:@selector(processRecognized:)])
+                    if(self.delegate && [self.delegate respondsToSelector:@selector(processRecognized:personName:)])
                         [self.delegate processRecognized:self.frPerson.Id personName:self.frPerson.name];
                 });
             });
