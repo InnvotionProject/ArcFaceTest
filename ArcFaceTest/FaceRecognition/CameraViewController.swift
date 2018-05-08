@@ -200,15 +200,15 @@ extension CameraViewController: AFCameraControllerDelegate, AFVideoProcessorDele
             return
         }
         
-        guard let arrayFaceRect = self.videoProcessor.process(pOffscreenIn) as NSArray? else {
+        guard let arrayFaceInfo = self.videoProcessor.process(pOffscreenIn) as NSArray? else {
             return
         }
         
         OperationQueue.main.addOperation {
             self.glKitView.render(with: cameraFrame, orientation: 0, mirror: false)
             
-            if (self.arrayAllFaceRectView.count >= arrayFaceRect.count) {
-                for face in arrayFaceRect.count..<self.arrayAllFaceRectView.count {
+            if (self.arrayAllFaceRectView.count >= arrayFaceInfo.count) {
+                for face in arrayFaceInfo.count..<self.arrayAllFaceRectView.count {
                     guard let faceRectView = self.arrayAllFaceRectView.object(at: face) as? UIView else {
                         continue
                     }
@@ -216,7 +216,7 @@ extension CameraViewController: AFCameraControllerDelegate, AFVideoProcessorDele
                     faceRectView.isHidden = true
                 }
             } else {
-                for _ in self.arrayAllFaceRectView.count..<arrayFaceRect.count {
+                for _ in self.arrayAllFaceRectView.count..<arrayFaceInfo.count {
                     guard let faceRectView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FaceRectVideoController").view else {
                         continue
                     }
@@ -225,14 +225,14 @@ extension CameraViewController: AFCameraControllerDelegate, AFVideoProcessorDele
                 }
             }
             
-            for face in 0..<arrayFaceRect.count {
+            for face in 0..<arrayFaceInfo.count {
                 guard let faceRectView = self.arrayAllFaceRectView.object(at: face) as? UIView else {
                     continue
                 }
                 
                 faceRectView.isHidden = false
                 
-                guard let videoFaceRect = arrayFaceRect[face] as? AFVideoFaceInfo else {
+                guard let videoFaceRect = arrayFaceInfo[face] as? AFVideoFaceInfo else {
                     continue
                 }
                 
@@ -333,7 +333,7 @@ extension CameraViewController {
                     _offscreenIn = nil
                 }
             }
-                
+            
             if _offscreenIn == nil {
                 _offscreenIn = Utility.createOffscreen(bufferWidth, height: bufferHeight, format: MUInt32(ASVL_PAF_RGB32_B8G8R8A8))
             }
