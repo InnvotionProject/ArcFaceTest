@@ -138,7 +138,9 @@ class CameraViewController: UIViewController {
             self.devicePosition = .front
         }
         
+        // 重新打开（用另一个摄像头）
         self.setup()
+        self.cameraController.startCaptureSession()
         
         // 开启控制权
         self.cameraSwitch.isEnabled = true
