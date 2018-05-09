@@ -20,6 +20,7 @@
 
 - (NSArray*)allPersons;
 - (BOOL)addPerson:(AFRPerson*)person;
+- (BOOL)removePerson:(NSUInteger)personID;
 
 - (void)setFrModelVersion:(NSUInteger)frModelVersion;
 - (NSUInteger)getFrModeVersion;

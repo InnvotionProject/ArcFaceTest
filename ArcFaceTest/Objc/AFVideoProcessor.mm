@@ -243,6 +243,11 @@
     return registerPerson.registered ? registerPerson.Id : 0;
 }
 
+- (BOOL)removePerson:(NSUInteger)personId
+{
+    return [self.frManager removePerson:personId];
+}
+
 - (LPASVLOFFSCREEN)copyOffscreenForProcess:(LPASVLOFFSCREEN)pOffscreenIn
 {
     if (pOffscreenIn == MNull) {

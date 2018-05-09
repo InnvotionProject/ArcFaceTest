@@ -122,6 +122,28 @@ static  NSString* const kAFRVersionEntityName = @"AFRCDVersion";
     return YES;
 }
 
+- (BOOL)removePerson:(NSUInteger)personID
+{
+    NSFetchRequest* request = [AFRCDPerson fetchRequest];
+    request.predicate = [NSPredicate predicateWithFormat:@"personID=%lu", personID];
+    NSArray* objects = [self.managedObjectContext executeFetchRequest:request error:nil];
+    if (objects == nil) {
+        NSLog(@"There are error!");
+    }
+    
+    AFRCDPerson *object = objects.firstObject;
+    
+    if (object == nil) {
+        return NO;
+    }
+    
+    [self.managedObjectContext deleteObject:object];
+    
+    [self saveContext:self.managedObjectContext];
+    
+    return YES;
+}
+
 - (BOOL)updatePersonFeatureData:(NSArray *)arrayPersons
 {
     if(nil == arrayPersons)

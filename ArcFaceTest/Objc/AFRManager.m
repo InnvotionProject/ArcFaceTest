@@ -46,6 +46,15 @@
     return [_cdManager addPerson:person];
 }
 
+- (BOOL)removePerson:(NSUInteger)personID
+{
+    [_allPersons removeObjectAtIndex:[_allPersons indexOfObjectPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        return ((AFRPerson*)obj).Id == personID;
+    }]];
+    
+    return [_cdManager removePerson:personID];
+}
+
 - (NSUInteger)getNewPersonID
 {
     self.maxPersonId += 1;

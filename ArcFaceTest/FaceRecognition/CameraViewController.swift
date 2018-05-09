@@ -21,8 +21,8 @@ class CameraViewController: UIViewController {
     private var ID: UInt = 0
     private var devicePosition = AVCaptureDevice.Position.front
     
-    private var cameraController = AFCameraController()
-    private var videoProcessor = AFVideoProcessor()
+    private static var cameraController = AFCameraController()
+    private static var videoProcessor = AFVideoProcessor()
     private var arrayAllFaceRectView = NSMutableArray()
     private var _offscreenIn : LPASVLOFFSCREEN?
     
@@ -52,7 +52,7 @@ class CameraViewController: UIViewController {
      
      - parameter purpose: 目的(CameraViewController.Purpose)
      */
-    func setPurpose(purpose: Purpose) {
+    public func setPurpose(purpose: Purpose) {
         self.purpose = purpose
     }
     
@@ -63,7 +63,7 @@ class CameraViewController: UIViewController {
      
      - parameter attendance: 考勤
      */
-    func setAttendance(attendance: String?) {
+    public func setAttendance(attendance: String?) {
         self.attendance = attendance
     }
     
@@ -74,7 +74,7 @@ class CameraViewController: UIViewController {
      
      - parameter group: 组
      */
-    func setGroup(group: String?) {
+    public func setGroup(group: String?) {
         self.group = group
     }
     
@@ -83,7 +83,7 @@ class CameraViewController: UIViewController {
      
      - parameter ID: ID
      */
-    func setID(ID: String?) {
+    public func setID(ID: String?) {
         self._id = ID
     }
     
@@ -92,7 +92,7 @@ class CameraViewController: UIViewController {
      
      - parameter name: 姓名
      */
-    func setName(name: String?) {
+    public func setName(name: String?) {
         self._name = name
     }
     
@@ -101,10 +101,14 @@ class CameraViewController: UIViewController {
      
      - parameter remark: 更多
      */
-    func setRemark(remark: String?) {
+    public func setRemark(remark: String?) {
         self._remark = remark
     }
-
+    
+    public static func removePerson(personID: UInt) -> Bool {
+        return CameraViewController.videoProcessor.removePerson(personID)
+    }
+    
     // button register clicked
     @IBAction func registerClickd(_ sender: UIButton) {
         guard sender === self.registerButton else {
@@ -140,7 +144,7 @@ class CameraViewController: UIViewController {
         
         // 重新打开（用另一个摄像头）
         self.setup()
-        self.cameraController.startCaptureSession()
+        CameraViewController.cameraController.startCaptureSession()
         
         // 开启控制权
         self.cameraSwitch.isEnabled = true
@@ -149,13 +153,13 @@ class CameraViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.cameraController.startCaptureSession()
+        CameraViewController.cameraController.startCaptureSession()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.cameraController.stopCaptureSession()
+        CameraViewController.cameraController.stopCaptureSession()
     }
     
     @IBAction func backFunc(_ sender: UIButton) {
@@ -203,7 +207,7 @@ extension CameraViewController: AFCameraControllerDelegate, AFVideoProcessorDele
             return
         }
         
-        guard let arrayFaceInfo = self.videoProcessor.process(pOffscreenIn) as NSArray? else {
+        guard let arrayFaceInfo = CameraViewController.videoProcessor.process(pOffscreenIn) as NSArray? else {
             return
         }
         
@@ -330,12 +334,12 @@ extension CameraViewController {
         // self.FDswitch.setOn(false, animated: false)
         
         // setup camera
-        self.cameraController.delegate = self
-        self.cameraController.setupCaptureSession(vorientation, position: self.devicePosition)
+        CameraViewController.cameraController.delegate = self
+        CameraViewController.cameraController.setupCaptureSession(vorientation, position: self.devicePosition)
         
         // video processor
-        self.videoProcessor.delegate = self
-        self.videoProcessor.initProcessor()
+        CameraViewController.videoProcessor.delegate = self
+        CameraViewController.videoProcessor.initProcessor()
         
         self.didSetUp = true
     }
@@ -441,7 +445,7 @@ extension CameraViewController {
             return false
         }
         
-        let personID = self.videoProcessor.registerDetectedPerson(name)
+        let personID = CameraViewController.videoProcessor.registerDetectedPerson(name)
         guard personID != 0 else {
             return false
         }

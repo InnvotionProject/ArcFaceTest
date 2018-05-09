@@ -123,7 +123,8 @@ class InformationProvider: Information {
             // delete IMAGE
             let _ = __imageDelete(personID: personID)
             
-            return true
+            // delete from Objc core data
+            return CameraViewController.removePerson(personID: personID)
         } catch {
             return false
         }

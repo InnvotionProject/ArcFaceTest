@@ -29,5 +29,6 @@
 - (void)uninitProcessor;
 - (NSArray*)process:(LPASVLOFFSCREEN)offscreen;
 - (NSUInteger)registerDetectedPerson:(NSString*)personName;
+- (BOOL)removePerson:(NSUInteger)personId;
 
 @end

@@ -15,6 +15,7 @@
 @property (nonatomic, assign) NSUInteger frModelVersion;
 
 - (BOOL)addPerson:(AFRPerson*)person;
+- (BOOL)removePerson:(NSUInteger)personID;
 
 - (NSUInteger)getNewPersonID;
 
