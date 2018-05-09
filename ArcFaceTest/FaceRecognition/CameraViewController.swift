@@ -10,7 +10,7 @@ import UIKit
 
 class CameraViewController: UIViewController {
     @IBOutlet weak var canvas: UIView!
-    @IBOutlet weak var glKitView: GLKitView!
+    @IBOutlet weak var glView: GLView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var id: UILabel!
     @IBOutlet weak var remark: UILabel!
@@ -196,6 +196,9 @@ extension CameraViewController: AFCameraControllerDelegate, AFVideoProcessorDele
             return
         }
         
+        let bufferWidth = Int32(CVPixelBufferGetWidth(cameraFrame))
+        let bufferHeight = Int32(CVPixelBufferGetHeight(cameraFrame))
+        
         guard let pOffscreenIn = self.offscreenFromSampleBuffer(sampleBuffer) else {
             return
         }
@@ -205,7 +208,16 @@ extension CameraViewController: AFCameraControllerDelegate, AFVideoProcessorDele
         }
         
         OperationQueue.main.addOperation {
-            self.glKitView.render(with: cameraFrame, orientation: 0, mirror: false)
+            let u32PixelArrayFormat = pOffscreenIn.pointee.u32PixelArrayFormat
+            let ppu8Plane = pOffscreenIn.pointee.ppu8Plane
+            
+            if ASVL_PAF_RGB32_B8G8R8A8 == u32PixelArrayFormat || ASVL_PAF_RGB32_R8G8B8A8 == u32PixelArrayFormat {
+                let ppu8Planes = UnsafeMutablePointer<GLubyte>(ppu8Plane.0)
+                
+                self.glView.render(bufferWidth, height: bufferHeight, textureData: ppu8Planes, bgra: ASVL_PAF_RGB32_B8G8R8A8 == u32PixelArrayFormat, textureName: "BACKGROUND_TEXTURE")
+            } else if ASVL_PAF_NV12 == u32PixelArrayFormat {
+                self.glView.render(bufferWidth, height: bufferHeight, yData: ppu8Plane.0, uvData: ppu8Plane.1)
+            }
             
             if (self.arrayAllFaceRectView.count >= arrayFaceInfo.count) {
                 for face in arrayFaceInfo.count..<self.arrayAllFaceRectView.count {
@@ -232,7 +244,7 @@ extension CameraViewController: AFCameraControllerDelegate, AFVideoProcessorDele
                 
                 faceRectView.isHidden = false
                 
-                guard let videoFaceRect = arrayFaceInfo[face] as? AFVideoFaceInfo else {
+                guard let videoFaceRect = arrayFaceInfo[face] as? AFVideoFaceRect else {
                     continue
                 }
                 
@@ -300,6 +312,19 @@ extension CameraViewController {
         guard let vorientation = AVCaptureVideoOrientation(rawValue: orientation.rawValue) else {
             return
         }
+        
+        let MIN = min(CameraViewController.IMAGE_WIDTH, CameraViewController.IMAGE_HEIGHT)
+        let MAX = max(CameraViewController.IMAGE_WIDTH, CameraViewController.IMAGE_HEIGHT)
+        
+        let sizet = (orientation == .portrait || orientation == .portraitUpsideDown) ? CGSize(width: MIN, height: MAX) : CGSize(width: MAX, height: MIN)
+        let sizeb = self.view.bounds.size
+        
+        var fwidth = sizeb.width
+        var fheight = sizeb.height
+        Utility.calcFitOutSize(sizet.width, oldH: sizet.height, newW: &fwidth, newH: &fheight)
+        
+        self.glView.frame = CGRect(x: (sizeb.width - fwidth) / 2, y: (sizeb.height - fheight) / 2, width: fwidth, height: fheight)
+        self.glView.setInputSize(sizet, orientation: vorientation)
         
         // init fd switch
         // self.FDswitch.setOn(false, animated: false)
@@ -399,7 +424,7 @@ extension CameraViewController {
     }
     
     fileprivate func dataFaceRect2ViewFaceRect(_ faceRect: MRECT) -> CGRect {
-        let frameGLView = self.glKitView.frame
+        let frameGLView = self.glView.frame
         let x = frameGLView.width * CGFloat(faceRect.left) / CameraViewController.IMAGE_WIDTH
         let y = frameGLView.height * CGFloat(faceRect.top) / CameraViewController.IMAGE_HEIGHT
         let width = frameGLView.width * CGFloat(faceRect.right - faceRect.left) / CameraViewController.IMAGE_WIDTH

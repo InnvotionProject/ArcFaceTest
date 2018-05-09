@@ -12,6 +12,6 @@
 #import "Objc/AFCameraController.h"
 #import "Objc/AFVideoProcessor.h"
 #import "Objc/Utility.h"
-#import "Objc/GLKitView.h"
+#import "Objc/render/GLView.h"
 
 #endif /* ArcFaceTest_Bridging_Header_h */

@@ -47,7 +47,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZy-4e-qXT" userLabel="GLKitView" customClass="GLKitView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZy-4e-qXT" userLabel="GLView" customClass="GLView">
                                 <rect key="frame" x="-1" y="-0.33333333333331439" width="375.33333333333331" height="812.66666666666652"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -190,7 +190,7 @@
                     <connections>
                         <outlet property="cameraSwitch" destination="ltb-VI-la9" id="SLH-7j-iMm"/>
                         <outlet property="canvas" destination="H8K-Wv-RL6" id="T53-zc-Epj"/>
-                        <outlet property="glKitView" destination="tZy-4e-qXT" id="fir-Xq-eB5"/>
+                        <outlet property="glView" destination="tZy-4e-qXT" id="p67-KU-3Nb"/>
                         <outlet property="id" destination="sJh-Nl-1Ba" id="Lqw-fF-WQw"/>
                         <outlet property="infoStackView" destination="jBf-UY-ffF" id="J01-YI-vcu"/>
                         <outlet property="name" destination="hT2-oh-zp7" id="CSu-2i-YfR"/>
