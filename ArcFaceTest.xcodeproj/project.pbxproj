@@ -33,6 +33,8 @@
 		007BF89620A327EF0040AFD8 /* libarcsoft_fsdk_face_detection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 007BF88F20A327EF0040AFD8 /* libarcsoft_fsdk_face_detection.a */; };
 		007BF89D20A328950040AFD8 /* GLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 007BF89820A328950040AFD8 /* GLView.mm */; };
 		007BF89E20A328950040AFD8 /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 007BF89920A328950040AFD8 /* GLProgram.m */; };
+		007BF8A320A3397D0040AFD8 /* StaticImageViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 007BF8A120A3397D0040AFD8 /* StaticImageViewController.mm */; };
+		007BF8A520A33A660040AFD8 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007BF8A420A33A650040AFD8 /* Photos.framework */; };
 		008C6B8F2089A50F00F2D86E /* RegisPrepareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C6B8E2089A50F00F2D86E /* RegisPrepareViewController.swift */; };
 		00E2D1ED2088C79500785093 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00E2D1EC2088C79500785093 /* Register.storyboard */; };
 		00FACE6620738D3F0052BA27 /* InformationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FACE6520738D3F0052BA27 /* InformationProvider.swift */; };
@@ -152,6 +154,9 @@
 		007BF89A20A328950040AFD8 /* GLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLView.h; sourceTree = "<group>"; };
 		007BF89B20A328950040AFD8 /* GLShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLShader.h; sourceTree = "<group>"; };
 		007BF89C20A328950040AFD8 /* GLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgram.h; sourceTree = "<group>"; };
+		007BF8A120A3397D0040AFD8 /* StaticImageViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StaticImageViewController.mm; sourceTree = "<group>"; };
+		007BF8A220A3397D0040AFD8 /* StaticImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticImageViewController.h; sourceTree = "<group>"; };
+		007BF8A420A33A650040AFD8 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		008C6B8E2089A50F00F2D86E /* RegisPrepareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegisPrepareViewController.swift; path = ArcFaceTest/RegisPrepareViewController.swift; sourceTree = SOURCE_ROOT; };
 		00E2D1EC2088C79500785093 /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		00FACE6520738D3F0052BA27 /* InformationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationProvider.swift; sourceTree = "<group>"; };
@@ -187,6 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				007BF8A520A33A660040AFD8 /* Photos.framework in Frameworks */,
 				007BF89420A327EF0040AFD8 /* arcsoft_face_base.a in Frameworks */,
 				007BF89320A327EF0040AFD8 /* libarcsoft_mobilecv.a in Frameworks */,
 				007BF89520A327EF0040AFD8 /* libarcsoft_fsdk_base.a in Frameworks */,
@@ -317,6 +323,8 @@
 				007B0D8E201C88D700E53324 /* AFRPerson.m */,
 				007B0D90201C88D700E53324 /* AFVideoProcessor.h */,
 				007B0D93201C88D800E53324 /* AFVideoProcessor.mm */,
+				007BF8A220A3397D0040AFD8 /* StaticImageViewController.h */,
+				007BF8A120A3397D0040AFD8 /* StaticImageViewController.mm */,
 				007B0D94201C88D800E53324 /* Utility.h */,
 				007B0D98201C88D900E53324 /* Utility.m */,
 			);
@@ -347,6 +355,7 @@
 		007B0DE3201C8CB600E53324 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				007BF8A420A33A650040AFD8 /* Photos.framework */,
 				007BF85B20A327CA0040AFD8 /* engines */,
 				007B0DE4201C8CB600E53324 /* libstdc++.6.tbd */,
 			);
@@ -780,6 +789,7 @@
 				007B0D51201C7A8700E53324 /* AppDelegate.swift in Sources */,
 				524558FE2078551D0051DB21 /* ClassMemberTableViewController.swift in Sources */,
 				52455900207855F70051DB21 /* NumberTableViewController.swift in Sources */,
+				007BF8A320A3397D0040AFD8 /* StaticImageViewController.mm in Sources */,
 				735A1676203B375800D8DD4B /* MyStatisticsTableViewController.swift in Sources */,
 				2814D2AC2084EF2C00D0F10A /* LoginTableViewController.swift in Sources */,
 				007B0D9B201C88D900E53324 /* AFRManager.m in Sources */,
