@@ -249,11 +249,11 @@
 				007B0D54201C7A8700E53324 /* Main.storyboard */,
 				7382F42E20274C6E00084440 /* Me.storyboard */,
 				00E2D1EC2088C79500785093 /* Register.storyboard */,
-				735DF68C2078996A006BB84C /* MyStatistics.storyboard */,
 				7382F42C20274C5800084440 /* CheckingIn.storyboard */,
 				007B0D59201C7A8700E53324 /* LaunchScreen.storyboard */,
 				007B0D80201C81BB00E53324 /* ArcFaceTest-Bridging-Header.h */,
 				007B0D82201C826F00E53324 /* Objc */,
+				730C313620AEA6AF002C0735 /* MyStatistics */,
 				007D951F20A1D9F0008B9592 /* FaceRecognition */,
 				007D952020A1DA3D008B9592 /* Information */,
 				007B0D50201C7A8700E53324 /* AppDelegate.swift */,
@@ -265,7 +265,6 @@
 				524558FB20784C260051DB21 /* ClassTableViewController.swift */,
 				524558FF207855F70051DB21 /* NumberTableViewController.swift */,
 				52142240204F9A080052B5A8 /* CheckinginViewController.swift */,
-				735A1675203B375800D8DD4B /* MyStatisticsTableViewController.swift */,
 				524558FD2078551D0051DB21 /* ClassMemberTableViewController.swift */,
 				7318728A204E5EDC00BD59FE /* ProfileTableViewController.swift */,
 				735A1677203B385A00D8DD4B /* ProfileTableViewCell.swift */,
@@ -616,6 +615,15 @@
 				004543BA20638D93006CBC8C /* InformationModel.xcdatamodeld */,
 			);
 			path = Information;
+			sourceTree = "<group>";
+		};
+		730C313620AEA6AF002C0735 /* MyStatistics */ = {
+			isa = PBXGroup;
+			children = (
+				735DF68C2078996A006BB84C /* MyStatistics.storyboard */,
+				735A1675203B375800D8DD4B /* MyStatisticsTableViewController.swift */,
+			);
+			path = MyStatistics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
