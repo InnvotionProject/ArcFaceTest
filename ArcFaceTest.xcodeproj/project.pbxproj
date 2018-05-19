@@ -168,7 +168,7 @@
 		284181E620753E0F002C1634 /* UserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameViewController.swift; sourceTree = "<group>"; };
 		284B7054204EE32A006A8E60 /* MeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTableViewController.swift; sourceTree = "<group>"; };
 		28D114B320768279001088FC /* RegisTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisTableViewController.swift; sourceTree = "<group>"; };
-		52142240204F9A080052B5A8 /* CheckinginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CheckinginViewController.swift; path = Objc/CheckinginViewController.swift; sourceTree = "<group>"; };
+		52142240204F9A080052B5A8 /* CheckinginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinginViewController.swift; sourceTree = "<group>"; };
 		524558F72078404E0051DB21 /* CheckinTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinTableViewController.swift; sourceTree = "<group>"; };
 		524558F9207841180051DB21 /* AddClassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClassTableViewController.swift; sourceTree = "<group>"; };
 		524558FB20784C260051DB21 /* ClassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTableViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +250,7 @@
 				7382F42C20274C5800084440 /* CheckingIn.storyboard */,
 				007B0D59201C7A8700E53324 /* LaunchScreen.storyboard */,
 				007B0D80201C81BB00E53324 /* ArcFaceTest-Bridging-Header.h */,
+				5202B23920B025CF007BBDDA /* Checkin */,
 				007B0D82201C826F00E53324 /* Objc */,
 				730C313620AEA6AF002C0735 /* MyStatistics */,
 				281C6D9D20AEC3C9006A5B33 /* Me */,
@@ -258,14 +259,6 @@
 				007D951F20A1D9F0008B9592 /* FaceRecognition */,
 				007D952020A1DA3D008B9592 /* Information */,
 				007B0D50201C7A8700E53324 /* AppDelegate.swift */,
-				524558F72078404E0051DB21 /* CheckinTableViewController.swift */,
-				52DF05232078AC2300AD1CCB /* ClassTableViewCell.swift */,
-				52DF05252078C32C00AD1CCB /* AddAttendanceTableViewController.swift */,
-				524558F9207841180051DB21 /* AddClassTableViewController.swift */,
-				524558FB20784C260051DB21 /* ClassTableViewController.swift */,
-				524558FF207855F70051DB21 /* NumberTableViewController.swift */,
-				52142240204F9A080052B5A8 /* CheckinginViewController.swift */,
-				524558FD2078551D0051DB21 /* ClassMemberTableViewController.swift */,
 				7318728A204E5EDC00BD59FE /* ProfileTableViewController.swift */,
 				735A1677203B385A00D8DD4B /* ProfileTableViewCell.swift */,
 				007B0D5C201C7A8700E53324 /* Info.plist */,
@@ -639,6 +632,21 @@
 				2814D2AB2084EF2C00D0F10A /* LoginTableViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		5202B23920B025CF007BBDDA /* Checkin */ = {
+			isa = PBXGroup;
+			children = (
+				524558F72078404E0051DB21 /* CheckinTableViewController.swift */,
+				52DF05232078AC2300AD1CCB /* ClassTableViewCell.swift */,
+				52DF05252078C32C00AD1CCB /* AddAttendanceTableViewController.swift */,
+				524558F9207841180051DB21 /* AddClassTableViewController.swift */,
+				524558FB20784C260051DB21 /* ClassTableViewController.swift */,
+				524558FF207855F70051DB21 /* NumberTableViewController.swift */,
+				52142240204F9A080052B5A8 /* CheckinginViewController.swift */,
+				524558FD2078551D0051DB21 /* ClassMemberTableViewController.swift */,
+			);
+			path = Checkin;
 			sourceTree = "<group>";
 		};
 		730C313620AEA6AF002C0735 /* MyStatistics */ = {
