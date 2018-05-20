@@ -11,9 +11,7 @@
 		004543BD20638D93006CBC8C /* InformationModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 004543BA20638D93006CBC8C /* InformationModel.xcdatamodeld */; };
 		007B0D51201C7A8700E53324 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B0D50201C7A8700E53324 /* AppDelegate.swift */; };
 		007B0D53201C7A8700E53324 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B0D52201C7A8700E53324 /* CameraViewController.swift */; };
-		007B0D56201C7A8700E53324 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 007B0D54201C7A8700E53324 /* Main.storyboard */; };
 		007B0D58201C7A8700E53324 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 007B0D57201C7A8700E53324 /* Assets.xcassets */; };
-		007B0D5B201C7A8700E53324 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 007B0D59201C7A8700E53324 /* LaunchScreen.storyboard */; };
 		007B0D66201C7A8700E53324 /* ArcFaceTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B0D65201C7A8700E53324 /* ArcFaceTestTests.swift */; };
 		007B0D71201C7A8700E53324 /* ArcFaceTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B0D70201C7A8700E53324 /* ArcFaceTestUITests.swift */; };
 		007B0D9A201C88D900E53324 /* AFRPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 007B0D8E201C88D700E53324 /* AFRPerson.m */; };
@@ -54,6 +52,9 @@
 		52455900207855F70051DB21 /* NumberTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524558FF207855F70051DB21 /* NumberTableViewController.swift */; };
 		52DF05242078AC2300AD1CCB /* ClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF05232078AC2300AD1CCB /* ClassTableViewCell.swift */; };
 		52DF05262078C32C00AD1CCB /* AddAttendanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF05252078C32C00AD1CCB /* AddAttendanceTableViewController.swift */; };
+		730C314520B139BD002C0735 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 730C314420B139BD002C0735 /* Default-568h@2x.png */; };
+		730C314720B13B4F002C0735 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 730C314620B13B4F002C0735 /* Main.storyboard */; };
+		730C314920B13B5F002C0735 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 730C314820B13B5F002C0735 /* LaunchScreen.storyboard */; };
 		7318728B204E5EDC00BD59FE /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7318728A204E5EDC00BD59FE /* ProfileTableViewController.swift */; };
 		733774A42027091000FBD53E /* FaceRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733774A32027091000FBD53E /* FaceRecognitionViewController.swift */; };
 		735A1676203B375800D8DD4B /* MyStatisticsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735A1675203B375800D8DD4B /* MyStatisticsTableViewController.swift */; };
@@ -88,9 +89,7 @@
 		007B0D4D201C7A8700E53324 /* ArcFaceTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArcFaceTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		007B0D50201C7A8700E53324 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		007B0D52201C7A8700E53324 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		007B0D55201C7A8700E53324 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		007B0D57201C7A8700E53324 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		007B0D5A201C7A8700E53324 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		007B0D5C201C7A8700E53324 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		007B0D61201C7A8700E53324 /* ArcFaceTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArcFaceTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		007B0D65201C7A8700E53324 /* ArcFaceTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcFaceTestTests.swift; sourceTree = "<group>"; };
@@ -98,7 +97,6 @@
 		007B0D6C201C7A8700E53324 /* ArcFaceTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArcFaceTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		007B0D70201C7A8700E53324 /* ArcFaceTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcFaceTestUITests.swift; sourceTree = "<group>"; };
 		007B0D72201C7A8700E53324 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		007B0D80201C81BB00E53324 /* ArcFaceTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ArcFaceTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		007B0D8E201C88D700E53324 /* AFRPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFRPerson.m; sourceTree = "<group>"; };
 		007B0D8F201C88D700E53324 /* AFCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFCameraController.h; sourceTree = "<group>"; };
 		007B0D90201C88D700E53324 /* AFVideoProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFVideoProcessor.h; sourceTree = "<group>"; };
@@ -176,6 +174,10 @@
 		524558FF207855F70051DB21 /* NumberTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTableViewController.swift; sourceTree = "<group>"; };
 		52DF05232078AC2300AD1CCB /* ClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTableViewCell.swift; sourceTree = "<group>"; };
 		52DF05252078C32C00AD1CCB /* AddAttendanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAttendanceTableViewController.swift; sourceTree = "<group>"; };
+		730C314420B139BD002C0735 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		730C314620B13B4F002C0735 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		730C314820B13B5F002C0735 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		730C314A20B13C67002C0735 /* ArcFaceTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ArcFaceTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		7318728A204E5EDC00BD59FE /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		733774A32027091000FBD53E /* FaceRecognitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceRecognitionViewController.swift; sourceTree = "<group>"; };
 		735A1675203B375800D8DD4B /* MyStatisticsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStatisticsTableViewController.swift; sourceTree = "<group>"; };
@@ -224,12 +226,12 @@
 		007B0D44201C7A8700E53324 = {
 			isa = PBXGroup;
 			children = (
+				730C314420B139BD002C0735 /* Default-568h@2x.png */,
 				007B0D4F201C7A8700E53324 /* ArcFaceTest */,
 				007B0D64201C7A8700E53324 /* ArcFaceTestTests */,
 				007B0D6F201C7A8700E53324 /* ArcFaceTestUITests */,
 				007B0D4E201C7A8700E53324 /* Products */,
 				007B0DE3201C8CB600E53324 /* Frameworks */,
-				007B0D57201C7A8700E53324 /* Assets.xcassets */,
 			);
 			sourceTree = "<group>";
 		};
@@ -246,10 +248,8 @@
 		007B0D4F201C7A8700E53324 /* ArcFaceTest */ = {
 			isa = PBXGroup;
 			children = (
-				007B0D54201C7A8700E53324 /* Main.storyboard */,
-				7382F42C20274C5800084440 /* CheckingIn.storyboard */,
-				007B0D59201C7A8700E53324 /* LaunchScreen.storyboard */,
-				007B0D80201C81BB00E53324 /* ArcFaceTest-Bridging-Header.h */,
+				730C314A20B13C67002C0735 /* ArcFaceTest-Bridging-Header.h */,
+				730C314620B13B4F002C0735 /* Main.storyboard */,
 				5202B23920B025CF007BBDDA /* Checkin */,
 				007B0D82201C826F00E53324 /* Objc */,
 				730C313620AEA6AF002C0735 /* MyStatistics */,
@@ -258,10 +258,7 @@
 				281C6D9E20AECAB0006A5B33 /* Regis */,
 				007D951F20A1D9F0008B9592 /* FaceRecognition */,
 				007D952020A1DA3D008B9592 /* Information */,
-				007B0D50201C7A8700E53324 /* AppDelegate.swift */,
-				7318728A204E5EDC00BD59FE /* ProfileTableViewController.swift */,
-				735A1677203B385A00D8DD4B /* ProfileTableViewCell.swift */,
-				007B0D5C201C7A8700E53324 /* Info.plist */,
+				730C314320B13975002C0735 /* Supporting files */,
 			);
 			path = ArcFaceTest;
 			sourceTree = "<group>";
@@ -637,6 +634,7 @@
 		5202B23920B025CF007BBDDA /* Checkin */ = {
 			isa = PBXGroup;
 			children = (
+				7382F42C20274C5800084440 /* CheckingIn.storyboard */,
 				524558F72078404E0051DB21 /* CheckinTableViewController.swift */,
 				52DF05232078AC2300AD1CCB /* ClassTableViewCell.swift */,
 				52DF05252078C32C00AD1CCB /* AddAttendanceTableViewController.swift */,
@@ -652,10 +650,23 @@
 		730C313620AEA6AF002C0735 /* MyStatistics */ = {
 			isa = PBXGroup;
 			children = (
+				7318728A204E5EDC00BD59FE /* ProfileTableViewController.swift */,
 				735DF68C2078996A006BB84C /* MyStatistics.storyboard */,
 				735A1675203B375800D8DD4B /* MyStatisticsTableViewController.swift */,
+				735A1677203B385A00D8DD4B /* ProfileTableViewCell.swift */,
 			);
 			path = MyStatistics;
+			sourceTree = "<group>";
+		};
+		730C314320B13975002C0735 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				007B0D5C201C7A8700E53324 /* Info.plist */,
+				730C314820B13B5F002C0735 /* LaunchScreen.storyboard */,
+				007B0D57201C7A8700E53324 /* Assets.xcassets */,
+				007B0D50201C7A8700E53324 /* AppDelegate.swift */,
+			);
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -766,12 +777,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7382F42D20274C5800084440 /* CheckingIn.storyboard in Resources */,
+				730C314720B13B4F002C0735 /* Main.storyboard in Resources */,
 				735DF68E2078996A006BB84C /* MyStatistics.storyboard in Resources */,
-				007B0D5B201C7A8700E53324 /* LaunchScreen.storyboard in Resources */,
+				730C314920B13B5F002C0735 /* LaunchScreen.storyboard in Resources */,
+				730C314520B139BD002C0735 /* Default-568h@2x.png in Resources */,
 				7382F42F20274C6E00084440 /* Me.storyboard in Resources */,
 				7382F42B20274C2700084440 /* FaceRecognition.storyboard in Resources */,
 				007B0D58201C7A8700E53324 /* Assets.xcassets in Resources */,
-				007B0D56201C7A8700E53324 /* Main.storyboard in Resources */,
 				00E2D1ED2088C79500785093 /* Register.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -869,22 +881,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		007B0D54201C7A8700E53324 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				007B0D55201C7A8700E53324 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		007B0D59201C7A8700E53324 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				007B0D5A201C7A8700E53324 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		735DF68C2078996A006BB84C /* MyStatistics.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1021,7 +1017,7 @@
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/**",
 				);
 				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
-				INFOPLIST_FILE = ArcFaceTest/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ArcFaceTest/Supporting files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1054,7 +1050,7 @@
 					"$(PROJECT_DIR)/ArcFaceTest/Objc/engines/**",
 				);
 				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
-				INFOPLIST_FILE = ArcFaceTest/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ArcFaceTest/Supporting files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

@@ -73,6 +73,7 @@
                             <constraint firstItem="U4d-jR-FbL" firstAttribute="top" secondItem="1MO-Kx-KKP" secondAttribute="bottom" constant="8" symbolic="YES" id="FD3-BG-faw"/>
                             <constraint firstAttribute="trailing" secondItem="U4d-jR-FbL" secondAttribute="trailing" constant="20" symbolic="YES" id="PZq-Z3-afi"/>
                             <constraint firstAttribute="bottom" secondItem="U4d-jR-FbL" secondAttribute="bottom" constant="200" id="QMm-Aw-rCp"/>
+                            <constraint firstItem="1MO-Kx-KKP" firstAttribute="leading" secondItem="fUn-CP-Kjt" secondAttribute="leading" constant="293" id="cOY-ld-Tqp"/>
                             <constraint firstItem="1MO-Kx-KKP" firstAttribute="trailing" secondItem="U4d-jR-FbL" secondAttribute="trailing" id="d1v-bZ-DPe"/>
                             <constraint firstItem="U4d-jR-FbL" firstAttribute="top" secondItem="fUn-CP-Kjt" secondAttribute="top" constant="50" id="qQo-xs-CRV"/>
                             <constraint firstItem="U4d-jR-FbL" firstAttribute="leading" secondItem="qID-RZ-0uC" secondAttribute="leading" constant="20" symbolic="YES" id="sSo-eE-Rvt"/>
@@ -307,14 +308,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4q6-s7-8cC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2287" y="682"/>
-        </scene>
-        <!--cameraViewController-->
-        <scene sceneID="u0L-1A-XP7">
-            <objects>
-                <viewControllerPlaceholder storyboardName="FaceRecognition" referencedIdentifier="cameraViewController" id="LdT-R3-duJ" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4QF-x5-gSx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2322" y="1403"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wvv-yj-ftd">
