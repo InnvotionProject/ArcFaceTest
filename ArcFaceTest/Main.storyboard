@@ -89,7 +89,7 @@
         <scene sceneID="ej3-Pd-fMz">
             <objects>
                 <tableViewController id="wJJ-9T-ehI" customClass="LoginTableViewController" customModule="ArcFaceTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0m6-hS-lnc">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0m6-hS-lnc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -184,25 +184,26 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7yA-kj-REP">
-                                                    <rect key="frame" x="170" y="6.5" width="35" height="33"/>
+                                                    <rect key="frame" x="170" y="7" width="35" height="33"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <state key="normal" title="登陆"/>
                                                     <connections>
                                                         <action selector="Login:" destination="wJJ-9T-ehI" eventType="touchUpInside" id="ldH-TC-es6"/>
+                                                        <segue destination="wMF-tH-CEw" kind="presentation" identifier="LoginSuccess" id="CSP-VO-DlN"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="7yA-kj-REP" firstAttribute="centerY" secondItem="2jj-SY-vZM" secondAttribute="centerY" id="aA7-Wj-7Ui"/>
-                                                <constraint firstItem="7yA-kj-REP" firstAttribute="centerX" secondItem="2jj-SY-vZM" secondAttribute="centerX" id="tMv-ar-lpy"/>
+                                                <constraint firstItem="7yA-kj-REP" firstAttribute="centerY" secondItem="2jj-SY-vZM" secondAttribute="centerY" id="heU-Vw-zYq"/>
+                                                <constraint firstItem="7yA-kj-REP" firstAttribute="centerX" secondItem="2jj-SY-vZM" secondAttribute="centerX" id="rYf-yf-GgI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="320" id="INO-QC-Bev">
-                                        <rect key="frame" x="0.0" y="329" width="375" height="320"/>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="373" id="INO-QC-Bev">
+                                        <rect key="frame" x="0.0" y="329" width="375" height="373"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="INO-QC-Bev" id="a1A-hO-V7m">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="319.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="372.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
@@ -225,7 +226,6 @@
                     <connections>
                         <outlet property="PassWord" destination="WDe-3B-4QW" id="b6q-KK-kld"/>
                         <outlet property="UserName" destination="8gR-X0-9wy" id="mvW-eE-MOp"/>
-                        <segue destination="wMF-tH-CEw" kind="show" identifier="LoginSuccess" id="yW0-c5-BDj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="veW-SL-DcA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -237,6 +237,7 @@
         <scene sceneID="sFa-0B-nEA">
             <objects>
                 <tabBarController title="Initial" id="wMF-tH-CEw" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="d0j-4d-gRI"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8AE-xM-lnm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -332,6 +333,6 @@
         <image name="InitialFace" width="600" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nXV-yy-H8g"/>
+        <segue reference="CSP-VO-DlN"/>
     </inferredMetricsTieBreakers>
 </document>

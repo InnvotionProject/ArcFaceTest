@@ -9,13 +9,12 @@
 import UIKit
 import CoreData
 
-class LoginTableViewController: UITableViewController {
+class LoginTableViewController: UITableViewController,UITextFieldDelegate{
 
     @IBAction func Back(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     let info = InformationProvider.shared
-    
     @IBOutlet weak var PassWord: UITextField!
     @IBOutlet weak var UserName: UITextField!
     @IBAction func Login(_ sender: Any) {
@@ -52,14 +51,21 @@ class LoginTableViewController: UITableViewController {
         
         
     }
+ 
+   
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
         //print(UserName.text)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.UserName.delegate=self
+        self.PassWord.delegate=self
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,6 +73,23 @@ class LoginTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    //hide the keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == UserName
+        {
+            PassWord.becomeFirstResponder()
+        }
+        else if textField == PassWord
+        {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
