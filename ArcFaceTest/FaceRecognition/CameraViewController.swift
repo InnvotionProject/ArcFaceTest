@@ -7,8 +7,42 @@
 //
 
 import UIKit
+import ARKit
+import SceneKit
 
 class CameraViewController: UIViewController {
+    @IBOutlet weak var blurView: UIVisualEffectView!
+    
+    @IBOutlet weak var sceneView: VirtualObjectARView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var addObjectButton: UIButton!
+    var focusSquare = FocusSquare()
+    lazy var statusViewController: StatusViewController = {
+        return childViewControllers.lazy.flatMap({ $0 as? StatusViewController }).first!
+    }()
+    /// The view controller that displays the virtual object selection menu.
+    var objectsViewController: VirtualObjectSelectionViewController?
+    /// A type which manages gesture manipulation of virtual content in the scene.
+    lazy var virtualObjectInteraction = VirtualObjectInteraction(sceneView: sceneView)
+    
+    /// Coordinates the loading and unloading of reference nodes for virtual objects.
+    let virtualObjectLoader = VirtualObjectLoader()
+    
+    /// Marks if the AR experience is available for restart.
+    var isRestartAvailable = true
+    
+    /// A serial queue used to coordinate adding or removing nodes from the scene.
+    let updateQueue = DispatchQueue(label: "com.example.apple-samplecode.arkitexample.serialSceneKitQueue")
+    
+    var screenCenter: CGPoint {
+        let bounds = sceneView.bounds
+        return CGPoint(x: bounds.midX, y: bounds.midY)
+    }
+    
+    /// Convenience accessor for the session owned by ARSCNView.
+    var session: ARSession {
+        return sceneView.session
+    }
     @IBOutlet weak var canvas: UIView!
     @IBOutlet weak var glView: GLView!
     @IBOutlet weak var name: UILabel!
@@ -31,6 +65,24 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        sceneView.delegate = self
+        sceneView.session.delegate=self
+        setupCamera()
+        sceneView.scene.rootNode.addChildNode(focusSquare)
+        sceneView.automaticallyUpdatesLighting = false
+        if let environmentMap = UIImage(named: "Models.scnassets/sharedImages/environment_blur.exr") {
+            sceneView.scene.lightingEnvironment.contents = environmentMap
+        }
+        
+        // Hook up status view controller callback(s).
+        statusViewController.restartExperienceHandler = { [unowned self] in
+            self.restartExperience()
+        }
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showVirtualObjectSelectionViewController))
+        // Set the delegate to ensure this gesture is only used when there are no virtual objects in the scene.
+        tapGesture.delegate = self
+        sceneView.addGestureRecognizer(tapGesture)
         self.UIsetup()
         self.setup()
     }
@@ -150,6 +202,15 @@ class CameraViewController: UIViewController {
         self.cameraSwitch.isEnabled = true
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Prevent the screen from being dimmed to avoid interuppting the AR experience.
+        UIApplication.shared.isIdleTimerDisabled = true
+        
+        // Start the `ARSession`.
+        resetTracking()
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -161,12 +222,82 @@ class CameraViewController: UIViewController {
         
         CameraViewController.cameraController.stopCaptureSession()
     }
+    func setupCamera() {
+        guard let camera = sceneView.pointOfView?.camera else {
+            fatalError("Expected a valid `pointOfView` from the scene.")
+        }
+        
+        /*
+         Enable HDR camera settings for the most realistic appearance
+         with environmental lighting and physically based materials.
+         */
+       camera.wantsHDR = true
+        camera.exposureOffset = -1
+        camera.minimumExposure = -1
+        camera.maximumExposure = 3
+    }
+    func resetTracking() {
+        virtualObjectInteraction.selectedObject = nil
+        
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal, .vertical]
+        session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        
+        statusViewController.scheduleMessage("FIND A SURFACE TO PLACE AN OBJECT", inSeconds: 7.5, messageType: .planeEstimation)
+    }
+    // MARK: - Focus Square
     
+    func updateFocusSquare() {
+        let isObjectVisible = virtualObjectLoader.loadedObjects.contains { object in
+            return sceneView.isNode(object, insideFrustumOf: sceneView.pointOfView!)
+        }
+        
+        if isObjectVisible {
+            focusSquare.hide()
+        } else {
+            focusSquare.unhide()
+            statusViewController.scheduleMessage("TRY MOVING LEFT OR RIGHT", inSeconds: 5.0, messageType: .focusSquare)
+        }
+        
+        // Perform hit testing only when ARKit tracking is in a good state.
+        if let camera = session.currentFrame?.camera, case .normal = camera.trackingState,
+            let result = self.sceneView.smartHitTest(screenCenter) {
+            updateQueue.async {
+                self.sceneView.scene.rootNode.addChildNode(self.focusSquare)
+                self.focusSquare.state = .detecting(hitTestResult: result, camera: camera)
+            }
+            addObjectButton.isHidden = false
+            statusViewController.cancelScheduledMessage(for: .focusSquare)
+        } else {
+            updateQueue.async {
+                self.focusSquare.state = .initializing
+                self.sceneView.pointOfView?.addChildNode(self.focusSquare)
+            }
+            addObjectButton.isHidden = true
+        }
+    }
+    
+    // MARK: - Error handling
+    
+    func displayErrorMessage(title: String, message: String) {
+        // Blur the background.
+        blurView.isHidden = false
+        
+        // Present an alert informing about the error that has occurred.
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let restartAction = UIAlertAction(title: "Restart Session", style: .default) { _ in
+            alertController.dismiss(animated: true, completion: nil)
+            self.blurView.isHidden = true
+            self.resetTracking()
+        }
+        alertController.addAction(restartAction)
+        present(alertController, animated: true, completion: nil)
+    }
     @IBAction func backFunc(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
 }
-
+////////////////////
 extension CameraViewController {
     enum Purpose {
         case register(success: (Bool) -> ())
