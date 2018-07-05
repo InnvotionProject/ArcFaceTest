@@ -9,7 +9,7 @@
 import Foundation
 import ARKit
 
-class VirtualObjectARView: ARSCNView {
+class VirtualObjectARView: GLView {
     
     // MARK: Position Testing
     
