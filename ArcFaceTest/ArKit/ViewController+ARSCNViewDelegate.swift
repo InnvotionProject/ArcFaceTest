@@ -27,7 +27,7 @@ extension CameraViewController: ARSCNViewDelegate, ARSessionDelegate {
         
         // If light estimation is enabled, update the intensity of the model's lights and the environment map
         let baseIntensity: CGFloat = 40
-        let lightingEnvironment = sceneView.scene.lightingEnvironment
+        let lightingEnvironment = glView.scene.lightingEnvironment
         if let lightEstimate = session.currentFrame?.lightEstimate {
             lightingEnvironment.intensity = lightEstimate.ambientIntensity / baseIntensity
         } else {

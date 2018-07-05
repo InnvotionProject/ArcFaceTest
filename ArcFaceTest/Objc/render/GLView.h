@@ -12,7 +12,6 @@
 #import <OpenGLES/ES2/glext.h>
 #import <AVFoundation/AVFoundation.h>
 
-
 @interface GLView : ARSCNView
 
 -(CGSize) getSizeInPixels;

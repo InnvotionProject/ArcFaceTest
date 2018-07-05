@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -111,7 +111,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ObjectCell" id="WzU-vf-ccc" customClass="ObjectCell" customModule="ARKitInteraction" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ObjectCell" id="WzU-vf-ccc" customClass="ObjectCell" customModule="ArcFaceTest" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="250" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WzU-vf-ccc" id="OS6-7H-xQo">
@@ -265,17 +265,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cWh-WB-Dgn" userLabel="GLView" customClass="GLView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cWh-WB-Dgn" userLabel="GLView" customClass="VirtualObjectARView" customModule="ArcFaceTest" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" restorationIdentifier="cameraViewController" translatesAutoresizingMaskIntoConstraints="NO" id="uWr-1Y-Fnj" userLabel="canvas">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
-                                    <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r4S-Ou-icC" userLabel="Scene View" customClass="VirtualObjectARView" customModule="ArcFaceTest" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="73" width="414" height="443"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </sceneKitView>
                                     <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g95-Kt-VKU" userLabel="Blur View">
                                         <rect key="frame" x="0.0" y="73" width="414" height="443"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -460,7 +456,6 @@
                         <outlet property="name" destination="wZO-To-d3i" id="JPN-u4-lhe"/>
                         <outlet property="registerButton" destination="geh-kp-spv" id="S7U-Rb-HV0"/>
                         <outlet property="remark" destination="Zir-bh-5qf" id="xvy-xo-qC9"/>
-                        <outlet property="sceneView" destination="r4S-Ou-icC" id="5OZ-7t-pPY"/>
                         <outlet property="spinner" destination="HU8-RV-AC5" id="GlZ-2t-Wsv"/>
                         <segue destination="q9d-Fq-yOy" kind="popoverPresentation" identifier="showObjects" popoverAnchorView="c4Z-ms-hKz" id="972-Zy-jKE">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>

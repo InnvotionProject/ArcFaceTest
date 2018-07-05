@@ -41,8 +41,8 @@ extension CameraViewController: VirtualObjectSelectionViewControllerDelegate {
                                    allowAnimation: false)
         
         updateQueue.async {
-            self.sceneView.scene.rootNode.addChildNode(virtualObject)
-            self.sceneView.addOrUpdateAnchor(for: virtualObject)
+            self.glView.scene.rootNode.addChildNode(virtualObject)
+            self.glView.addOrUpdateAnchor(for: virtualObject)
         }
     }
     

@@ -12,8 +12,6 @@ import SceneKit
 
 class CameraViewController: UIViewController {
     @IBOutlet weak var blurView: UIVisualEffectView!
-    
-    @IBOutlet weak var sceneView: VirtualObjectARView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var addObjectButton: UIButton!
     var focusSquare = FocusSquare()
@@ -23,7 +21,7 @@ class CameraViewController: UIViewController {
     /// The view controller that displays the virtual object selection menu.
     var objectsViewController: VirtualObjectSelectionViewController?
     /// A type which manages gesture manipulation of virtual content in the scene.
-    lazy var virtualObjectInteraction = VirtualObjectInteraction(sceneView: sceneView)
+    lazy var virtualObjectInteraction = VirtualObjectInteraction(sceneView: glView)
     
     /// Coordinates the loading and unloading of reference nodes for virtual objects.
     let virtualObjectLoader = VirtualObjectLoader()
@@ -35,16 +33,16 @@ class CameraViewController: UIViewController {
     let updateQueue = DispatchQueue(label: "com.example.apple-samplecode.arkitexample.serialSceneKitQueue")
     
     var screenCenter: CGPoint {
-        let bounds = sceneView.bounds
+        let bounds = glView.bounds
         return CGPoint(x: bounds.midX, y: bounds.midY)
     }
     
     /// Convenience accessor for the session owned by ARSCNView.
     var session: ARSession {
-        return sceneView.session
+        return glView.session
     }
     @IBOutlet weak var canvas: UIView!
-    @IBOutlet weak var glView: GLView!
+    @IBOutlet weak var glView: VirtualObjectARView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var id: UILabel!
     @IBOutlet weak var remark: UILabel!
@@ -65,13 +63,13 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        sceneView.delegate = self
-        sceneView.session.delegate=self
+        glView.delegate = self
+        glView.session.delegate=self
         setupCamera()
-        sceneView.scene.rootNode.addChildNode(focusSquare)
-        sceneView.automaticallyUpdatesLighting = false
+        glView.scene.rootNode.addChildNode(focusSquare)
+        glView.automaticallyUpdatesLighting = false
         if let environmentMap = UIImage(named: "Models.scnassets/sharedImages/environment_blur.exr") {
-            sceneView.scene.lightingEnvironment.contents = environmentMap
+            glView.scene.lightingEnvironment.contents = environmentMap
         }
         
         // Hook up status view controller callback(s).
@@ -82,7 +80,7 @@ class CameraViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showVirtualObjectSelectionViewController))
         // Set the delegate to ensure this gesture is only used when there are no virtual objects in the scene.
         tapGesture.delegate = self
-        sceneView.addGestureRecognizer(tapGesture)
+        glView.addGestureRecognizer(tapGesture)
         self.UIsetup()
         self.setup()
     }
@@ -223,7 +221,7 @@ class CameraViewController: UIViewController {
         CameraViewController.cameraController.stopCaptureSession()
     }
     func setupCamera() {
-        guard let camera = sceneView.pointOfView?.camera else {
+        guard let camera = glView.pointOfView?.camera else {
             fatalError("Expected a valid `pointOfView` from the scene.")
         }
         
@@ -249,7 +247,7 @@ class CameraViewController: UIViewController {
     
     func updateFocusSquare() {
         let isObjectVisible = virtualObjectLoader.loadedObjects.contains { object in
-            return sceneView.isNode(object, insideFrustumOf: sceneView.pointOfView!)
+            return glView.isNode(object, insideFrustumOf: glView.pointOfView!)
         }
         
         if isObjectVisible {
@@ -261,9 +259,9 @@ class CameraViewController: UIViewController {
         
         // Perform hit testing only when ARKit tracking is in a good state.
         if let camera = session.currentFrame?.camera, case .normal = camera.trackingState,
-            let result = self.sceneView.smartHitTest(screenCenter) {
+            let result = self.glView.smartHitTest(screenCenter) {
             updateQueue.async {
-                self.sceneView.scene.rootNode.addChildNode(self.focusSquare)
+                self.glView.scene.rootNode.addChildNode(self.focusSquare)
                 self.focusSquare.state = .detecting(hitTestResult: result, camera: camera)
             }
             addObjectButton.isHidden = false
@@ -271,7 +269,7 @@ class CameraViewController: UIViewController {
         } else {
             updateQueue.async {
                 self.focusSquare.state = .initializing
-                self.sceneView.pointOfView?.addChildNode(self.focusSquare)
+                self.glView.pointOfView?.addChildNode(self.focusSquare)
             }
             addObjectButton.isHidden = true
         }
