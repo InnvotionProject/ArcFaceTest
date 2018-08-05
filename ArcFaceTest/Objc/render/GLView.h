@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ARKit/ARKit.h>
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
 #import <AVFoundation/AVFoundation.h>
 
 
-@interface GLView : ARSCNView
+@interface GLView : UIView
 
 -(CGSize) getSizeInPixels;
 
